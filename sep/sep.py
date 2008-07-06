@@ -63,7 +63,6 @@ try:
 	cwd = getcwd()
 	ftypes = argv[argv.index('-t') + 1:]
 	del argv[argv.index('-t'):]
-	destdir = argv[1]
 	if '-r' in argv:
 		if isdir(destdir):
 			main_wd, main_destdir = abspath(destdir), cwd
@@ -78,6 +77,7 @@ try:
 		main_wd = cwd
 	if '-k' in argv:
 		KEEP = 0
+	destdir = argv[1]
 	print 'working in', getcwd()
 	print 'ftypes:', ftypes
 	print 'destdir:', destdir
