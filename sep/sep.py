@@ -11,8 +11,8 @@ from sys import argv, exit
 # all of the path here is ads parh.
 #
 
-KEEP = 0
-def dummy():
+KEEP = 1
+def dummy(*args):
 	pass
 
 def check(arg):
@@ -26,6 +26,7 @@ def check(arg):
 @check(KEEP)
 def clrcwd(dr):
 	rmdir(dr)
+	print 'clean', dr
 
 def movefiles(ftypes, destdir):
 	test = re.compile("." + "(" + "|".join(ftypes) + ")" + "$", re.IGNORECASE)
@@ -42,26 +43,27 @@ def movefiles(ftypes, destdir):
 			print 'copying', i, 'to', destdir
 		except:
 			print 'oops 1'
-	if len(listdir('.')) == 0:
-		clrcwd(getcwd())
-		print 'clean', getcwd()
 
 def main(ftypes, wdir, destdir):
 	print 'working in', wdir
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
+	if len(dirs) == 0:
+		movefiles(ftypes, destdir)
 	for i in dirs:
-		try:
-			main(ftypes, join_path(wdir, i), join_path(destdir, i))
-		except:
-			print 'oops 2'
+#		try:
+		main(ftypes, join_path(wdir, i), join_path(destdir, i))
+#		except:
+#			print 'oops 2'
 	chdir(wdir)
-	movefiles(ftypes, destdir)
+	if len(listdir('.')) == 0:
+		clrcwd(wdir)
 
 try:
-	destdir = argv[1]
 	cwd = getcwd()
 	ftypes = argv[argv.index('-t') + 1:]
+	del argv[argv.index('-t'):]
+	destdir = argv[1]
 	if '-r' in argv:
 		if isdir(destdir):
 			main_wd, main_destdir = abspath(destdir), cwd
@@ -75,7 +77,7 @@ try:
 		main_destdir = abspath(destdir)
 		main_wd = cwd
 	if '-k' in argv:
-		KEEP = 1
+		KEEP = 0
 	print 'working in', getcwd()
 	print 'ftypes:', ftypes
 	print 'destdir:', destdir
@@ -83,7 +85,7 @@ try:
 	exit(0)
 except SystemExit:
 	pass
-except ValueError:
+except IndexError:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
 	print '"-r" option will do the reverse work, i.e, extract the files from destdir to cwd.'
