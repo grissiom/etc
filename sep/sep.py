@@ -45,7 +45,7 @@ try:
 	ftypes = argv[argv.index('-t') + 1:]
 	if '-r' in argv:
 		if isdir(destdir):
-			main_wd, main_destdir = destdir, cwd
+			main_wd, main_destdir = abspath(destdir), cwd
 		else:
 			print 'you have no', destdir
 			exit(3)
@@ -59,10 +59,6 @@ try:
 	print 'ftypes:', ftypes
 	print 'destdir:', destdir
 	main(ftypes, main_wd, main_destdir)
-#	dirs = filter(isdir, listdir('.'))
-#	movefiles(ftypes, destdir)
-#	for i in dirs:
-#		main(ftypes,abspath(i), join_path(main_destdir, i))
 	exit(0)
 except SystemExit:
 	pass
