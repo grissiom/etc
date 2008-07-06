@@ -6,7 +6,6 @@ from os.path import isdir, isfile, abspath
 from os.path import join as join_path
 from shutil import move
 from sys import argv, exit
-#import Exception
 
 class option_er(Exception):
 	def __init__(self, value):
@@ -23,28 +22,31 @@ def check(arg, func):
 	else:
 		return dummy
 
+def printf(*args):
+	print ' '.join(map(str, args))
+
 def clrdir(dr):
 	rmdir(dr)
-	print 'clean', dr
+	check(VERBOSE, printf)('clean', dr)
 
 def movefiles(ftypes, destdir):
 	test = re.compile("." + "(" + "|".join(ftypes) + ")" + "$", re.IGNORECASE)
 	files = filter(test.search, listdir('.'))
 	files = filter(isfile, files)
 	if len(files) == 0:
-		print 'no file to be operate in', getcwd()
+		check(VERBOSE, printf)('no file to be operate in', getcwd())
 		return
 	if isdir(destdir) is False:
 		makedirs(destdir)
 	for i in files:
 		try:
 			move(i, join_path(destdir, i))
-			print 'copying', i, 'to', destdir
+			check(VERBOSE, printf)('copying', i, 'to', destdir)
 		except:
 			print 'oops 1'
 
 def main(ftypes, wdir, destdir):
-	print 'working in', wdir
+	check(VERBOSE, printf)('working in', wdir)
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
 	for i in dirs:
@@ -81,6 +83,12 @@ try:
 		KEEP = False
 	else:
 		KEEP = True
+	#praise -v
+	if 'v' in argv:
+		argv.remove('v')
+		VERBOSE = True
+	else:
+		VERBOSE = False
 	# praise -r
 	if 'r' in argv:
 		argv.remove('r')
@@ -96,8 +104,8 @@ try:
 		main_destdir = abspath(destdir)
 		main_wd = cwd
 
-	print 'ftypes:', ftypes
-	print 'destdir:', destdir
+	check(VERBOSE, printf)('ftypes:', ftypes)
+	check(VERBOSE, printf)('destdir:', destdir)
 	main(ftypes, main_wd, main_destdir)
 	exit(0)
 except SystemExit:
