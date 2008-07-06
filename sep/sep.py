@@ -34,10 +34,10 @@ def main(ftypes, wdir, destdir):
 	dirs = filter(isdir, listdir('.'))
 	movefiles(ftypes, destdir)
 	for i in dirs:
-#		try:
-		main(ftypes, join_path(wdir, i), join_path(destdir, i))
-#		except:
-#			print 'oops 2'
+		try:
+			main(ftypes, join_path(wdir, i), join_path(destdir, i))
+		except:
+			print 'oops 2'
 
 try:
 	destdir = argv[1]
@@ -62,7 +62,7 @@ try:
 	exit(0)
 except SystemExit:
 	pass
-#except ValueError:
-#	print 'Usage:sep destdir -t/-r file_type'
-#	print ''
-#	exit(1)
+except ValueError:
+	print 'Usage:sep destdir -t/-r file_type'
+	print ''
+	exit(1)
