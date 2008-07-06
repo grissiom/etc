@@ -116,6 +116,7 @@ except option_er, case:
 	print 'destdir must goes before any options'
 	print '"-r" option will do the reverse work, i.e, extract the files from destdir to cwd.'
 	print '"-k" option will keep the empty derctories.'
+	print '"-v" option will make the output being verbose'
 	print ''
 	print case
 	exit(1)
