@@ -24,8 +24,8 @@ def check(arg):
 	return rfunc
 
 @check(KEEP)
-def clrcwd():
-	rmdir(getcwd())
+def clrcwd(dr):
+	rmdir(dr)
 
 def movefiles(ftypes, destdir):
 	test = re.compile("." + "(" + "|".join(ftypes) + ")" + "$", re.IGNORECASE)
@@ -42,21 +42,21 @@ def movefiles(ftypes, destdir):
 			print 'copying', i, 'to', destdir
 		except:
 			print 'oops 1'
-	
 	if len(listdir('.')) == 0:
-		clrcwd()
+		clrcwd(getcwd())
 		print 'clean', getcwd()
-				
+
 def main(ftypes, wdir, destdir):
 	print 'working in', wdir
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
-	movefiles(ftypes, destdir)
 	for i in dirs:
 		try:
 			main(ftypes, join_path(wdir, i), join_path(destdir, i))
 		except:
 			print 'oops 2'
+	chdir(wdir)
+	movefiles(ftypes, destdir)
 
 try:
 	destdir = argv[1]
