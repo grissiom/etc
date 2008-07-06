@@ -6,8 +6,13 @@ from os.path import isdir, isfile, abspath
 from os.path import join as join_path
 from shutil import move
 from sys import argv, exit
+#import Exception
 
-
+class option_er(Exception):
+	def __init__(self, value):
+		self.value = value
+	def __str__(self):
+		return repr(self.value)
 
 def dummy(*args):
 	pass
@@ -56,10 +61,16 @@ def main(ftypes, wdir, destdir):
 # the main body
 try:
 	cwd = getcwd()
-	ftypes = argv[argv.index('-t') + 1:]
+	try:
+		ftypes = argv[argv.index('-t') + 1:]
+	except:
+		raise option_er('-t option missing')
 	del argv[argv.index('-t'):]
 	# praise destdir
-	destdir = argv[1]
+	try:
+		destdir = argv[1]
+	except:
+		raise option_er('destdir missing')
 	del argv[1]
 	del argv[0]
 
@@ -91,11 +102,13 @@ try:
 	exit(0)
 except SystemExit:
 	pass
-except IndexError:
+except option_er, case:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
 	print 'destdir must goes before any options'
 	print '"-r" option will do the reverse work, i.e, extract the files from destdir to cwd.'
 	print '"-k" option will keep the empty derctories.'
+	print ''
+	print case
 	exit(1)
 
