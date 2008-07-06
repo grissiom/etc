@@ -51,10 +51,10 @@ def main(ftypes, wdir, destdir):
 	if len(dirs) == 0:
 		movefiles(ftypes, destdir)
 	for i in dirs:
-#		try:
-		main(ftypes, join_path(wdir, i), join_path(destdir, i))
-#		except:
-#			print 'oops 2'
+		try:
+			main(ftypes, join_path(wdir, i), join_path(destdir, i))
+		except:
+			print 'oops 2'
 	chdir(wdir)
 	if len(listdir('.')) == 0:
 		clrcwd(wdir)
