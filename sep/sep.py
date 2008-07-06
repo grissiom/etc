@@ -7,24 +7,18 @@ from os.path import join as join_path
 from shutil import move
 from sys import argv, exit
 
-#
-# all of the path here is ads parh.
-#
 
-KEEP = 1
+
 def dummy(*args):
 	pass
 
-def check(arg):
-	def rfunc(func):
-		if arg:
-			return func
-		else:
-			return dummy
-	return rfunc
+def check(arg, func):
+	if arg:
+		return func
+	else:
+		return dummy
 
-@check(KEEP)
-def clrcwd(dr):
+def clrdir(dr):
 	rmdir(dr)
 	print 'clean', dr
 
@@ -33,7 +27,7 @@ def movefiles(ftypes, destdir):
 	files = filter(test.search, listdir('.'))
 	files = filter(isfile, files)
 	if len(files) == 0:
-		print 'no file to be operate.'
+		print 'no file to be operate in', getcwd()
 		return
 	if isdir(destdir) is False:
 		makedirs(destdir)
@@ -48,22 +42,37 @@ def main(ftypes, wdir, destdir):
 	print 'working in', wdir
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
-	if len(dirs) == 0:
-		movefiles(ftypes, destdir)
 	for i in dirs:
 		try:
 			main(ftypes, join_path(wdir, i), join_path(destdir, i))
 		except:
 			print 'oops 2'
 	chdir(wdir)
-	if len(listdir('.')) == 0:
-		clrcwd(wdir)
+	movefiles(ftypes, destdir)
+	if len(listdir(wdir)) == 0:
+		check(KEEP, clrdir)(wdir)
 
+
+# the main body
 try:
 	cwd = getcwd()
 	ftypes = argv[argv.index('-t') + 1:]
 	del argv[argv.index('-t'):]
-	if '-r' in argv:
+	# praise destdir
+	destdir = argv[1]
+	del argv[1]
+	del argv[0]
+
+	argv = list(''.join(argv))
+	# praise -k
+	if 'k' in argv:
+		argv.remove('k')
+		KEEP = False
+	else:
+		KEEP = True
+	# praise -r
+	if 'r' in argv:
+		argv.remove('r')
 		if isdir(destdir):
 			main_wd, main_destdir = abspath(destdir), cwd
 		else:
@@ -75,10 +84,7 @@ try:
 			exit(2)
 		main_destdir = abspath(destdir)
 		main_wd = cwd
-	if '-k' in argv:
-		KEEP = 0
-	destdir = argv[1]
-	print 'working in', getcwd()
+
 	print 'ftypes:', ftypes
 	print 'destdir:', destdir
 	main(ftypes, main_wd, main_destdir)
@@ -88,6 +94,7 @@ except SystemExit:
 except IndexError:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
+	print 'destdir must goes before any options'
 	print '"-r" option will do the reverse work, i.e, extract the files from destdir to cwd.'
 	print '"-k" option will keep the empty derctories.'
 	exit(1)
