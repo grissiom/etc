@@ -31,8 +31,8 @@ def movefiles(ftypes, destdir):
 def main(ftypes, wdir, destdir):
 	print 'working in', wdir
 	chdir(wdir)
-	movefiles(ftypes, destdir)
 	dirs = filter(isdir, listdir('.'))
+	movefiles(ftypes, destdir)
 	for i in dirs:
 #		try:
 		main(ftypes, join_path(wdir, i), join_path(destdir, i))
@@ -44,25 +44,25 @@ try:
 	cwd = getcwd()
 	ftypes = argv[argv.index('-t') + 1:]
 	if '-r' in argv:
-		try:
-			chdir(destdir)
-		except:
+		if isdir(destdir):
+			main_wd, main_destdir = destdir, cwd
+		else:
 			print 'you have no', destdir
 			exit(3)
-		destdir = cwd
-		main_cwd, main_destdir = getcwd(), destdir
 	else:
 		if destdir in listdir('.'):
 			print 'you already have the destdir, abort work.'
 			exit(2)
 		main_destdir = abspath(destdir)
+		main_wd = cwd
 	print 'working in', getcwd()
 	print 'ftypes:', ftypes
 	print 'destdir:', destdir
-	dirs = filter(isdir, listdir('.'))
-	movefiles(ftypes, destdir)
-	for i in dirs:
-		main(ftypes,abspath(i), join_path(main_destdir, i))
+	main(ftypes, main_wd, main_destdir)
+#	dirs = filter(isdir, listdir('.'))
+#	movefiles(ftypes, destdir)
+#	for i in dirs:
+#		main(ftypes,abspath(i), join_path(main_destdir, i))
 	exit(0)
 except SystemExit:
 	pass
