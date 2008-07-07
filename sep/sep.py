@@ -64,6 +64,7 @@ def main(ftypes, wdir, destdir):
 try:
 	cwd = getcwd()
 
+	#parse -t
 	try:
 		ftypes = argv[argv.index('-t') + 1:]
 	except:
