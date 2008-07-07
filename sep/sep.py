@@ -49,20 +49,21 @@ def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
-	for i in dirs:
-		try:
-			main(ftypes, join_path(wdir, i), join_path(destdir, i))
-		except:
-			print 'oops 2'
+	if RECURSION:
+		for i in dirs:
+			try:
+				main(ftypes, join_path(wdir, i), join_path(destdir, i))
+			except:
+				print 'oops 2'
 	chdir(wdir)
 	movefiles(ftypes, destdir)
 	if len(listdir(wdir)) == 0:
 		check(KEEP, clrdir)(wdir)
 
-
 # the main body
 try:
 	cwd = getcwd()
+
 	try:
 		ftypes = argv[argv.index('-t') + 1:]
 	except:
@@ -109,6 +110,12 @@ try:
 			exit(2)
 		main_destdir = abspath(destdir)
 		main_wd = cwd
+	#paise -n
+	if 'n' in argv:
+		argv.remove('n')
+		RECURSION = False
+	else:
+		RECURSION = True
 
 	check(VERBOSE, printf)('ftypes:', ftypes)
 	check(VERBOSE, printf)('destdir:', destdir)
@@ -121,6 +128,7 @@ except option_er, case:
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
 	print 'destdir must goes before any options'
 	print '-r:do the reverse work, i.e, extract the files from destdir to cwd.'
+	print '-n:no recursion'
 	print '-c:copy the file instead of moing the file'
 	print '-k:keep the empty derctories.'
 	print '-v:make the output being verbose'
