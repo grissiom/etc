@@ -4,7 +4,7 @@ import re
 from os import listdir, chdir, path, getcwd, makedirs, rmdir
 from os.path import isdir, isfile, abspath
 from os.path import join as join_path
-from shutil import move
+from shutil import move, copy2
 from sys import argv, exit
 
 class option_er(Exception):
@@ -40,7 +40,7 @@ def movefiles(ftypes, destdir):
 		makedirs(destdir)
 	for i in files:
 		try:
-			move(i, join_path(destdir, i))
+			operate_file(i, join_path(destdir, i))
 			check(VERBOSE, printf)('copying', i, 'to', destdir)
 		except:
 			print 'oops 1'
@@ -68,7 +68,7 @@ try:
 	except:
 		raise option_er('-t option missing')
 	del argv[argv.index('-t'):]
-	# praise destdir
+	# parse destdir
 	try:
 		destdir = argv[1]
 	except:
@@ -77,19 +77,25 @@ try:
 	del argv[0]
 
 	argv = list(''.join(argv))
-	# praise -k
+	# parse -k
 	if 'k' in argv:
 		argv.remove('k')
 		KEEP = False
 	else:
 		KEEP = True
-	#praise -v
+	#parse -c
+	if 'c' in argv:
+		argv.remove('c')
+		operate_file = copy2
+	else:
+		operate_file = move
+	#parse -v
 	if 'v' in argv:
 		argv.remove('v')
 		VERBOSE = True
 	else:
 		VERBOSE = False
-	# praise -r
+	# parse -r
 	if 'r' in argv:
 		argv.remove('r')
 		if isdir(destdir):
@@ -114,9 +120,10 @@ except option_er, case:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
 	print 'destdir must goes before any options'
-	print '"-r" option will do the reverse work, i.e, extract the files from destdir to cwd.'
-	print '"-k" option will keep the empty derctories.'
-	print '"-v" option will make the output being verbose'
+	print '-r:do the reverse work, i.e, extract the files from destdir to cwd.'
+	print '-c:copy the file instead of moing the file'
+	print '-k:keep the empty derctories.'
+	print '-v:make the output being verbose'
 	print ''
 	print case
 	exit(1)
