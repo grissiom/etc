@@ -63,7 +63,7 @@ def main(ftypes, wdir, destdir):
 # the main body
 try:
 	cwd = getcwd()
-
+#----------- Begin the option parsing -----------#
 	#parse -t
 	try:
 		ftypes = argv[argv.index('-t') + 1:]
@@ -117,6 +117,7 @@ try:
 		RECURSION = False
 	else:
 		RECURSION = True
+#----------- End the option parsing -----------#
 
 	check(VERBOSE, printf)('ftypes:', ftypes)
 	check(VERBOSE, printf)('destdir:', destdir)
