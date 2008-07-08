@@ -13,6 +13,11 @@ class option_er(Exception):
 	def __str__(self):
 		return repr(self.value)
 
+class SystemExit2(SystemExit):
+	def __init__(self, message = 0, strerror = None):
+		self.strerror = strerror
+		SystemExit.__init__(self, message)
+
 def dummy(*args):
 	pass
 
@@ -40,13 +45,13 @@ def movefiles(ftypes, destdir):
 		try:
 			makedirs(destdir)
 		except OSError, oserr:
-			exit('Error when creating %s: %s' % (oserr.filename, oserr.strerror))
+			raise SystemExit2(3, 'Error when creating %s: %s' % (oserr.filename, oserr.strerror))
 	for i in files:
 		try:
 			operate_file(i, join_path(destdir, i))
 			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
 		except IOError, ioerr:
-			exit('Error when %s %s: %s' % (OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
+			raise SystemExit2(3, 'Error when %s %s: %s' % (OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
 
 def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
@@ -122,8 +127,9 @@ try:
 	check(VERBOSE, printf)('ftypes:', ftypes)
 	check(VERBOSE, printf)('destdir:', destdir)
 	main(ftypes, main_wd, main_destdir)
-except SystemExit, sysexit:
-	print sysexit.message
+	exit(0)
+except SystemExit2, sysexit2:
+	print sysexit2.strerror
 except option_er, case:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
