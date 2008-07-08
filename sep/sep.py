@@ -37,13 +37,16 @@ def movefiles(ftypes, destdir):
 		check(VERBOSE, printf)('no file to be operate in', getcwd())
 		return
 	if isdir(destdir) is False:
-		makedirs(destdir)
+		try:
+			makedirs(destdir)
+		except OSError, oserr:
+			exit('Error when creating %s: %s' % (oserr.filename, oserr.strerror))
 	for i in files:
 		try:
 			operate_file(i, join_path(destdir, i))
-			check(VERBOSE, printf)('copying', i, 'to', destdir)
-		except:
-			print 'oops 1'
+			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
+		except IOError, ioerr:
+			exit('Error when %s %s: %s' % (OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
 
 def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
@@ -51,10 +54,7 @@ def main(ftypes, wdir, destdir):
 	dirs = filter(isdir, listdir('.'))
 	if RECURSION:
 		for i in dirs:
-			try:
-				main(ftypes, join_path(wdir, i), join_path(destdir, i))
-			except:
-				print 'oops 2'
+			main(ftypes, join_path(wdir, i), join_path(destdir, i))
 	chdir(wdir)
 	movefiles(ftypes, destdir)
 	if len(listdir(wdir)) == 0:
@@ -88,8 +88,10 @@ try:
 	#parse -c
 	if 'c' in argv:
 		argv.remove('c')
+		OPER_FILE_MOD = 'copy'
 		operate_file = copy2
 	else:
+		OPER_FILE_MOD = 'move'
 		operate_file = move
 	#parse -v
 	if 'v' in argv:
@@ -103,12 +105,10 @@ try:
 		if isdir(destdir):
 			main_wd, main_destdir = abspath(destdir), cwd
 		else:
-			print 'you have no', destdir
-			exit(3)
+			raise option_er('you have no %s' % destdir)
 	else:
 		if destdir in listdir('.'):
-			print 'you already have the destdir, abort work.'
-			exit(2)
+			raise option_er('you already have the destdir, abort work.')
 		main_destdir = abspath(destdir)
 		main_wd = cwd
 	#paise -n
@@ -122,9 +122,8 @@ try:
 	check(VERBOSE, printf)('ftypes:', ftypes)
 	check(VERBOSE, printf)('destdir:', destdir)
 	main(ftypes, main_wd, main_destdir)
-	exit(0)
-except SystemExit:
-	pass
+except SystemExit, sysexit:
+	print sysexit.message
 except option_er, case:
 	print 'Usage:sep destdir -k/-r/-t file_type'
 	print 'Any thing behand "-t" will treat as the file type you want to move.'
@@ -136,5 +135,5 @@ except option_er, case:
 	print '-v:make the output being verbose'
 	print ''
 	print case
-	exit(1)
+	exit(2)
 
