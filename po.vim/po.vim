@@ -12,12 +12,15 @@
 "                                                      Key mappings
 "     Action (Insert mode)                            GUI Vim     Vim
 "     ===============================================================
-"     Move to an untransl. string forward             <S-F1>      \m
-"     Move to an untransl. string backward            <S-F2>      \p
+"     Move to a string (transl. or untransl) forward              \m
+"     Move to a string (transl. or untransl) backward             \M
+"     Begain to comment this entry                                \C
+"     Move to an untransl. string forward             <S-F1>      \u
+"     Move to an untransl. string backward            <S-F2>      \U
 "     Copy the msgid string to msgstr                 <S-F3>      \c
 "     Delete the msgstr string                        <S-F4>      \d
 "     Move to the next fuzzy translation              <S-F5>      \f
-"     Move to the previous fuzzy translation          <S-F6>      \b
+"     Move to the previous fuzzy translation          <S-F6>      \F
 "     Label the translation fuzzy                     <S-F7>      \z
 "     Remove the fuzzy label                          <S-F8>      \r
 "     Show msgfmt statistics for the file(*)          <S-F11>     \s
@@ -31,10 +34,13 @@
 "                                                      Key mappings
 "     Action (Normal mode)                            GUI Vim     Vim
 "     ===============================================================
-"     Move to an untransl. string forward             <S-F1>      \m
-"     Move to an untransl. string backward            <S-F2>      \p
+"     Move to a string (transl. or untransl) forward              \m
+"     Move to a string (transl. or untransl) backward             \M
+"     Begain to comment this entry                                \C
+"     Move to an untransl. string forward             <S-F1>      \u
+"     Move to an untransl. string backward            <S-F2>      \U
 "     Move to the next fuzzy translation              <S-F5>      \f
-"     Move to the previous fuzzy translation          <S-F6>      \b
+"     Move to the previous fuzzy translation          <S-F6>      \F
 "     Label the translation fuzzy                     <S-F7>      \z
 "     Remove the fuzzy label                          <S-F8>      \r
 "     Split-open the file under cursor                  gf        gf
@@ -109,14 +115,49 @@ else
    let gui = 0
 endif
 
+" Move to a string (transl. or untransl) forward
+if !hasmapto('<Plug>NextStringFWD')
+	if gui
+
+	else
+		imap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
+		nmap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
+	endif
+endif
+inoremap <buffer> <unique> <Plug>NextStringFWD <ESC>/^msgstr\(\[\d\]\)\?<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
+nnoremap <buffer> <unique> <Plug>NextStringFWD /^msgstr\(\[\d\]\)\?<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
+
+" Move to a string (transl. or untransl) backward
+if !hasmapto('<Plug>NextStringBWD')
+	if gui
+
+	else
+		imap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
+		nmap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
+	endif
+endif
+inoremap <buffer> <unique> <Plug>NextStringBWD <ESC>{{/^msgstr\(\[\d\]\)\?<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
+nnoremap <buffer> <unique> <Plug>NextStringBWD {{/^msgstr\(\[\d\]\)\?<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
+
+" Begain to comment this entry
+if !hasmapto('<Plug>Commententry')
+	if gui
+	else
+		imap <buffer> <unique> <LocalLeader>C <Plug>Commententry
+		nmap <buffer> <unique> <LocalLeader>C <Plug>Commententry
+	endif
+endif
+inoremap <buffer> <unique> <Plug>Commententry <ESC>{o# 
+nnoremap <buffer> <unique> <Plug>Commententry {o# 
+
 " Move to the first untranslated msgstr string forward.
 if !hasmapto('<Plug>NextTransFwd')
    if gui
       imap <buffer> <unique> <S-F1> <Plug>NextTransFwd
       nmap <buffer> <unique> <S-F1> <Plug>NextTransFwd
    else
-      imap <buffer> <unique> <LocalLeader>m <Plug>NextTransFwd
-      nmap <buffer> <unique> <LocalLeader>m <Plug>NextTransFwd
+      imap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
+      nmap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
    endif
 endif
 inoremap <buffer> <unique> <Plug>NextTransFwd <ESC>/^msgstr\(\[\d\]\)\?\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
@@ -128,8 +169,8 @@ if !hasmapto('<Plug>NextTransBwd')
       imap <buffer> <unique> <S-F2> <Plug>NextTransBwd
       nmap <buffer> <unique> <S-F2> <Plug>NextTransBwd
    else
-      imap <buffer> <unique> <LocalLeader>p <Plug>NextTransBwd
-      nmap <buffer> <unique> <LocalLeader>p <Plug>NextTransBwd
+      imap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
+      nmap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
    endif
 endif
 inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>{?^msgstr\(\[\d\]\)\?\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
@@ -174,8 +215,8 @@ if !hasmapto('<Plug>PreviousFuzzy')
       imap <buffer> <unique> <S-F6> <Plug>PreviousFuzzy
       nmap <buffer> <unique> <S-F6> <Plug>PreviousFuzzy
    else
-      imap <buffer> <unique> <LocalLeader>b <Plug>PreviousFuzzy
-      nmap <buffer> <unique> <LocalLeader>b <Plug>PreviousFuzzy
+      imap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
+      nmap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
    endif
 endif
 inoremap <buffer> <unique> <Plug>PreviousFuzzy <ESC>{?^#,\(.*,\)\=\s*fuzzy<CR>:let @/=""<CR>:call histdel("/", -1)<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.$i
