@@ -1,0 +1,69 @@
+# .bashrc
+
+# User specific aliases and functions
+
+# Source global definitions
+
+export PATH=$PATH:/home/grissiom/bin
+
+export PS1='\u@gri:\w\$ '
+
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+### copied from system
+alias d='dir'
+alias dir='/bin/ls $LS_OPTIONS --format=vertical'
+alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
+alias v='vdir'
+alias vdir='/bin/ls $LS_OPTIONS --format=long'
+### End of copy
+
+alias ls='ls --color -F $LS_OPTIONS'
+alias less='less -R'
+alias grep='grep --color=tty -d skip'
+alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
+alias ls='/bin/ls $LS_OPTIONS'
+alias more='less'
+alias cd_='cd /usr/local/src'
+alias ..='cd ../'
+
+### copy from http://www.faqs.org/docs/abs/HTML/sample-bashrc.html
+# Define some colors first:
+red='\e[0;31m'
+RED='\e[1;31m'
+blue='\e[0;34m'
+BLUE='\e[1;34m'
+cyan='\e[0;36m'
+CYAN='\e[1;36m'
+NC='\e[0m'              # No Color
+# --> Nice. Has the same effect as using "ansi.sys" in DOS.
+
+# Looks best on a black background.....
+echo -e "${BLUE}This is BASH ${RED}${BASH_VERSION%.*}${BLUE} - DISPLAY on ${RED}$DISPLAY${NC}\n"
+
+date
+echo -e "\n"
+if [ -x /usr/games/fortune ]; then
+    /usr/games/fortune -s     # makes our day a bit more fun.... :-)
+    echo -e "\n"
+fi
+### End of copy
+
+
+### For KDE4 dev
+#function cd() {
+# if test -z "$1"; then
+#     builtin cd
+ # elif test -z "$2"; then
+ #   builtin cd "$1"
+#  else
+#    builtin cd "$1" "$2"
+#  fi
+#  _f=`findup .my-setup`
+#  if test -n "$_f" -a "$_lastf" != "$_f"; then
+#    echo "Loading $_f"
+#    _lastf="$_f"
+#    source "$_f"
+#  fi
+#}
