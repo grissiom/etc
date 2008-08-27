@@ -446,8 +446,3 @@ fu! <SID>OpenSourceFile()
 endf
 
 unlet gui
-
-"Known BUGS:
-"1:'#, fuzzy' should inject before 'msgctxt', precisely after '#' entries.
-"2:'\m', '\p' skip the 'msgstr[0]' entry.
-
