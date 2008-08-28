@@ -113,7 +113,7 @@ try:
 			raise option_er('you have no %s' % destdir)
 	else:
 		if destdir in listdir('.'):
-			raise option_er('you already have the destdir, abort work.')
+			print "you have already have %s" % destdir
 		main_destdir = abspath(destdir)
 		main_wd = cwd
 	#paise -n
