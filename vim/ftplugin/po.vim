@@ -161,7 +161,7 @@ if !hasmapto('<Plug>NextTransFwd')
 	endif
 endif
 inoremap <buffer> <unique> <Plug>NextTransFwd <ESC>/^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
-nnoremap <buffer> <unique> <Plug>NextTransFwd /^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
+nnoremap <buffer> <unique> <Plug>NextTransFwd /^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
 
 " Move to the first untranslated msgstr string backward.
 if !hasmapto('<Plug>NextTransBwd')
@@ -174,7 +174,7 @@ if !hasmapto('<Plug>NextTransBwd')
 	endif
 endif
 inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>{?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
-nnoremap <buffer> <unique> <Plug>NextTransBwd {?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
+nnoremap <buffer> <unique> <Plug>NextTransBwd {?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
 
 " Copy original msgid string into msgstr string.
 if !hasmapto('<Plug>CopyMsgid')
