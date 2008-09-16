@@ -392,9 +392,13 @@ fu! <SID>PoFileTimestamp()
 	let scrn_pos = line(".").'normal! zt'
 
 	" Put in time stamp.
+	" only update time stamp for unfuzzy translations
 	normal! 1G
-	if search('^"PO-Revision-Date:')
-		silent! exe 's/^\("PO-Revision-Date:\).*$/\1 ' . strftime("%Y-%m-%d %H:%M%z") . '\\n"'
+	/^msgid
+	if !search('^#, fuzzy$', 'b')
+		if search('^"PO-Revision-Date:')
+			silent! exe 's/^\("PO-Revision-Date:\).*$/\1 ' . strftime("%Y-%m-%d %H:%M%z") . '\\n"'
+		endif
 	endif
 
 	" Cleanup and restore old cursor position.
