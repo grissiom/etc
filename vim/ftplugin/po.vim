@@ -180,11 +180,14 @@ nnoremap <buffer> <unique> <Plug>NextTransBwd {?^msgstr\(\[\d\]\)\?\s*""\(\n\n\\
 if !hasmapto('<Plug>CopyMsgid')
 	if gui
 		imap <buffer> <unique> <S-F3> <Plug>CopyMsgid
+		nmap <buffer> <unique> <S-F3> <Plug>CopyMsgid
 	else
 		imap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
+		nmap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
 	endif
 endif
 inoremap <buffer> <unique> <Plug>CopyMsgid <ESC>}?^msgid<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f"y/^msgstr<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f""_d$pa
+nnoremap <buffer> <unique> <Plug>CopyMsgid <ESC>}?^msgid<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f"y/^msgstr<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f""_d$p
 
 " Erase the translation string.
 if !hasmapto('<Plug>DeleteTrans')
