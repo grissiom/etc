@@ -30,6 +30,13 @@ set formatoptions+=mM
 imap <F5> <ESC>
 nmap <F5> <ESC>
 
+" press <F4> to start a menu
+source $VIMRUNTIME/menu.vim
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+map <F4> :emenu <C-Z>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 "
