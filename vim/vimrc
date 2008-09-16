@@ -1,0 +1,69 @@
+set nocompatible
+
+filetype on
+filetype indent on
+filetype plugin on
+
+syntax on
+
+set smarttab
+set softtabstop=8
+set autoindent
+set ruler
+set showcmd
+set showmode
+set listchars=tab:>-,trail:-
+set nu
+set foldcolumn=2
+
+" provide middlebutton drag copy and paste
+" but thus the mouse could not trigger visual mode
+set mouse=r
+
+"set background=dark
+set encoding=utf-8
+
+" make Chinese text format available
+set formatoptions+=mM
+
+" make ESC closer to the finger ;)
+imap <F5> <ESC>
+nmap <F5> <ESC>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding
+"
+" Enable folding, but by default make it act like folding is off, because
+" folding is annoying in anything but a few rare cases
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldenable " Turn on folding
+"set foldlevel=100 " Don't autofold anything (but I can still fold manually)
+set foldopen-=search " don't open folds when you search into them
+set foldopen-=undo " don't open folds when you undo stuff
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto close pairs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:inoremap , ,<Space>
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {}<ESC>i
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap < <><ESC>i
+:inoremap > <c-r>=ClosePair('>')<CR>
+
+function ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endf
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" add po translate info, used by the po.vim script:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:po_translator = 'Grissiom <chaos.proton@gmail.com>'
+let g:po_lang_team  = 'zh_CN <kde-china@kde.org>'
