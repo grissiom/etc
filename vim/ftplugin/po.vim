@@ -1,8 +1,11 @@
 " Vim ftplugin for PO file (GNU gettext) editing.
-" Maintainer:	Aleksandar Jelenak <ajelenak AT yahoo.com>
+" Original Creator:	Aleksandar Jelenak <ajelenak AT yahoo.com>
+" Modifier: Grissiom <chaos.proton AT gmail.com>
 " Last Change:	Tue, 12 Apr 2005 13:49:55 -0400
 "
-" *** Latest version: http://www.vim.org/scripts/script.php?script_id=695 ***
+" *** Latest version of original script: http://www.vim.org/scripts/script.php?script_id=695 ***
+" ***Latest version of modified verion:
+" http://repo.or.cz/w/grissiom.projects.git?a=blob_plain;f=vim/ftplugin/po.vim***
 "
 " DESCRIPTION
 "     This file is a Vim ftplugin for editing PO files (GNU gettext -- the GNU
@@ -79,7 +82,9 @@
 "     But there's even more!
 "
 "     Every time the PO file is saved, a PO-formatted time stamp is
-"     automatically added to the file header.
+"     automatically added to the file header. Note that if the file is marked
+"     'fuzzy', i.e, there is a "#, fuzzy" in the head of the file, the time
+"     stamp will not be updated.
 "
 " INSTALLATION
 "     Put this file in a Vim ftplugin directory. On UNIX computers it is
