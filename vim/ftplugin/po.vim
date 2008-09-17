@@ -4,8 +4,8 @@
 " Last Change:	Tue, 12 Apr 2005 13:49:55 -0400
 "
 " *** Latest version of original script: http://www.vim.org/scripts/script.php?script_id=695 ***
-" ***Latest version of modified verion:
-" http://repo.or.cz/w/grissiom.projects.git?a=blob_plain;f=vim/ftplugin/po.vim***
+" *** Latest version of modified verion:
+" http://repo.or.cz/w/grissiom.projects.git?a=blob_plain;f=vim/ftplugin/po.vim ***
 "
 " DESCRIPTION
 "     This file is a Vim ftplugin for editing PO files (GNU gettext -- the GNU
