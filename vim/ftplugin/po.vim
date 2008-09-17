@@ -77,7 +77,7 @@
 "       "/dev/null". The user can supply command-line arguments to the msgfmt
 "       program via the global variable 'g:po_msgfmt_args'. All arguments are
 "       allowed except the "-o" for output file. The default value is
-"       "-vv -c".
+"       "-vv -c".
 "
 "     But there's even more!
 "
