@@ -25,7 +25,7 @@
 "     Move to the next fuzzy translation              <S-F5>      \f
 "     Move to the previous fuzzy translation          <S-F6>      \F
 "     Label the translation fuzzy                     <S-F7>      \z
-"     Remove the fuzzy label                          <S-F8>      \r
+"     Remove the fuzzy label                          <S-F8>      \Z
 "     Show msgfmt statistics for the file(*)          <S-F11>     \s
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
 "     Put the translator info in the header           \t          \t
@@ -45,7 +45,7 @@
 "     Move to the next fuzzy translation              <S-F5>      \f
 "     Move to the previous fuzzy translation          <S-F6>      \F
 "     Label the translation fuzzy                     <S-F7>      \z
-"     Remove the fuzzy label                          <S-F8>      \r
+"     Remove the fuzzy label                          <S-F8>      \Z
 "     Split-open the file under cursor                  gf        gf
 "     Show msgfmt statistics for the file(*)          <S-F11>     \s
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
@@ -267,8 +267,8 @@ if !hasmapto('<Plug>RemoveFuzzy')
 		imap <buffer> <unique> <S-F8> <Plug>RemoveFuzzy
 		nmap <buffer> <unique> <S-F8> <Plug>RemoveFuzzy
 	else
-		imap <buffer> <unique> <LocalLeader>r <Plug>RemoveFuzzy
-		nmap <buffer> <unique> <LocalLeader>r <Plug>RemoveFuzzy
+		imap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
+		nmap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
 	endif
 endif
 inoremap <buffer> <unique> <Plug>RemoveFuzzy <ESC>{vap:call <SID>RemoveFuzzy()<CR>i
