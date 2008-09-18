@@ -1,7 +1,7 @@
 " Vim ftplugin for PO file (GNU gettext) editing.
 " Original Creator:	Aleksandar Jelenak <ajelenak AT yahoo.com>
 " Modifier: Grissiom <chaos.proton AT gmail.com>
-" Last Change:	Tue, 12 Apr 2005 13:49:55 -0400
+" Last Change by Original Creator:	Tue, 12 Apr 2005 13:49:55 -0400
 "
 " *** Latest version of original script: http://www.vim.org/scripts/script.php?script_id=695 ***
 " *** Latest version of modified verion:
