@@ -30,6 +30,9 @@ set formatoptions+=mM
 imap <F5> <ESC>
 nmap <F5> <ESC>
 
+" make <C-C> to clean up search
+nmap <C-C> :let @/=""<CR>
+
 " press <F4> to start a menu
 source $VIMRUNTIME/menu.vim
 set wildmenu
@@ -74,3 +77,4 @@ endf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:po_translator = 'Grissiom <chaos.proton@gmail.com>'
 let g:po_lang_team  = 'zh_CN <kde-china@kde.org>'
+let g:po_msgfmt_args = '-cvv --check-accelerators=\&'
