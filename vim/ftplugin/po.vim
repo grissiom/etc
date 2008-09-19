@@ -30,6 +30,7 @@
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
 "     Put the translator info in the header           \t          \t
 "     Put the lang. team info in the header           \l          \l
+"     Format the whole file(wrap the lines etc.)                  \W
 "     ---------------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
@@ -51,6 +52,7 @@
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
 "     Put the translator info in the header           \t          \t
 "     Put the lang. team info in the header           \l          \l
+"     Format the whole file(wrap the lines etc.)                  \W
 "     ---------------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
@@ -78,6 +80,9 @@
 "       program via the global variable 'g:po_msgfmt_args'. All arguments are
 "       allowed except the "-o" for output file. The default value is
 "       "-vv -c".
+"     - Format the whole file is acturely using msgmerge a.po a.po -o a.po.
+"       Since we must reload the file that has been modified, you could not
+"       do any Undo once you run this function.
 "
 "     But there's even more!
 "
@@ -453,6 +458,26 @@ fu! <SID>OpenSourceFile()
 		" Split the window and open the file at the correct line.
 		execute "silent sp +" . lnr . " " . ff
 	endif
+endf
+
+" Format the whole file with msgmerge(merge itself with itself)
+if !hasmapto('fmt_whole_file')
+	imap <buffer> <unique> <LocalLeader>W <Plug>fmt_whole_file
+	nmap <buffer> <unique> <LocalLeader>W <Plug>fmt_whole_file
+endif
+inoremap <buffer> <unique> <Plug>fmt_whole_file <ESC>:call <SID>fmt_whole_file()<CR>a
+nnoremap <buffer> <unique> <Plug>fmt_whole_file :call <SID>fmt_whole_file()<CR><CR>
+
+fu! <SID>fmt_whole_file()
+	let fn=bufname('%')
+	" Check if the file needs to be saved first.
+	exe "if &modified | w | endif"
+	exe "!msgmerge ".fn." ".fn." "."-o ".fn
+	exe "e!"
+
+	" it seems that this method could change the file both in the disk and
+	" the buffer. So it may not be so safe as the farmer method.
+	"exe "!msgmerge % % -o %"
 endf
 
 unlet gui
