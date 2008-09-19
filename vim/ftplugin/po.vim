@@ -80,7 +80,7 @@
 "       program via the global variable 'g:po_msgfmt_args'. All arguments are
 "       allowed except the "-o" for output file. The default value is
 "       "-vv -c".
-"     - Format the whole file is acturely using msgmerge a.po a.po -o a.po.
+"     - Format the whole file is actually using msgmerge a.po a.po -o a.po.
 "       Since we must reload the file that has been modified, you could not
 "       do any Undo once you run this function.
 "
@@ -475,7 +475,7 @@ fu! <SID>fmt_whole_file()
 	exe "!msgmerge ".fn." ".fn." "."-o ".fn
 	exe "e!"
 
-	" it seems that this method could change the file both in the disk and
+	" it seems that this method could change both the file in the disk and
 	" the buffer. So it may not be so safe as the farmer method.
 	"exe "!msgmerge % % -o %"
 endf
