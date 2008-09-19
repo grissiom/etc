@@ -15,6 +15,7 @@ set showmode
 set listchars=tab:>-,trail:-
 set nu
 set foldcolumn=2
+set statusline+=%f
 
 " provide middlebutton drag copy and paste
 " but thus the mouse could not trigger visual mode
