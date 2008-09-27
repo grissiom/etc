@@ -22,7 +22,7 @@ set statusline+=%f
 set mouse=r
 
 "set background=dark
-set encoding=utf-8
+"set encoding=utf-8
 
 " make Chinese text format available
 set formatoptions+=mM
