@@ -4,15 +4,16 @@
 
 # Source global definitions
 
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 export PATH=$PATH:/home/grissiom/bin
 
 export PS1='\u@gri:\w\$ '
 
 export LS_OPTIONS=$LS_OPTIONS'-h'
 
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
 ### copied from system
 alias d='dir'
 alias dir='/bin/ls $LS_OPTIONS --format=vertical'
@@ -29,6 +30,7 @@ alias ls='/bin/ls $LS_OPTIONS'
 alias more='less'
 alias cd_='cd /usr/local/src'
 alias ..='cd ../'
+alias lsl='ls -l'
 
 ### copy from http://www.faqs.org/docs/abs/HTML/sample-bashrc.html
 # Define some colors first:
