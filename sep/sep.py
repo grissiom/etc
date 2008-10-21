@@ -45,13 +45,15 @@ def movefiles(ftypes, destdir):
 		try:
 			makedirs(destdir)
 		except OSError, oserr:
-			raise SystemExit2(3, 'Error when creating %s: %s' % (oserr.filename, oserr.strerror))
+			raise SystemExit2(3, 'Error when creating %s: %s' %
+					(oserr.filename, oserr.strerror))
 	for i in files:
 		try:
 			operate_file(i, join_path(destdir, i))
 			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
 		except IOError, ioerr:
-			raise SystemExit2(3, 'Error when %s %s: %s' % (OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
+			raise SystemExit2(3, 'Error when %s %s: %s' %
+					(OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
 
 def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
