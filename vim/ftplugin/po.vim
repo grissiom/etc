@@ -160,9 +160,16 @@ if !hasmapto('<Plug>NextTransBwd')
 	imap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
 	nmap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
 endif
-" if the cursor is in a empty "", it will not move. So move a step first.
-inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
-nnoremap <buffer> <unique> <Plug>NextTransBwd ?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
+" If the cursor is in a empty entry, it will not move. So move a step first.
+fu! <SID>crline()
+	let cline = getline('.')
+	if cline =~ '^msgstr\s*""$'
+		normal! {
+	endif
+	unlet cline
+endf
+inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>:call <SID>crline()<CR>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
+nnoremap <buffer> <unique> <Plug>NextTransBwd :call <SID>crline()<CR>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
 
 " Copy original msgid string into msgstr string.
 if !hasmapto('<Plug>CopyMsgid')
