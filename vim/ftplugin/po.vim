@@ -17,48 +17,48 @@
 "     i18n and l10n system). It automates over a dozen frequent tasks that
 "     occur while editing files of this type.
 "
-"                                                      Key mappings
-"     Action (Insert mode)                            GUI Vim     Vim
-"     ===============================================================
-"     Move to a string (transl. or untransl) forward              \m
-"     Move to a string (transl. or untransl) backward             \M
-"     Begain to comment this entry                                \C
-"     Move to an untransl. string forward             <S-F1>      \u
-"     Move to an untransl. string backward            <S-F2>      \U
-"     Copy the msgid string to msgstr                 <S-F3>      \c
-"     Delete the msgstr string                        <S-F4>      \d
-"     Move to the next fuzzy translation              <S-F5>      \f
-"     Move to the previous fuzzy translation          <S-F6>      \F
-"     Label the translation fuzzy                     <S-F7>      \z
-"     Remove the fuzzy label                          <S-F8>      \Z
-"     Show msgfmt statistics for the file(*)          <S-F11>     \s
-"     Browse through msgfmt errors for the file(*)    <S-F12>     \e
-"     Put the translator info in the header           \t          \t
-"     Put the lang. team info in the header           \l          \l
-"     Format the whole file(wrap the lines etc.)                  \W
-"     ---------------------------------------------------------------
+"                                                    
+"     Action (Insert mode)                           Key mappings
+"     =======================================================
+"     Move to a string (transl. or untransl) forward      \m
+"     Move to a string (transl. or untransl) backward     \M
+"     Begain to comment this entry                        \C
+"     Move to an untransl. string forward                 \u
+"     Move to an untransl. string backward                \U
+"     Copy the msgid string to msgstr                     \c
+"     Delete the msgstr string                            \d
+"     Move to the next fuzzy translation                  \f
+"     Move to the previous fuzzy translation              \F
+"     Label the translation fuzzy                         \z
+"     Remove the fuzzy label                              \Z
+"     Show msgfmt statistics for the file(*)              \s
+"     Browse through msgfmt errors for the file(*)        \e
+"     Put the translator info in the header               \t
+"     Put the lang. team info in the header               \l
+"     Format the whole file(wrap the lines etc.)          \W
+"     -------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
 "
-"                                                      Key mappings
-"     Action (Normal mode)                            GUI Vim     Vim
-"     ===============================================================
-"     Move to a string (transl. or untransl) forward              \m
-"     Move to a string (transl. or untransl) backward             \M
-"     Begain to comment this entry                                \C
-"     Move to an untransl. string forward             <S-F1>      \u
-"     Move to an untransl. string backward            <S-F2>      \U
-"     Move to the next fuzzy translation              <S-F5>      \f
-"     Move to the previous fuzzy translation          <S-F6>      \F
-"     Label the translation fuzzy                     <S-F7>      \z
-"     Remove the fuzzy label                          <S-F8>      \Z
-"     Split-open the file under cursor                  gf        gf
-"     Show msgfmt statistics for the file(*)          <S-F11>     \s
-"     Browse through msgfmt errors for the file(*)    <S-F12>     \e
-"     Put the translator info in the header           \t          \t
-"     Put the lang. team info in the header           \l          \l
-"     Format the whole file(wrap the lines etc.)                  \W
-"     ---------------------------------------------------------------
+"                                                      
+"     Action (Normal mode)                           Key mappings
+"     =======================================================
+"     Move to a string (transl. or untransl) forward      \m
+"     Move to a string (transl. or untransl) backward     \M
+"     Begain to comment this entry                        \C
+"     Move to an untransl. string forward                 \u
+"     Move to an untransl. string backward                \U
+"     Move to the next fuzzy translation                  \f
+"     Move to the previous fuzzy translation              \F
+"     Label the translation fuzzy                         \z
+"     Remove the fuzzy label                              \Z
+"     Split-open the file under cursor                    gf
+"     Show msgfmt statistics for the file(*)              \s
+"     Browse through msgfmt errors for the file(*)        \e
+"     Put the translator info in the header               \t
+"     Put the lang. team info in the header               \l
+"     Format the whole file(wrap the lines etc.)          \W
+"     -------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
 "     Remarks:
@@ -123,132 +123,81 @@ endif
 exe "setlocal path=" . b:po_path
 unlet b:po_path
 
-" Check if GUI Vim is running.
-if has("gui_running")
-	let gui = 1
-else
-	let gui = 0
-endif
-
 " Move to a string (transl. or untransl) forward
 if !hasmapto('<Plug>NextStringFWD')
-	if gui
-
-	else
-		imap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
-		nmap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
-	endif
+	imap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
+	nmap <buffer> <unique> <LocalLeader>m <Plug>NextStringFWD
 endif
 inoremap <buffer> <unique> <Plug>NextStringFWD <ESC>/^msgstr\(\[\d\]\)\=<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
 nnoremap <buffer> <unique> <Plug>NextStringFWD /^msgstr\(\[\d\]\)\=<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
 
 " Move to a string (transl. or untransl) backward
 if !hasmapto('<Plug>NextStringBWD')
-	if gui
-
-	else
-		imap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
-		nmap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
-	endif
+	imap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
+	nmap <buffer> <unique> <LocalLeader>M <Plug>NextStringBWD
 endif
 inoremap <buffer> <unique> <Plug>NextStringBWD <ESC>{{/^msgstr\(\[\d\]\)\=<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
 nnoremap <buffer> <unique> <Plug>NextStringBWD {{/^msgstr\(\[\d\]\)\=<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.
 
 " Begain to comment this entry
 if !hasmapto('<Plug>Commententry')
-	if gui
-	else
-		imap <buffer> <unique> <LocalLeader>C <Plug>Commententry
-		nmap <buffer> <unique> <LocalLeader>C <Plug>Commententry
-	endif
+	imap <buffer> <unique> <LocalLeader>C <Plug>Commententry
+	nmap <buffer> <unique> <LocalLeader>C <Plug>Commententry
 endif
 inoremap <buffer> <unique> <Plug>Commententry <ESC>{o#<Space>
 nnoremap <buffer> <unique> <Plug>Commententry {o#<Space>
 
 " Move to the first untranslated msgstr string forward.
 if !hasmapto('<Plug>NextTransFwd')
-	if gui
-		imap <buffer> <unique> <S-F1> <Plug>NextTransFwd
-		nmap <buffer> <unique> <S-F1> <Plug>NextTransFwd
-	else
-		imap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
-		nmap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
-	endif
+	imap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
+	nmap <buffer> <unique> <LocalLeader>u <Plug>NextTransFwd
 endif
 inoremap <buffer> <unique> <Plug>NextTransFwd <ESC>/^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
 nnoremap <buffer> <unique> <Plug>NextTransFwd /^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
 
 " Move to the first untranslated msgstr string backward.
 if !hasmapto('<Plug>NextTransBwd')
-	if gui
-		imap <buffer> <unique> <S-F2> <Plug>NextTransBwd
-		nmap <buffer> <unique> <S-F2> <Plug>NextTransBwd
-	else
-		imap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
-		nmap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
-	endif
+	imap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
+	nmap <buffer> <unique> <LocalLeader>U <Plug>NextTransBwd
 endif
+" if the cursor is in a empty "", it will not move. So move a step first.
 inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
 nnoremap <buffer> <unique> <Plug>NextTransBwd ?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
 
 " Copy original msgid string into msgstr string.
 if !hasmapto('<Plug>CopyMsgid')
-	if gui
-		imap <buffer> <unique> <S-F3> <Plug>CopyMsgid
-		nmap <buffer> <unique> <S-F3> <Plug>CopyMsgid
-	else
-		imap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
-		nmap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
-	endif
+	imap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
+	nmap <buffer> <unique> <LocalLeader>c <Plug>CopyMsgid
 endif
 inoremap <buffer> <unique> <Plug>CopyMsgid <ESC>}?^msgid<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f"y/^msgstr<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f""_d$pa
 nnoremap <buffer> <unique> <Plug>CopyMsgid <ESC>}?^msgid<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f"y/^msgstr<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f""_d$p
 
 " Erase the translation string.
 if !hasmapto('<Plug>DeleteTrans')
-	if gui
-		imap <buffer> <unique> <S-F4> <Plug>DeleteTrans
-	else
-		imap <buffer> <unique> <LocalLeader>d <Plug>DeleteTrans
-	endif
+	imap <buffer> <unique> <LocalLeader>d <Plug>DeleteTrans
 endif
 inoremap <buffer> <unique> <Plug>DeleteTrans <ESC>}?^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>f"lc}"<ESC>i
 
 " Move to the first fuzzy translation forward.
 if !hasmapto('<Plug>NextFuzzy')
-	if gui
-		imap <buffer> <unique> <S-F5> <Plug>NextFuzzy
-		nmap <buffer> <unique> <S-F5> <Plug>NextFuzzy
-	else
-		imap <buffer> <unique> <LocalLeader>f <Plug>NextFuzzy
-		nmap <buffer> <unique> <LocalLeader>f <Plug>NextFuzzy
-	endif
+	imap <buffer> <unique> <LocalLeader>f <Plug>NextFuzzy
+	nmap <buffer> <unique> <LocalLeader>f <Plug>NextFuzzy
 endif
 inoremap <buffer> <unique> <Plug>NextFuzzy <ESC>/^#,\(.*,\)\=\s*fuzzy<CR>:let @/=""<CR>:call histdel("/", -1)<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.$i
 nnoremap <buffer> <unique> <Plug>NextFuzzy /^#,\(.*,\)\=\s*fuzzy<CR>:let @/=""<CR>:call histdel("/", -1)<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.$
 
 " Move to the first fuzzy descriptor backward.
 if !hasmapto('<Plug>PreviousFuzzy')
-	if gui
-		imap <buffer> <unique> <S-F6> <Plug>PreviousFuzzy
-		nmap <buffer> <unique> <S-F6> <Plug>PreviousFuzzy
-	else
-		imap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
-		nmap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
-	endif
+	imap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
+	nmap <buffer> <unique> <LocalLeader>F <Plug>PreviousFuzzy
 endif
 inoremap <buffer> <unique> <Plug>PreviousFuzzy <ESC>{?^#,\(.*,\)\=\s*fuzzy<CR>:let @/=""<CR>:call histdel("/", -1)<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.$i
 nnoremap <buffer> <unique> <Plug>PreviousFuzzy {?^#,\(.*,\)\=\s*fuzzy<CR>:let @/=""<CR>:call histdel("/", -1)<CR>/^msgstr<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.$
 
 " Insert fuzzy description for the translation.
 if !hasmapto('<Plug>InsertFuzzy')
-	if gui
-		imap <buffer> <unique> <S-F7> <Plug>InsertFuzzy
-		nmap <buffer> <unique> <S-F7> <Plug>InsertFuzzy
-	else
-		imap <buffer> <unique> <LocalLeader>z <Plug>InsertFuzzy
-		nmap <buffer> <unique> <LocalLeader>z <Plug>InsertFuzzy
-	endif
+	imap <buffer> <unique> <LocalLeader>z <Plug>InsertFuzzy
+	nmap <buffer> <unique> <LocalLeader>z <Plug>InsertFuzzy
 endif
 inoremap <buffer> <unique> <Plug>InsertFuzzy <ESC>{vap:call <SID>InsertFuzzy()<CR>gv<ESC>}i
 nnoremap <buffer> <unique> <Plug>InsertFuzzy {vap:call <SID>InsertFuzzy()<CR>gv<ESC>}
@@ -273,13 +222,8 @@ endf
 
 " Remove fuzzy description from the translation.
 if !hasmapto('<Plug>RemoveFuzzy')
-	if gui
-		imap <buffer> <unique> <S-F8> <Plug>RemoveFuzzy
-		nmap <buffer> <unique> <S-F8> <Plug>RemoveFuzzy
-	else
-		imap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
-		nmap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
-	endif
+	imap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
+	nmap <buffer> <unique> <LocalLeader>Z <Plug>RemoveFuzzy
 endif
 inoremap <buffer> <unique> <Plug>RemoveFuzzy <ESC>{vap:call <SID>RemoveFuzzy()<CR>i
 nnoremap <buffer> <unique> <Plug>RemoveFuzzy {vap:call <SID>RemoveFuzzy()<CR>
@@ -296,25 +240,15 @@ endf
 " Show PO translation statistics. (Only available on UNIX computers for now.)
 if has("unix")
 	if !hasmapto('<Plug>MsgfmtStats')
-		if gui
-			imap <buffer> <unique> <S-F11> <Plug>MsgfmtStats
-			nmap <buffer> <unique> <S-F11> <Plug>MsgfmtStats
-		else
-			imap <buffer> <unique> <LocalLeader>s <Plug>MsgfmtStats
-			nmap <buffer> <unique> <LocalLeader>s <Plug>MsgfmtStats
-		endif
+		imap <buffer> <unique> <LocalLeader>s <Plug>MsgfmtStats
+		nmap <buffer> <unique> <LocalLeader>s <Plug>MsgfmtStats
 	endif
 	inoremap <buffer> <unique> <Plug>MsgfmtStats <ESC>:call <SID>Msgfmt('stats')<CR>
 	nnoremap <buffer> <unique> <Plug>MsgfmtStats :call <SID>Msgfmt('stats')<CR>
 
 	if !hasmapto('<Plug>MsgfmtTest')
-		if gui
-			imap <buffer> <unique> <S-F12> <Plug>MsgfmtTest
-			nmap <buffer> <unique> <S-F12> <Plug>MsgfmtTest
-		else
-			imap <buffer> <unique> <LocalLeader>e <Plug>MsgfmtTest
-			nmap <buffer> <unique> <LocalLeader>e <Plug>MsgfmtTest
-		endif
+		imap <buffer> <unique> <LocalLeader>e <Plug>MsgfmtTest
+		nmap <buffer> <unique> <LocalLeader>e <Plug>MsgfmtTest
 	endif
 	inoremap <buffer> <unique> <Plug>MsgfmtTest <ESC>:call <SID>Msgfmt('test')<CR>
 	nnoremap <buffer> <unique> <Plug>MsgfmtTest :call <SID>Msgfmt('test')<CR>
@@ -338,26 +272,16 @@ endif
 
 " Add translator info in the file header.
 if !hasmapto('<Plug>TranslatorInfo')
-	if gui
-		imap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-		nmap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-	else
-		imap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-		nmap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-	endif
+	imap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
+	nmap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
 endif
 inoremap <buffer> <unique> <Plug>TranslatorInfo <ESC>:call <SID>AddHeaderInfo('person')<CR>i
 nnoremap <buffer> <unique> <Plug>TranslatorInfo :call <SID>AddHeaderInfo('person')<CR>
 
 " Add language team info in the file header.
 if !hasmapto('<Plug>LangTeamInfo')
-	if gui
-		imap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-		nmap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-	else
-		imap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-		nmap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-	endif
+	imap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
+	nmap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
 endif
 inoremap <buffer> <unique> <Plug>LangTeamInfo <ESC>:call <SID>AddHeaderInfo('team')<CR>i
 nnoremap <buffer> <unique> <Plug>LangTeamInfo :call <SID>AddHeaderInfo('team')<CR>
@@ -484,5 +408,3 @@ fu! <SID>fmt_whole_file()
 	" the buffer. So it may not be so safe as the farmer method.
 	"exe "!msgmerge % % -o %"
 endf
-
-unlet gui
