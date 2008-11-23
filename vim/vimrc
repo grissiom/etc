@@ -35,10 +35,10 @@ imap <F5> <ESC>
 nmap <F5> <ESC>
 
 " make xx act as x in input mode
-imap jj <ESC>ja
-imap kk <ESC>ka
-imap ll <ESC>la
-imap hh <ESC>ha
+"imap jj <ESC>ja
+"imap kk <ESC>ka
+"imap ll <ESC>la
+"imap hh <ESC>ha
 
 " make <C-C> to clean up search
 nmap <C-C> :let @/=""<CR>
@@ -50,20 +50,20 @@ set cpo-=<
 set wcm=<C-Z>
 map <F4> :emenu <C-Z>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 "
 " Enable folding, but by default make it act like folding is off, because
 " folding is annoying in anything but a few rare cases
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldenable " Turn on folding
 "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen-=search " don't open folds when you search into them
 set foldopen-=undo " don't open folds when you undo stuff
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto close pairs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :inoremap , ,<Space>
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
@@ -82,9 +82,9 @@ function ClosePair(char)
 	endif
 endf
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " add po translate info, used by the po.vim script:
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:po_translator = 'Grissiom <chaos.proton@gmail.com>'
 let g:po_lang_team  = 'zh_CN <kde-china@kde.org>'
 let g:po_msgfmt_args = '-cvv --check-accelerators=\&'
