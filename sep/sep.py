@@ -112,10 +112,10 @@ try:
 		if isdir(destdir):
 			main_wd, main_destdir = abspath(destdir), cwd
 		else:
-			raise option_er('you have no %s' % destdir)
+			raise(option_er('you have no %s' % destdir))
 	else:
 		if destdir in listdir('.'):
-			print "you have already have %s" % destdir
+			print("you have already have %s" % destdir)
 		main_destdir = abspath(destdir)
 		main_wd = cwd
 	#paise -n
@@ -131,17 +131,19 @@ try:
 	main(ftypes, main_wd, main_destdir)
 	exit(0)
 except SystemExit2, sysexit2:
-	print sysexit2.strerror
+	print(sysexit2.strerror)
 except option_er, case:
-	print 'Usage:sep destdir -k/-r/-t file_type'
-	print 'Any thing behand "-t" will treat as the file type you want to move.'
-	print 'destdir must goes before any options'
-	print '-r:do the reverse work, i.e, extract the files from destdir to cwd.'
-	print '-n:no recursion'
-	print '-c:copy the file instead of moing the file'
-	print '-k:keep the empty derctories.'
-	print '-v:make the output being verbose'
-	print ''
-	print case
+	print(
+'''Usage:sep destdir -k/-r/-t file_type'
+
+Any thing behand "-t" will treat as the file type you want to move.'
+destdir must goes before any options'
+-r:do the reverse work, i.e, extract the files from destdir to cwd.'
+-n:no recursion'
+-c:copy the file instead of moing the file'
+-k:keep the empty derctories.'
+-v:make the output being verbose'
+	''')
+	print(case)
 	exit(2)
 
