@@ -162,11 +162,9 @@ if !hasmapto('<Plug>NextTransBwd')
 endif
 " If the cursor is in a empty entry, it will not move. So move a step first.
 fu! <SID>crline()
-	let cline = getline('.')
-	if cline =~ '^msgstr\s*""$'
+	if getline('.') =~ '^msgstr\s*""$'
 		normal! {
 	endif
-	unlet cline
 endf
 inoremap <buffer> <unique> <Plug>NextTransBwd <ESC>:call <SID>crline()<CR>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR>z.f"a
 nnoremap <buffer> <unique> <Plug>NextTransBwd :call <SID>crline()<CR>?^msgstr\(\[\d\]\)\=\s*""\(\n\n\\|\%$\)<CR>:let @/=""<CR>:call histdel("/", -1)<CR><C-L>z.f"
