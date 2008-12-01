@@ -395,6 +395,7 @@ fu! <SID>OpenSourceFile()
 endf
 
 " Format the whole file with msgmerge(merge itself with itself)
+" note after fomating the whole file you may lost your position.
 if !hasmapto('fmt_whole_file')
 	imap <buffer> <unique> <LocalLeader>W <Plug>fmt_whole_file
 	nmap <buffer> <unique> <LocalLeader>W <Plug>fmt_whole_file
