@@ -59,6 +59,19 @@ if [ -x /usr/games/fortune ]; then
 fi
 ### End of copy
 
+# add bash support for git
+# The contained completion routines provide support for completing:
+#
+#    *) local and remote branch names
+#    *) local and remote tag names
+#    *) .git/remotes file names
+#    *) git 'subcommands'
+#    *) tree paths within 'ref:path/to/file' expressions
+#    *) common --long-options
+# NOTE: you have to copy git-completion.sh to your PATH.
+. `which git-completion.bash`
+GITPS1='$(__git_ps1 "(git:%s)")'
+export PS1="\u@gri:\w${GITPS1}\$ "
 
 ### For KDE4 dev
 #function cd() {
