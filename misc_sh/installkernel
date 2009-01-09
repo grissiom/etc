@@ -30,6 +30,12 @@ verify () {
 # Make sure the files actually exist
 verify "$2"
 verify "$3"
+
+if [ `md5sum /boot/vmlinuz | cut -d ' ' -f 1` = `md5sum "$2" | cut -d ' ' -f 1` ]; then
+	echo "You may have already installed the kernel. So quit here."
+	exit 1
+fi
+
 back_up () {
 	if [ -f "$1" ]; then
 		mv $1 $1.old
