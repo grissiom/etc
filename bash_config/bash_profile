@@ -1,1 +1,13 @@
-.profile
+# bash_profile
+
+if [ -f ~/.bashrc ]; then
+	sh ~/.bashrc
+fi
+
+export LC_ALL=zh_CN.UTF-8
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=XIM
+#export QT_IM_MODULE=XIM
+
