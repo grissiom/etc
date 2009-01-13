@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import re
-from os import listdir, chdir, path, getcwd, makedirs, rmdir
+from os import listdir, chdir, path, getcwd, makedirs, rmdir, remove
 from os.path import isdir, isfile, abspath
 from os.path import join as join_path
 from shutil import move, copy2
@@ -52,6 +52,7 @@ def movefiles(ftypes, destdir):
 			operate_file(i, join_path(destdir, i))
 			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
 		except IOError, ioerr:
+			remove(join_path(destdir, i))
 			raise SystemExit2(3, 'Error when %s %s: %s' %
 					(OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
 
