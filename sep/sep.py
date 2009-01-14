@@ -102,18 +102,6 @@ try:
 		print_v=printf
 	else:
 		print_v=dummy
-	# parse -r
-	if 'r' in argv:
-		argv.remove('r')
-		if isdir(destdir):
-			main_wd, main_destdir = abspath(destdir), cwd
-		else:
-			raise(option_er('you have no %s' % destdir))
-	else:
-		if destdir in listdir('.'):
-			print("you have already have %s" % destdir)
-		main_destdir = abspath(destdir)
-		main_wd = cwd
 	#paise -n
 	if 'n' in argv:
 		argv.remove('n')
@@ -136,7 +124,6 @@ Any thing behand "-t" will treat as the file type you want to move. destdir
 must goes before any options
 
 Options:
--r:do the reverse work, i.e, extract the files from destdir to cwd.
 -n:no recursion
 -m:copy the file instead of copying the file
 -k:keep the empty derctories.
