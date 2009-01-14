@@ -53,8 +53,8 @@ def movefiles(ftypes, destdir):
 			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
 		except IOError, ioerr:
 			remove(join_path(destdir, i))
-			raise SystemExit2(3, 'Error when %s %s: %s' %
-					(OPER_FILE_MOD, ioerr.filename, ioerr.strerror))
+			raise SystemExit2(3, 'Error when %s %s: %s\nRemoved file:%s' %
+					(OPER_FILE_MOD, ioerr.filename, ioerr.strerror, ioerr.filename))
 
 def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
