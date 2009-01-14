@@ -21,12 +21,6 @@ class SystemExit2(SystemExit):
 def dummy(*args):
 	pass
 
-def check(arg, func):
-	if arg:
-		return func
-	else:
-		return dummy
-
 def printf(*args):
 	print ' '.join(map(str, args))
 
@@ -35,7 +29,7 @@ def movefiles(ftypes, destdir):
 	files = filter(test.search, listdir('.'))
 	files = filter(isfile, files)
 	if len(files) == 0:
-		check(VERBOSE, printf)('no file to be operate in', getcwd())
+		print_v('no file to be operate in', getcwd())
 		return
 	if isdir(destdir) is False:
 		try:
@@ -57,7 +51,7 @@ def movefiles(ftypes, destdir):
 			raise SystemExit2(1, 'User aborted.')
 
 def main(ftypes, wdir, destdir):
-	check(VERBOSE, printf)('working in', wdir)
+	print_v('working in', wdir)
 	chdir(wdir)
 	dirs = filter(isdir, listdir('.'))
 	if RECURSION:
@@ -67,7 +61,7 @@ def main(ftypes, wdir, destdir):
 	movefiles(ftypes, destdir)
 	if KEEP == True and len(listdir(wdir)) == 0:
 		rmdir(wdir)
-		check(VERBOSE, printf)('clean', wdir)
+		print_v('clean', wdir)
 
 # the main body
 try:
@@ -105,9 +99,9 @@ try:
 	#parse -v
 	if 'v' in argv:
 		argv.remove('v')
-		VERBOSE = True
+		print_v=printf
 	else:
-		VERBOSE = False
+		print_v=dummy
 	# parse -r
 	if 'r' in argv:
 		argv.remove('r')
@@ -128,8 +122,8 @@ try:
 		RECURSION = True
 #----------- End the option parsing -----------#
 
-	check(VERBOSE, printf)('ftypes:', ftypes)
-	check(VERBOSE, printf)('destdir:', destdir)
+	print_v('ftypes:', ftypes)
+	print_v('destdir:', destdir)
 	main(ftypes, main_wd, main_destdir)
 	exit(0)
 except SystemExit2, sysexit2:
