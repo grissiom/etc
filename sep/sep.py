@@ -59,7 +59,7 @@ def main(ftypes, wdir, destdir):
 			main(ftypes, join_path(wdir, i), join_path(destdir, i))
 	chdir(wdir)
 	movefiles(ftypes, destdir)
-	if KEEP == True and len(listdir(wdir)) == 0:
+	if KEEP and len(listdir(wdir)) == 0:
 		rmdir(wdir)
 		print_v('clean', wdir)
 
