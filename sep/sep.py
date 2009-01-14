@@ -139,16 +139,18 @@ except SystemExit2, sysexit2:
 	print(sysexit2.strerror)
 except option_er, case:
 	print(
-'''Usage:sep destdir -k/-r/-t file_type'
+'''Usage:sep <destdir> [Options] <-t file_type>
 
-Any thing behand "-t" will treat as the file type you want to move.'
-destdir must goes before any options'
--r:do the reverse work, i.e, extract the files from destdir to cwd.'
--n:no recursion'
--m:copy the file instead of copying the file'
--k:keep the empty derctories.'
--v:make the output being verbose'
-	''')
+Any thing behand "-t" will treat as the file type you want to move. destdir
+must goes before any options
+
+Options:
+-r:do the reverse work, i.e, extract the files from destdir to cwd.
+-n:no recursion
+-m:copy the file instead of copying the file
+-k:keep the empty derctories.
+-v:make the output being verbose
+''')
 	print(case)
 	exit(2)
 
