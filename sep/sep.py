@@ -49,12 +49,16 @@ def movefiles(ftypes, destdir):
 					(oserr.filename, oserr.strerror))
 	for i in files:
 		try:
+			print(OPER_FILE_MOD +' '+ i + ' to ' + destdir)
 			operate_file(i, join_path(destdir, i))
-			check(VERBOSE, printf)(OPER_FILE_MOD, i, 'to', destdir)
+			print(" ... Done\n")
 		except IOError, ioerr:
 			remove(join_path(destdir, i))
 			raise SystemExit2(3, 'Error when %s %s: %s\nRemoved file:%s' %
-					(OPER_FILE_MOD, ioerr.filename, ioerr.strerror, ioerr.filename))
+					(OPER_FILE_MOD, i, ioerr.strerror, i))
+		except KeyboardInterrupt, keyinter:
+			print("Remove " + join_path(destdir, i))
+			raise SystemExit2(1, 'User aborted.')
 
 def main(ftypes, wdir, destdir):
 	check(VERBOSE, printf)('working in', wdir)
