@@ -30,10 +30,6 @@ def check(arg, func):
 def printf(*args):
 	print ' '.join(map(str, args))
 
-def clrdir(dr):
-	rmdir(dr)
-	check(VERBOSE, printf)('clean', dr)
-
 def movefiles(ftypes, destdir):
 	test = re.compile("." + "(" + "|".join(ftypes) + ")" + "$", re.IGNORECASE)
 	files = filter(test.search, listdir('.'))
@@ -69,8 +65,9 @@ def main(ftypes, wdir, destdir):
 			main(ftypes, join_path(wdir, i), join_path(destdir, i))
 	chdir(wdir)
 	movefiles(ftypes, destdir)
-	if len(listdir(wdir)) == 0:
-		check(KEEP, clrdir)(wdir)
+	if KEEP == True and len(listdir(wdir)) == 0:
+		rmdir(wdir)
+		check(VERBOSE, printf)('clean', wdir)
 
 # the main body
 try:
@@ -94,9 +91,9 @@ try:
 	# parse -k
 	if 'k' in argv:
 		argv.remove('k')
-		KEEP = False
-	else:
 		KEEP = True
+	else:
+		KEEP = False
 	#parse -m
 	if 'm' in argv:
 		argv.remove('m')
