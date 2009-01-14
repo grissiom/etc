@@ -97,14 +97,14 @@ try:
 		KEEP = False
 	else:
 		KEEP = True
-	#parse -c
-	if 'c' in argv:
-		argv.remove('c')
-		OPER_FILE_MOD = 'copy'
-		operate_file = copy2
-	else:
+	#parse -m
+	if 'm' in argv:
+		argv.remove('m')
 		OPER_FILE_MOD = 'move'
 		operate_file = move
+	else:
+		OPER_FILE_MOD = 'copy'
+		operate_file = copy
 	#parse -v
 	if 'v' in argv:
 		argv.remove('v')
@@ -145,7 +145,7 @@ Any thing behand "-t" will treat as the file type you want to move.'
 destdir must goes before any options'
 -r:do the reverse work, i.e, extract the files from destdir to cwd.'
 -n:no recursion'
--c:copy the file instead of moing the file'
+-m:copy the file instead of copying the file'
 -k:keep the empty derctories.'
 -v:make the output being verbose'
 	''')
