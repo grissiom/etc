@@ -80,6 +80,10 @@ try:
 		raise option_er('destdir missing')
 	del argv[1]
 	del argv[0]
+	if destdir in listdir('.'):
+		print("you have already have %s. Anything have the same file name will be overwrite." % destdir)
+	main_destdir = abspath(destdir)
+	main_wd = cwd
 
 	argv = list(''.join(argv))
 	# parse -k
