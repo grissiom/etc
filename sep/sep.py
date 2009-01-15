@@ -15,7 +15,7 @@ class option_er(Exception):
 
 class SystemExit2(SystemExit):
 	def __init__(self, message = 0, strerror = None):
-		self.strerror = strerror
+		self.strerror = get_color('red') + strerror + get_color('default')
 		SystemExit.__init__(self, message)
 
 def dummy(*args):
@@ -42,11 +42,11 @@ def movefiles(ftypes, destdir):
 					(oserr.filename, oserr.strerror))
 	for i in files:
 		try:
-			print(get_color(yellow) + OPER_FILE_MOD +' '+ i + ' to ' +
+			print(get_color('yellow') + OPER_FILE_MOD +' '+ i + ' to ' +
                               destdir)
 			operate_file(i, join_path(destdir, i))
-			print(get_color(green) + " ... Done\n" +
-			      get_color(default))
+			print(get_color('green') + " ... Done\n" +
+                              get_color('default'))
 		except IOError, ioerr:
 			remove(join_path(destdir, i))
 			raise SystemExit2(3, 'Error when %s %s: %s\nRemoved file:%s' %
