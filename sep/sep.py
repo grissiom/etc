@@ -21,6 +21,7 @@ class SystemExit2(SystemExit):
 def dummy(*args):
 	pass
 
+# I hope this piece of code could be sweept out permanently after switched to Python3
 def printf(*args):
 	print ' '.join(map(str, args))
 
@@ -32,7 +33,7 @@ def movefiles(ftypes, destdir):
 	files = filter(test.search, listdir('.'))
 	files = filter(isfile, files)
 	if len(files) == 0:
-		print_v('no file to be operate in', getcwd())
+		print_v('no file to be operate in ' + getcwd())
 		return
 	if isdir(destdir) is False:
 		try:
@@ -58,7 +59,7 @@ def movefiles(ftypes, destdir):
 
 def main(ftypes, wdir, destdir):
 	try:
-		print_v('working in', wdir)
+		print_v('working in ' + wdir)
 		chdir(wdir)
 		if RECURSION:
 			dirs = filter(isdir, listdir('.'))
@@ -68,7 +69,7 @@ def main(ftypes, wdir, destdir):
 		movefiles(ftypes, destdir)
 		if KEEP and len(listdir(wdir)) == 0:
 			rmdir(wdir)
-			print_v('clean', wdir)
+			print_v('clean ' + wdir)
 	except KeyboardInterrupt:
 		raise SystemExit2(1, 'User aborted.')
 
@@ -157,8 +158,8 @@ try:
 		colours = {}
 #----------- End the option parsing -----------#
 
-	print_v('ftypes:', ftypes)
-	print_v('destdir:', destdir)
+	print_v('ftypes: ' + ftypes)
+	print_v('destdir: ' + destdir)
 	main(ftypes, main_wd, main_destdir)
 	exit(0)
 except SystemExit2, sysexit2:
