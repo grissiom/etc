@@ -95,7 +95,7 @@ try:
 		operate_file = move
 	else:
 		OPER_FILE_MOD = 'copy'
-		operate_file = copy
+		operate_file = copy2
 	#parse -v
 	if 'v' in argv:
 		argv.remove('v')
