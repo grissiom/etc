@@ -59,8 +59,8 @@ def main(ftypes, wdir, destdir):
 	try:
 		print_v('working in', wdir)
 		chdir(wdir)
-		dirs = filter(isdir, listdir('.'))
 		if RECURSION:
+			dirs = filter(isdir, listdir('.'))
 			for i in dirs:
 				main(ftypes, join_path(wdir, i), join_path(destdir, i))
 		chdir(wdir)
