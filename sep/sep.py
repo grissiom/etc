@@ -56,17 +56,20 @@ def movefiles(ftypes, destdir):
 			raise SystemExit2(1, 'User aborted.')
 
 def main(ftypes, wdir, destdir):
-	print_v('working in', wdir)
-	chdir(wdir)
-	dirs = filter(isdir, listdir('.'))
-	if RECURSION:
-		for i in dirs:
-			main(ftypes, join_path(wdir, i), join_path(destdir, i))
-	chdir(wdir)
-	movefiles(ftypes, destdir)
-	if KEEP and len(listdir(wdir)) == 0:
-		rmdir(wdir)
-		print_v('clean', wdir)
+	try:
+		print_v('working in', wdir)
+		chdir(wdir)
+		dirs = filter(isdir, listdir('.'))
+		if RECURSION:
+			for i in dirs:
+				main(ftypes, join_path(wdir, i), join_path(destdir, i))
+		chdir(wdir)
+		movefiles(ftypes, destdir)
+		if KEEP and len(listdir(wdir)) == 0:
+			rmdir(wdir)
+			print_v('clean', wdir)
+	except KeyboardInterrupt:
+		raise SystemExit2(1, 'User aborted.')
 
 # the main body
 try:
