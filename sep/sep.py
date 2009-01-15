@@ -24,6 +24,9 @@ def dummy(*args):
 def printf(*args):
 	print ' '.join(map(str, args))
 
+def get_color(cl):
+	return colours.get(cl, '')
+
 def movefiles(ftypes, destdir):
 	test = re.compile("." + "(" + "|".join(ftypes) + ")" + "$", re.IGNORECASE)
 	files = filter(test.search, listdir('.'))
@@ -39,9 +42,11 @@ def movefiles(ftypes, destdir):
 					(oserr.filename, oserr.strerror))
 	for i in files:
 		try:
-			print(OPER_FILE_MOD +' '+ i + ' to ' + destdir)
+			print(get_color(yellow) + OPER_FILE_MOD +' '+ i + ' to ' +
+                              destdir)
 			operate_file(i, join_path(destdir, i))
-			print(" ... Done\n")
+			print(get_color(green) + " ... Done\n" +
+			      get_color(default))
 		except IOError, ioerr:
 			remove(join_path(destdir, i))
 			raise SystemExit2(3, 'Error when %s %s: %s\nRemoved file:%s' %
@@ -108,6 +113,40 @@ try:
 		RECURSION = False
 	else:
 		RECURSION = True
+	#paise -c
+	if 'c' in argv:
+		argv.remove('c')
+		colours = {
+            'none'       :    "",
+            'default'    :    "\033[0m",
+            'bold'       :    "\033[1m",
+            'underline'  :    "\033[4m",
+            'blink'      :    "\033[5m",
+            'reverse'    :    "\033[7m",
+            'concealed'  :    "\033[8m",
+
+            'black'      :    "\033[30m",
+            'red'        :    "\033[31m",
+            'green'      :    "\033[32m",
+            'yellow'     :    "\033[33m",
+            'blue'       :    "\033[34m",
+            'magenta'    :    "\033[35m",
+            'cyan'       :    "\033[36m",
+            'white'      :    "\033[37m",
+
+            'on_black'   :    "\033[40m",
+            'on_red'     :    "\033[41m",
+            'on_green'   :    "\033[42m",
+            'on_yellow'  :    "\033[43m",
+            'on_blue'    :    "\033[44m",
+            'on_magenta' :    "\033[45m",
+            'on_cyan'    :    "\033[46m",
+            'on_white'   :    "\033[47m",
+
+            'beep'       :    "\007"
+            }
+	else:
+		colours = {}
 #----------- End the option parsing -----------#
 
 	print_v('ftypes:', ftypes)
@@ -127,6 +166,7 @@ Options:
 -n:no recursion
 -m:copy the file instead of copying the file
 -k:keep the empty derctories.
+-c:colorize output
 -v:make the output being verbose
 ''')
 	print(case)
