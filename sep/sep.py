@@ -52,6 +52,7 @@ def movefiles(ftypes, destdir):
 			raise SystemExit2(3, 'Error when %s %s: %s\nRemoved file:%s' %
 					(OPER_FILE_MOD, i, ioerr.strerror, i))
 		except KeyboardInterrupt, keyinter:
+			remove(join_path(destdir, i))
 			print("Remove " + join_path(destdir, i))
 			raise SystemExit2(1, 'User aborted.')
 
