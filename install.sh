@@ -20,12 +20,7 @@ ln -fsT ${PWD}/bash_config/bashrc ~/.bashrc
 
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
-if [ ! -d ~/.vim ]; then
-	mkdir ~/.vim
-fi
-ln -fsT ${PWD}/vim/ftplugin ~/.vim/ftplugin
-ln -fsT ${PWD}/vim/plugin ~/.vim/plugin
-ln -fsT ${PWD}/vim/syntax ~/.vim/syntax
+ln -fsT ${PWD}/vim ~/.vim
 
 # Other misc things:
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
