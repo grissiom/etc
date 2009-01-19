@@ -16,6 +16,7 @@ set listchars=tab:>-,trail:-
 set nu
 set foldcolumn=2
 set statusline+=%f
+colorscheme elflord
 
 " provide middlebutton drag copy and paste
 " but thus the mouse could not trigger visual mode
@@ -71,8 +72,6 @@ set foldopen-=undo " don't open folds when you undo stuff
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap < <><ESC>i
-:inoremap > <c-r>=ClosePair('>')<CR>
 
 function ClosePair(char)
 	if getline('.')[col('.') - 1] == a:char
