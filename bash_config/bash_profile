@@ -1,7 +1,7 @@
 # bash_profile
 
-if [ -f ~/.bashrc ]; then
-	sh ~/.bashrc
+if [ -f .bashrc ]; then
+	. .bashrc
 fi
 
 export LC_ALL=zh_CN.UTF-8
