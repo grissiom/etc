@@ -12,3 +12,5 @@ if has("autocmd")
   autocmd FileType python set complete+=k~/.vim/pydiction isk+=., 
 endif
 
+" force this option
+set noexpandtab
