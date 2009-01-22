@@ -8,3 +8,6 @@ highlight qConnect ctermfg=Cyan
 "Syntax color,  works with elflord colorscheme perfectly
 syn keyword Self self
 highlight Self ctermfg=DarkGreen
+
+syn keyword Build_in repr range oct map locals len isinstancehex filter dir str __init__ __str__ __name__ __doc__ __getattribute__  __delitem__   __and__ __or__ __add__ __mul__ __div__
+highlight Build_in ctermfg=DarkYellow
