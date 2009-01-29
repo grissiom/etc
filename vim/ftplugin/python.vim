@@ -1,4 +1,4 @@
-set foldmethod=indent
+"set foldmethod=indent
 set foldlevel=100
 
 "python auto-complete code
