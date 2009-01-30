@@ -15,6 +15,10 @@
 " comment lines outside a def/class are never folded
 " other lines outside a def/class are folded together as a group
 
+if &filetype != 'python'
+	finish
+endif
+
 set foldmethod=expr
 set foldexpr=GetPythonFold(v:lnum)
 set foldtext=PythonFoldText()
