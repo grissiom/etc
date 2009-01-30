@@ -8,9 +8,9 @@ set foldlevel=100
 " will expand to:
 "   os.listdir(
 " Python 自动补全功能，用 Ctrl-N 调用
-if has("autocmd")
-  autocmd FileType python set complete+=k~/.vim/pydiction isk+=., 
-endif
+"if has("autocmd")
+"  autocmd FileType python set complete+=k~/.vim/pydiction isk+=., 
+"endif
 
 " force this option
 set noexpandtab
