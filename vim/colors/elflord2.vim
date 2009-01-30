@@ -57,7 +57,7 @@ hi MatchParen cterm=underline ctermbg=Black
 " I link in this way because I think the folded text is something that "When
 " you want to ignore them, you won't see them, but when you want out, they can
 " easily catch your eyes.". I think and hope the Comment is the same thing.
-hi link Folded Comment
+hi! link Folded Comment
 hi FoldColumn   ctermfg=DarkGray
 
 hi Pmenu              ctermbg=Green     ctermfg=Black
