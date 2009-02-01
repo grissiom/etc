@@ -9,13 +9,18 @@ syntax on
 set smarttab
 set softtabstop=8
 set autoindent
-set ruler
 set showcmd
 set showmode
 set listchars=tab:>-,trail:-
 set nu
 set foldcolumn=2
-set statusline+=%f
+
+set ruler
+set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
+
+set statusline=%m%f
+set laststatus=1
+
 colorscheme elflord2
 
 " provide middlebutton drag copy and paste
