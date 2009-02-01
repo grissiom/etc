@@ -46,9 +46,14 @@ function! PythonFoldText()
   if size < 1000
     let size = " " . size
   endif
-  return  line . " lines: " . size
+  let ind = indent(v:foldstart)
+  let prefix = ''
+  while ind > 1
+	  let prefix = prefix . ' '
+	  let ind = ind - 1
+  endwhile
+  return  prefix . line  . "                                 lines: " . size
 endfunction
-
 
 function! GetPythonFold(lnum)
     " Determine folding level in Python source
