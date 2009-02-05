@@ -1,4 +1,4 @@
-" Fold routines for python code, version 2.3
+" Fold routines for python code, version 2.4a
 " Source: http://www.vim.org/scripts/script.php?script_id=2527
 " Last Change: 2009 Feb 4
 " Author: Jurjen Bos
@@ -17,9 +17,9 @@
 
 " Ignore non-python files
 " Commented out because some python files are not recognized by Vim
-if &filetype != 'python'
-    finish
-endif
+"if &filetype != 'python'
+"    finish
+"endif
 
 setlocal foldmethod=expr
 setlocal foldexpr=GetPythonFold(v:lnum)
@@ -53,12 +53,12 @@ endfunction
 
 function! GetBlockIndent(lnum)
     " Auxiliary function; determines the indent level of the def/class
-    " "global" lines are level 0, first def &sw, and so on
+    " "global" lines are level 0, first def &shiftwidth, and so on
     " scan backwards for class/def that is shallower or equal
-    let p = nextnonblank(a:lnum)
+    let p = prevnonblank(a:lnum)
     " skip comments and empty lines, to get proper initial indent
     while p>0 && getline(p) =~ '^\s*#\|^$'
-        let p = nextnonblank(p + 1)
+        let p = prevnonblank(p - 1)
     endwhile
     let ind = indent(p)
     while indent(p) >= 0
@@ -69,7 +69,7 @@ function! GetBlockIndent(lnum)
         " indent is strictly less at this point: check for def/class
         elseif getline(p) =~ '^\s*\(def\|class\)\s.*:'
             " this is the level!
-            return indent(p) + &sw
+            return indent(p) + &shiftwidth
         " zero-level regular line
         elseif indent(p) == 0
             return 0
@@ -83,28 +83,32 @@ endfunction
 
 function! GetPythonFold(lnum)
     " Determine folding level in Python source
+    " return GetBlockIndent(a:lnum)/&sw
     let line = getline(a:lnum)
     let ind = indent(a:lnum)
     " class and def start a fold
     if line =~ '^\s*\(def\|class\)\s.*:'
-        return ">" . (ind / &sw + 1)
+        return ">" . (ind / &shiftwidth + 1)
     " *** uncomment next two lines if you want empty lines/comment out of a fold
     "elseif line=~'^$\|^\s*#'
     "    return -1
     " optimization for speed: same level if:
     " line is no comment, and previous line is not special, and indent doesn't increase
     " (note that empty lines are are handled by this case too)
-    elseif line!~'^\s*#' && getline(a:lnum-1)!~'^$\|^\s*\(#\|def\s\|class\s\)' && indent(a:lnum-1)>=ind
+    elseif line!~'^$\|^\s*#' && getline(a:lnum-1)!~'^$\|^\s*\(#\|def\s\|class\s\)' && indent(a:lnum-1)>=ind
         return '='
     endif
     " figure out the surrounding class/def block
     let blockindent = GetBlockIndent(a:lnum)
+    " global code follows: end all blocks
+    if blockindent>0 && getline(a:lnum+1) =~ '^[^ \t#]'
+        return '<1'
     " global code, with indented comments, form a block
-    if blockindent==0 && line !~ '^#'
+    elseif blockindent==0 && line !~ '^#'
         return 1
     " regular line: deep line or non-comment line
     elseif ind>=blockindent || line !~ '^\s*#'
-        return blockindent / &sw
+        return blockindent / &shiftwidth
     endif
     " shallow comment: level is determined by next line
     " search for next non-comment nonblank line
@@ -112,5 +116,5 @@ function! GetPythonFold(lnum)
     while n>0 && getline(n) =~ '^\s*#\|^$'
         let n = nextnonblank(n + 1)
     endwhile
-    return GetBlockIndent(n) / &sw
+    return GetBlockIndent(n) / &shiftwidth
 endfunction
