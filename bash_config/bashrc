@@ -22,13 +22,14 @@ export PS1='\u@gri:\w\$ '
 
 export LS_OPTIONS=$LS_OPTIONS' -h'
 
+export LESS=$LESS' -r '
+
 export VISUAL=vim
 
 export GDFONTPATH="/usr/share/fonts/TTF/"
 export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
 
 alias ls='ls --color -F $LS_OPTIONS'
-alias less='less -R'
 alias grep='grep --color=tty -d skip'
 alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
 alias ls='/bin/ls $LS_OPTIONS'

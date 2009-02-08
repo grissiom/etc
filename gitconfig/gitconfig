@@ -13,4 +13,3 @@
 	rt = revert
 [color]
 	ui = auto
-	#diff = false
