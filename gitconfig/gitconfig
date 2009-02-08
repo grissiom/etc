@@ -1,0 +1,16 @@
+[user]
+	name = Grissiom
+	email = chaos.proton@gmail.com
+[alias]
+	pl = pull
+	co = checkout
+	cm = commit
+	br = branch
+	st = status
+	mg = merge
+	ap = apply
+	di = diff
+	rt = revert
+[color]
+	ui = auto
+	#diff = false

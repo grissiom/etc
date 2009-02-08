@@ -24,4 +24,4 @@ ln -fsT ${PWD}/vim ~/.vim
 
 # Other misc things:
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
-
+ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
