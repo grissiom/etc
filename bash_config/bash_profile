@@ -11,3 +11,14 @@ export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=XIM
 #export QT_IM_MODULE=XIM
 
+export PATH=$PATH:/home/grissiom/bin
+
+export LS_OPTIONS=$LS_OPTIONS' -h'
+
+export LESS=$LESS' -R '
+
+export VISUAL=vim
+
+export GDFONTPATH="/usr/share/fonts/TTF/"
+export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
+
