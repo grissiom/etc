@@ -18,8 +18,11 @@ set foldcolumn=2
 set ruler
 set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 
-set statusline=%m%f
-set laststatus=1
+" after add %=%([%{Tlist_Get_Tagname_By_Line()}]%) we don't need taglist be
+" open on startup.
+set statusline=%<%f\ %#Error#%m%r%0*\ \ %#Function#%([%{Tlist_Get_Tagname_By_Line()}]%)%0*%=%#Comment#%-14.(%l,%2v%)\ %P
+hi! User1  ctermfg=red
+set laststatus=2
 
 colorscheme elflord2
 
@@ -92,3 +95,10 @@ endf
 let g:po_translator = 'Grissiom <chaos.proton@gmail.com>'
 let g:po_lang_team  = 'zh_CN <kde-china@kde.org>'
 let g:po_msgfmt_args = '-cvv --check-accelerators=\&'
+
+" Tag list configurations:
+" http://vim-taglist.sourceforge.net
+"let Tlist_Auto_Open = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Process_File_Always = 1
