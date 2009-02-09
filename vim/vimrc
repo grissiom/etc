@@ -20,7 +20,7 @@ set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 
 " after add %=%([%{Tlist_Get_Tagname_By_Line()}]%) we don't need taglist be
 " open on startup.
-set statusline=%<%f\ %#Error#%m%r%0*\ \ %#Function#%([%{Tlist_Get_Tagname_By_Line()}]%)%0*%=%#Comment#%-14.(%l,%2v%)\ %P
+set statusline=%#Constant#%<%f\ %#Error#%m%r%#Function#\ \ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%#Comment#%-14.(%l,%2v%)\ %P
 hi! User1  ctermfg=red
 set laststatus=2
 
