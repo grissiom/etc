@@ -56,7 +56,7 @@ fi
 #    *) git 'subcommands'
 #    *) tree paths within 'ref:path/to/file' expressions
 #    *) common --long-options
-# NOTE: you have to copy git-completion.sh to your PATH.
+# NOTE: you have to copy git-completion.bash to your PATH.
 . `which git-completion.bash`
 
 # don't know why varibles doesn't work in PS1...
@@ -73,19 +73,3 @@ DATE_PS1='$(date +"%-b%-d日 %A %R")'
 export PS1="\n        ${ps1_user}\u${ps1_nc} @gri: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
 ${ps1_yellow}\w${ps1_nc}\$ "
 
-### For KDE4 dev
-#function cd() {
-# if test -z "$1"; then
-#     builtin cd
- # elif test -z "$2"; then
- #   builtin cd "$1"
-#  else
-#    builtin cd "$1" "$2"
-#  fi
-#  _f=`findup .my-setup`
-#  if test -n "$_f" -a "$_lastf" != "$_f"; then
-#    echo "Loading $_f"
-#    _lastf="$_f"
-#    source "$_f"
-#  fi
-#}
