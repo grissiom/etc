@@ -73,3 +73,5 @@ DATE_PS1='$(date +"%-b%-d日 %A %R")'
 export PS1="\n        ${ps1_user}\u${ps1_nc} @gri: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
 ${ps1_yellow}\w${ps1_nc}\$ "
 
+# let cd can correct mistype
+shopt -s cdspell
