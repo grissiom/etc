@@ -49,8 +49,8 @@ nmap <F5> <ESC>
 "imap ll <ESC>la
 "imap hh <ESC>ha
 
-" make <C-C> to clean up search
-nmap <C-C> :let @/=""<CR>
+" make cs to clean up search
+nmap cs :let @/=""<CR>
 
 " press <F4> to start a menu
 source $VIMRUNTIME/menu.vim
