@@ -23,3 +23,11 @@ export GDFONTPATH="/usr/share/fonts/TTF/"
 export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
 
 export CDPATH=".:~:/usr/local/src/My_projects"
+
+# Append any additional sh scripts found in ~/.profile.d
+for profile_script in ./.profile.d/*.sh ; do
+  if [ -x $profile_script ]; then
+    . $profile_script
+  fi
+done
+unset profile_script
