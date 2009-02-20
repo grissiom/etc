@@ -16,9 +16,9 @@ PWD=`pwd`
 
 # Bash staff:
 ln -fsT ${PWD}/bash_config/bash_profile ~/.bash_profile
+ln -fsT ${PWD}/bash_config/profile.d ~/.profile.d
 ln -fsT ${PWD}/bash_config/bashrc ~/.bashrc
 ln -fsT ${PWD}/bash_config/bashrc.d ~/.bashrc.d
-ln -fsT ${PWD}/bash_config/profile.d ~/.profile.d
 # Konsole seems not be a login shell. So link devtodo to bashrc.d to make use
 # of it. Git only track profile.d/devtodo.sh.
 ln -fsT ${PWD}/bash_config/profile.d/devtodo.sh ${PWD}/bash_config/bashrc.d/devtodo.sh
