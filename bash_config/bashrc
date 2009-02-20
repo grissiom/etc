@@ -8,6 +8,14 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Append any additional sh scripts found in ~/.bashrc.d
+for rc_script in ~/.bashrc.d/*.sh ; do
+  if [ -x $rc_script ]; then
+    . $rc_script
+  fi
+done
+unset rc_script
+
 ### copied from system
 alias d='dir'
 alias dir='/bin/ls $LS_OPTIONS --format=vertical'
@@ -46,18 +54,6 @@ if [ -x /usr/games/fortune ]; then
     echo -e "\n"
 fi
 ### End of copy
-
-# add bash support for git
-# The contained completion routines provide support for completing:
-#
-#    *) local and remote branch names
-#    *) local and remote tag names
-#    *) .git/remotes file names
-#    *) git 'subcommands'
-#    *) tree paths within 'ref:path/to/file' expressions
-#    *) common --long-options
-# NOTE: you may have to update the git.sh altogether with git.
-. ~/.bashrc.d/git.sh
 
 # don't know why varibles doesn't work in PS1...
 green='\e[0;32;1m'
