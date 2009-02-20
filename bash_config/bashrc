@@ -56,8 +56,8 @@ fi
 #    *) git 'subcommands'
 #    *) tree paths within 'ref:path/to/file' expressions
 #    *) common --long-options
-# NOTE: you have to copy git-completion.bash to your PATH.
-. `which git-completion.bash`
+# NOTE: you may have to update the git.sh altogether with git.
+. ~/.bashrc.d/git.sh
 
 # don't know why varibles doesn't work in PS1...
 green='\e[0;32;1m'

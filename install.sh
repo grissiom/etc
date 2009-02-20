@@ -17,6 +17,7 @@ PWD=`pwd`
 # Bash staff:
 ln -fsT ${PWD}/bash_config/bash_profile ~/.bash_profile
 ln -fsT ${PWD}/bash_config/bashrc ~/.bashrc
+ln -fsT ${PWD}/bash_config/bashrc.d ~/.bashrc.d
 
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
