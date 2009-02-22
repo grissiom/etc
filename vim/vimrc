@@ -24,7 +24,8 @@ set statusline=%#Constant#%<%f\ %#Error#%m%r%#Function#\ \ %([%{Tlist_Get_Tagnam
 hi! User1  ctermfg=red
 set laststatus=2
 
-colorscheme elflord2
+set t_Co=256
+colorscheme dark_light256
 
 " provide middlebutton drag copy and paste
 " but thus the mouse could not trigger visual mode
@@ -102,3 +103,4 @@ let g:po_msgfmt_args = '-cvv --check-accelerators=\&'
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Process_File_Always = 1
+
