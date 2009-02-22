@@ -1,7 +1,7 @@
 " local syntax file - set colors on a per-machine basis:
 " vim: tw=0 ts=4 sw=4
 " Vim color file
-" Creator:	Ron Aaron <ron@ronware.org>
+" Original Creator:	Ron Aaron <ron@ronware.org>
 " Maintainer: Grissiom <chaos.proton@gmail.com>
 " Last Change:	2009 Jan 30
 
@@ -11,20 +11,20 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "elflord2"
-hi Normal                               		guifg=cyan			guibg=black
-hi Comment	term=bold		ctermfg=DarkCyan	guifg=#80a0ff
-hi Constant	term=underline	ctermfg=Magenta		guifg=Magenta
-hi Special	term=bold		ctermfg=DarkMagenta	guifg=Red
-hi Identifier term=underline	cterm=bold			ctermfg=Cyan guifg=#40ffff
-hi Statement term=bold		ctermfg=Yellow gui=bold	guifg=#aa4444
-hi PreProc	term=underline	ctermfg=LightBlue	guifg=#ff80ff
-hi Type	    term=underline  ctermfg=LightGreen	guifg=#60ff60 gui=bold
-hi Function	term=bold		ctermfg=White       guifg=White
-hi Repeat	term=underline	ctermfg=White		guifg=white
-hi Operator				    ctermfg=Red			guifg=Red
-hi Ignore				    ctermfg=black		guifg=bg
-hi Error	term=reverse    ctermbg=Red ctermfg=White guibg=Red guifg=White
-hi Todo	term=standout ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yellow
+hi Normal       ctermbg=Black ctermfg=Gray
+hi Comment		ctermfg=DarkCyan
+hi Constant		ctermfg=Magenta
+hi Special		ctermfg=DarkMagenta
+hi Identifier   cterm=bold	ctermfg=Cyan
+hi Statement    cterm=bold	ctermfg=DarkYellow
+hi PreProc		ctermfg=LightBlue
+hi Type	        ctermfg=LightGreen
+hi Function	    cterm=bold ctermfg=LightBlue
+hi Repeat		ctermfg=White
+hi Operator		ctermfg=Red
+hi Ignore		ctermfg=black
+hi Error        ctermbg=Red ctermfg=White
+hi Todo         ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yellow
 
 " Common groups that link to default highlighting.
 " You can specify other highlighting easily.
@@ -60,8 +60,8 @@ hi MatchParen cterm=underline ctermbg=Black
 hi! link Folded Comment
 hi FoldColumn   ctermfg=DarkGray
 
-hi Pmenu              ctermbg=Green     ctermfg=Black
-hi PmenuSel           ctermbg=LightGray ctermfg=Black
+hi Pmenu    ctermbg=Green     ctermfg=Black
+hi PmenuSel ctermbg=LightGray ctermfg=Black
 
 hi TabLine cterm=bold ctermbg=LightGray ctermfg=white
 hi TabLineFill        ctermbg=LightGray
