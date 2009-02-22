@@ -34,7 +34,7 @@ let colors_name = "dark_light256"
 hi Normal       ctermfg=7  ctermbg=0    cterm=none
 "" Syntax highlighting
 hi Comment      ctermfg=31
-hi Constant     ctermfg=164
+hi Constant     ctermfg=131
 hi Number       ctermfg=98
 hi Identifier   ctermfg=182
 hi Operator	ctermfg=178
