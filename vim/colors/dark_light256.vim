@@ -43,7 +43,7 @@ hi Special	ctermfg=5
 hi Function	ctermfg=253               cterm=bold
 hi PreProc      ctermfg=150
 hi Type         ctermfg=34                cterm=none
-hi Special      ctermfg=165
+hi Special      ctermfg=171
 hi Ignore       ctermfg=238
 hi Error        ctermfg=196  ctermbg=52   cterm=bold
 hi Todo         ctermfg=0    ctermbg=184
