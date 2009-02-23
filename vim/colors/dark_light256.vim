@@ -31,7 +31,7 @@ endif
 
 let colors_name = "dark_light256"
 
-hi Normal       ctermfg=7  ctermbg=0    cterm=none
+hi Normal       ctermfg=7    ctermbg=0    cterm=none
 "" Syntax highlighting
 hi Comment      ctermfg=31
 hi Constant     ctermfg=131
@@ -50,8 +50,11 @@ hi Todo         ctermfg=0    ctermbg=184
 
 "" diff
 " TODO
-hi diffAdded    ctermfg=150
-hi diffRemoved  ctermfg=174
+hi DiffAdded    ctermfg=34
+hi DiffRemoved  ctermfg=160
+hi DiffChange                ctermbg=52
+hi DiffDelete                ctermbg=240
+hi DiffText     ctermfg=254  ctermbg=160
 
 ""UI.
 "Don't let the UI catch your eyes more than your code.
