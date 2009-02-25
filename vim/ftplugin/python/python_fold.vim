@@ -36,7 +36,7 @@
 " I you disagree, use instead of the pattern '^\s*\(class\s.*:\|def\s\)'
 " to enforce : for defs:                     '^\s*\(class\|def\)\s.*:'
 " you'll have to do this in two places.
-let s:defpat = '^\s*\(if False:\|@\|class\s.*:\|def\s\)'
+let s:defpat = '^\s*\(if False:\|class\s.*:\|def\s\)'
 
 " (**) Ignore non-python files
 " Commented out because some python files are not recognized by Vim
@@ -116,8 +116,19 @@ function! GetPythonFold(lnum)
     " Determine folding level in Python source (see "higher foldlevel theory" below)
     let line = getline(a:lnum)
     let ind = indent(a:lnum)
-    " Case D***: class and def start a fold
-    if line=~s:defpat && getline(prevnonblank(a:lnum-1))!~'^\s*@' | return ">".(ind/&shiftwidth+1)
+    " Case D***: class and def or a decorator start a fold
+    if line=~'^\s*@' && getline(prevnonblank(a:lnum - 1)) !~ '^\s*@'
+	    "TODO: I don't know whether i should be nextnonblank(a:lum+1)
+	    let i=a:lnum+1
+	    while getline(i)=~'^\s*@'
+		    let i=i+1
+	    endwhile
+	    " decorator before a difinition.
+	    if getline(i)=~s:defpat | return ">".(indent(i)/&shiftwidth+1)
+	    endif
+	    " normal @ char, go on processing.
+    endif
+    if line=~s:defpat  && getline(prevnonblank(a:lnum - 1)) !~ '^\s*@'| return ">".(ind/&shiftwidth+1)
     " Case E***: empty lines fold with previous
     " (***) change '=' to -1 if you want empty lines/comment out of a fold
     elseif line == '' | return '='
@@ -128,7 +139,7 @@ function! GetPythonFold(lnum)
     endwhile
     let pind = indent(p)
     " If previous was definition: count as one level deeper
-    if getline(p) =~ s:defpat && getline(prevnonblank(a:lnum - 1)) !~ '^\s*@'
+    if getline(p) =~ s:defpat
         let pind = pind + &shiftwidth
     " if begin of file: take zero
     elseif p==0 | let pind = 0
