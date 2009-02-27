@@ -2,12 +2,12 @@ syn keyword qClass QAbstractButton QAbstractEventDispatcher QAbstractFileEngine 
 syn keyword qSignal  SIGNAL SLOT
 syn keyword qConnect connect emit disconnect
 highlight link qClass Type
-highlight qSignal term=bold ctermfg=Cyan
-highlight qConnect ctermfg=Cyan
+highlight link qSignal Macro
+highlight link qConnect Function
 
 "Syntax color,  works with elflord colorscheme perfectly
 syn keyword Self self
-highlight Self ctermfg=DarkGreen
+highlight link Self Type
 
-syn keyword Build_in repr range oct map locals len isinstance hex filter dir str __init__ __str__ __name__ __doc__ __getattribute__  __delitem__   __and__ __or__ __add__ __mul__ __div__
-highlight Build_in ctermfg=DarkYellow
+syn keyword Python_Special __init__ __str__ __getattribute__  __delitem__   __and__ __or__ __add__ __mul__ __div__
+highlight link Python_Special Special
