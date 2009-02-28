@@ -1,0 +1,47 @@
+\begin{tikzpicture}[scale=\examplesscale]
+\draw[dashed, gray] (7, 5) -- (7, -5);
+\node at (-4, 4){free\_list};
+\node at (-4, 2){LLL};
+\node at (-4, 0){LRL};
+\node at (-4, -2){RLL};
+\node at (-4, -4){RRL};
+\def\c{clean}
+%freelist
+\drawbigpages{4}{OldPage5/-2/5/0x4/\c/D}
+%LLL
+\drawbigpages{2}{page10/-2/10/0x4/KKK, page9/0/9/0x0/JJJ, page8/2/8/0x1/III,
+	page7/4/7/0x2/HHH, page6/6/6/0x3/GGG, lllpage5/8/5/0x4/FFF/D,
+	lllpage1/10/1/0x0/AAA/D}
+\foreach \a/\b in {10/9, 9/8, 8/7, 7/6}
+	\draw[->](page\a) -- (page\b);
+\foreach \a/\b in {page6/lllpage5, lllpage5/lllpage1}
+	\draw[->, dashed](\a) -- (\b);
+%LRL
+\drawbigpages{0}{lrlpage5/-2/5/N2/2, lrlpage1/0/1/N2/1}
+\draw[->](lrlpage5)--(lrlpage1);
+%RLL
+\drawbigpages{-2}{rllpage2/-2/2/0x1/BBB/D, rllpage3/0/3/0x2/CCC/D,
+	rllpage4/2/4/0x3/\c/D}
+\foreach \a/\b in {rllpage2/rllpage3, rllpage3/rllpage4}
+	\draw[->, dashed](\a) -- (\b);
+%RRL
+\drawbigpages{-4}{rrlpage2/-2/2/N2/3, rrlpage3/0/3/N2/4, rrlpage4/2/4/N2/5}
+\foreach \a/\b in {rrlpage2/rrlpage3, rrlpage3/rrlpage4}
+	\draw[->](\a) -- (\b);
+%%%%%%% 开始画转移箭头 %%%%%%%%%%
+%%% RLL 转移到 RRL
+\foreach \a/\b in {rllpage2/rrlpage2, rllpage3/rrlpage3, rllpage4/rrlpage4}
+	\draw[->](\a) -- (\b);
+%%% 实际的数据传到远程 %%%
+\draw[->](4, -1.5) --node[above]{BBB} (8, -1.5);
+\draw[->](4, -2)  --node[above]{CCC} (8, -2);
+\draw[->, dashed](4, -2.5) --node[above]{clean} (8, -2.5);
+
+\node[scale=3, text=gray][rectangle](N2) at (10, -2){N2};
+\draw[->](lllpage5)--node[below, sloped]{FFF}(N2);
+\draw[->](lllpage1)--node[below, sloped]{AAA}(N2);
+\draw[->, dashed](OldPage5)..controls(6,3.5) and (7, 3)..(lllpage5);
+\draw[->, dashed](lllpage5)..controls+(-2, -3) and +(4, 1)..(lrlpage5);
+\draw[->, dashed](lllpage1)..controls+(-1, -2) and +(5, -1.5)..(lrlpage1);
+\end{tikzpicture}
+
