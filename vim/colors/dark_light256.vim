@@ -16,7 +16,7 @@
 
 if &t_Co != 256
   echomsg ""
-  echomsg "err: please use a 256-color terminal (so that t_Co=256 could be set)"
+  echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
   echomsg ""
   finish
 endif
@@ -35,26 +35,30 @@ hi Normal       ctermfg=7    ctermbg=0    cterm=none
 "" Syntax highlighting
 hi Comment      ctermfg=31
 hi Constant     ctermfg=131
-hi Number       ctermfg=98
+hi Number       ctermfg=61
 hi Identifier   ctermfg=182
 hi Operator	ctermfg=178
-hi Statement    ctermfg=111               cterm=none
+hi Statement    ctermfg=111
 hi Special	ctermfg=5
 hi Function	ctermfg=253               cterm=bold
 hi PreProc      ctermfg=150
-hi Type         ctermfg=34                cterm=none
+hi Type         ctermfg=34
 hi Special      ctermfg=171
 hi Ignore       ctermfg=238
 hi Error        ctermfg=196  ctermbg=52   cterm=bold
 hi Todo         ctermfg=0    ctermbg=184
 
-"" diff
+"" Diff
 " TODO
 hi DiffAdded    ctermfg=34
 hi DiffRemoved  ctermfg=160
 hi DiffChange                ctermbg=52
 hi DiffDelete                ctermbg=240
 hi DiffText     ctermfg=254  ctermbg=160
+
+"" Spell
+hi SpellBad     ctermfg=196  ctermbg=52  cterm=undercurl
+hi SpellCap     ctermfg=196  ctermbg=bg  cterm=undercurl
 
 ""UI.
 "Don't let the UI catch your eyes more than your code.
