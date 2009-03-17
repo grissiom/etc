@@ -1,3 +1,4 @@
+" vim: fdm=marker:
 set nocompatible
 
 filetype on
@@ -40,12 +41,11 @@ set fileencodings=utf-8,gb18030,utf-16,big5
 " make Chinese text format available
 set formatoptions+=mM
 
-" Mapping
+" Mapping {{{
 " =======
 
-" make ESC closer to the finger ;)
-imap <F5> <ESC>
-nmap <F5> <ESC>
+imap <F5> <ESC>:w<CR>a
+nmap <F5> :w<CR>
 
 nmap <F2> :setlocal spell spelllang=en<CR>
 nmap <F3> :setlocal nospell<CR>
@@ -59,21 +59,21 @@ set wildmenu
 set cpo-=<
 set wcm=<C-Z>
 map <F4> :emenu <C-Z>
+"}}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding
+" Folding {{{
 " =======
 " Enable folding, but by default make it act like folding is off, because
 " folding is annoying in anything but a few rare cases
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set foldenable " Turn on folding
 "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen-=search " don't open folds when you search into them
 set foldopen-=undo " don't open folds when you undo stuff
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto close pairs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ----------------
+
 :inoremap , ,<Space>
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
@@ -89,12 +89,11 @@ function ClosePair(char)
 		return a:char
 	endif
 endf
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Local Variables
+" Local Variables {{{
 " ===============
 " add po translate info, used by the po.vim script:
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:po_translator = 'Grissiom <chaos.proton@gmail.com>'
 let g:po_lang_team  = 'zh_CN <kde-china@kde.org>'
 let g:po_msgfmt_args = '-cvv --check-accelerators=\&'
