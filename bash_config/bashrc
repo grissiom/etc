@@ -30,6 +30,7 @@ alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
 alias ls='/bin/ls $LS_OPTIONS'
 alias more='less'
 alias cd_='cd /usr/local/src'
+alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
 alias lsl='ls -l'
 
