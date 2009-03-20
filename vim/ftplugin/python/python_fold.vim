@@ -82,15 +82,15 @@ function! GetBlockIndent(lnum)
     " "global" lines are level 0, first def &shiftwidth, and so on
     " scan backwards for class/def that is shallower or equal
     let ind = 100
-    let p = a:lnum+1
+    let p = a:lnum
     while indent(p) >= 0
         let p = p - 1
         " skip empty and comment lines
-        if getline(p) =~ '^$\|^\s*#' | continue
+        if getline(p) =~ '^\s*$\|^\s*#' | continue
         " zero-level regular line
         elseif indent(p) == 0 | return 0
         " skip deeper or equal lines
-        elseif indent(p) >= ind || getline(p) =~ '^$\|^\s*#' | continue
+        elseif indent(p) >= ind | continue
         " indent is strictly less at this point: check for def/class
         elseif getline(p) =~ s:defpat && getline(p) !~ '^\s*@'
             " level is one more than this def/class
@@ -129,7 +129,7 @@ function! GetPythonFold(lnum)
         endif
     " Case E***: empty lines fold with previous
     " (***) change '=' to -1 if you want empty lines/comment out of a fold
-    elseif line == '' | return '='
+    elseif line =~ '^\s*$' | return '='
     endif
     " now we need the indent from previous
     let p = prevnonblank(a:lnum-1)
@@ -183,7 +183,7 @@ function! GetPythonFold(lnum)
     let nind = indent(n)
     " Case CR<= and CR<>
     "if line !~ '^\s*#' | call PrintIfCount(4,"Line: ".a:lnum.", blockindent: ".blockindent.", n: ".n.", nind: ".nind.", p: ".p.", pind: ".pind)
-    endif
+    "endif
     if line =~ '^\s*#' && ind>=nind | return -1
     " Case CR<<: return next indent
     elseif line =~ '^\s*#' | return nind / &shiftwidth
