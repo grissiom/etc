@@ -12,5 +12,6 @@ set foldlevel=100
 "  autocmd FileType python set complete+=k~/.vim/pydiction isk+=., 
 "endif
 
-" force this option
-set noexpandtab
+" use this for some compatibility with other evil editors.
+set expandtab
+set comments=n:#
