@@ -14,7 +14,7 @@ while getline(i) !~ '^\(class\s.*:\|def\s\|if\|try:\)'
 	let i = i + 1
 endwhile
 "echo i
-let i = i+1
+let i = nextnonblank(i+1)
 "echo i
 exe ":set shiftwidth=".indent(i)
 
