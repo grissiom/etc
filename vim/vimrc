@@ -12,7 +12,8 @@ set softtabstop=8
 set autoindent
 set showcmd
 set showmode
-set listchars=tab:>-,trail:-
+set listchars=tab:>\ 
+"set list
 set nu
 set foldcolumn=2
 
@@ -38,6 +39,10 @@ set encoding=utf-8
 " text not garbled with this option ;D
 set fileencodings=utf-8,gb18030,utf-16,big5
 
+" ambiwidth 默认值为 single。在其值为 single 时，若 encoding 为 utf-8，vim显示
+" 全角符号时就会出问题，会当作半角显示。
+set ambiwidth=double
+
 " make Chinese text format available
 set formatoptions+=mM
 
@@ -59,6 +64,9 @@ set wildmenu
 set cpo-=<
 set wcm=<C-Z>
 map <F4> :emenu <C-Z>
+
+map <Up> gk
+map <Down> gj
 "}}}
 
 " Folding {{{
