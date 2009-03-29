@@ -10,11 +10,15 @@
 "endif
 
 let i = 1
-while getline(i) !~ '^\(class\s.*:\|def\s\|if\|try:\)'
+let flength = line('$')
+while getline(i) !~ '^\(class\s.*:\|def\s\+\|try:\|if\|for\s\+\|while\s\+\)' && i <= flength
 	let i = i + 1
 endwhile
 "echo i
-let i = nextnonblank(i+1)
-"echo i
-exe ":set shiftwidth=".indent(i)
+if i < flength
+	let ind = indent(nextnonblank(i+1))
+else
+	let ind = 8
+endif
+exe ":set shiftwidth=".ind
 
