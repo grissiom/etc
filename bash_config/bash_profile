@@ -24,6 +24,9 @@ export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
 
 export CDPATH=".:~:/usr/local/src/My_projects"
 
+# bzr launchpad meed this...
+export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
+
 # Append any additional sh scripts found in ~/.profile.d
 for profile_script in ./.profile.d/*.sh ; do
   if [ -x $profile_script ]; then
