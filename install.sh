@@ -27,6 +27,9 @@ ln -fsT ${PWD}/bash_config/profile.d/devtodo.sh ${PWD}/bash_config/bashrc.d/devt
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
 ln -fsT ${PWD}/vim ~/.vim
 
+# X related
+ln -fsT ${PWD}/xorg/Xmodmap ~/.Xmodmap
+
 # Other misc things:
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
