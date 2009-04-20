@@ -7,9 +7,9 @@ fi
 export LC_ALL=zh_CN.UTF-8
 #export XIM=scim
 #export XIM_PROGRAM=scim
-export XMODIFIERS=@im=SCIM    #case matters for this variable!
-export GTK_IM_MODULE=scim
-export QT_IM_MODULE=scim
+#export XMODIFIERS=@im=SCIM    #case matters for this variable!
+#export GTK_IM_MODULE=scim
+#export QT_IM_MODULE=scim
 
 export PATH=$PATH:/home/grissiom/bin
 
