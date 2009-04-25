@@ -29,6 +29,7 @@ ln -fsT ${PWD}/vim ~/.vim
 
 # X related
 ln -fsT ${PWD}/xorg/Xmodmap ~/.Xmodmap
+ln -fsT ${PWD}/xorg/xprofile ~/.xprofile
 
 # Other misc things:
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
