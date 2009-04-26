@@ -31,6 +31,9 @@ ln -fsT ${PWD}/vim ~/.vim
 ln -fsT ${PWD}/xorg/Xmodmap ~/.Xmodmap
 ln -fsT ${PWD}/xorg/xprofile ~/.xprofile
 
+# Python stuff
+ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
+
 # Other misc things:
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig

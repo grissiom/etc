@@ -17,6 +17,8 @@ export LS_OPTIONS=$LS_OPTIONS' -h'
 
 export LESS=$LESS' -R '
 
+export PYTHONSTARTUP=/home/grissiom/.pythonrc
+
 export VISUAL=vim
 
 export GDFONTPATH="/usr/share/fonts/TTF/"
