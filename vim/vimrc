@@ -55,7 +55,6 @@ nmap <F5> :w<CR>
 nmap <F2> :setlocal spell spelllang=en<CR>
 nmap <F3> :setlocal nospell<CR>
 
-cmap W w
 nmap <C-Right> gt
 nmap <C-Left> gT
 imap <C-Right> <ESC>gta
