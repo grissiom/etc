@@ -8,6 +8,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
 # Append any additional sh scripts found in ~/.bashrc.d
 for rc_script in ~/.bashrc.d/*.sh ; do
   if [ -x $rc_script ]; then
