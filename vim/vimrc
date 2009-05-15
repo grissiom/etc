@@ -124,5 +124,7 @@ set mouse=r
 
 " make Chinese text format available
 set formatoptions+=mM
+
+set smartcase
 "}}}
 
