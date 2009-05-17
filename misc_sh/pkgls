@@ -1,0 +1,6 @@
+#!/bin/sh
+
+(cd /var/log/packages && \
+ls --time-style=locale -1 -hcogG |\
+cut -f 3- -d ' ' |\
+grep --color=auto $@ )

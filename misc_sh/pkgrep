@@ -1,0 +1,8 @@
+#!/bin/sh
+
+(cd /var/log/packages && grep --color=tty $@ *)
+
+#echo
+#echo 'in script:'
+#echo
+#(cd /var/log/scripts && grep --color=tty $@ *)
