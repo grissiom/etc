@@ -4,10 +4,10 @@ set -e
 echo "Doing this install will overwrite your exist local settings."
 echo -n "Continue anyway?(y/N)"
 read ans
-if [[ ${ans} = 'n' || ${ans} = '' ]]; then
+if [[ ${ans} = 'n' || ${ans} = 'N' || ${ans} = '' ]]; then
 	echo "User abort."
 	exit 0
-elif [[ ${ans} != 'y' ]]; then
+elif [[ ${ans} != 'y' && ${ans} != 'Y' ]]; then
 	echo "Invalid answer"
 	exit 1
 fi
