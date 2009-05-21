@@ -1,4 +1,5 @@
 #!/bin/sh
+# file name: pkgls
 
 packages_path='/var/log/packages'
 
