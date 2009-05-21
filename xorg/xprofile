@@ -1,3 +1,4 @@
 # This gives you a Desktop Environment independent way of starting app.
 # Only work with runlevel 4 (the graphical XDM/KDM login)
-scim -d
+#scim -d
+ibus-daemon -rdxt
