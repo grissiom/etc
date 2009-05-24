@@ -35,6 +35,7 @@ ln -fsT ${PWD}/xorg/xprofile ~/.xprofile
 ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
 # Other misc things:
+mkdir -p ~/bin
 ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
 ln -fsT ${PWD}/misc_sh/pkgls ~/bin/pkgls
 ln -fsT ${PWD}/misc_sh/pkgrep ~/bin/pkgrep
