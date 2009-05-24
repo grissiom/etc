@@ -1,0 +1,48 @@
+# zprofile
+
+export LC_ALL=zh_CN.UTF-8
+
+# ibus env settings
+#export XIM=ibus
+#export XIM_PROGRAM="/usr/bin/ibus-daemon -rdxt"
+#export XMODIFIERS="@im=ibus"
+#export GTK_IM_MODULE="ibus"
+#export QT_IM_MODULE="xim"
+
+## It seems scim is better then scim-bridge which is used in official settings.
+## Overwrite them.
+export XIM=scim
+export XIM_PROGRAM=scim
+export XMODIFIERS=@im=SCIM    #case matters for this variable!
+export GTK_IM_MODULE=scim
+export QT_IM_MODULE=scim
+
+export PATH=$PATH:/home/grissiom/bin
+
+#LS_OPTIONS=$LS_OPTIONS' -h'
+LS_OPTIONS=' -F -b --color=auto -h '
+export LS_OPTIONS
+
+LESS=$LESS' -RIM '
+export LESS
+
+export PYTHONSTARTUP=/home/grissiom/.pythonrc
+
+export VISUAL=vim
+
+export GDFONTPATH="/usr/share/fonts/TTF/"
+export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
+
+export CDPATH=".:~:/usr/local/src/My_projects"
+
+# bzr launchpad meed this...
+export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
+
+## Append any additional sh scripts found in ~/.profile.d
+#for profile_script in ./.profile.d/*.sh ; do
+#  if [ -x $profile_script ]; then
+#    . $profile_script
+#  fi
+#done
+#unset profile_script
+

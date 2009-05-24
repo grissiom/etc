@@ -23,6 +23,10 @@ ln -fsT ${PWD}/bash_config/bashrc.d ~/.bashrc.d
 ## of it. Git only track profile.d/devtodo.sh.
 #ln -fsT ${PWD}/bash_config/profile.d/devtodo.sh ${PWD}/bash_config/bashrc.d/devtodo.sh
 
+# Zsh staff:
+ln -fsT ${PWD}/zsh/zprofile ~/.zprofile
+ln -fsT ${PWD}/zsh/zshrc ~/.zshrc
+
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
 ln -fsT ${PWD}/vim ~/.vim
