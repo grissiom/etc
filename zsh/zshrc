@@ -15,10 +15,6 @@ autoload -Uz compinit
 compinit
 #}}} End of lines added by compinstall
 
-# From http://www.gentoo.org/doc/en/zsh.xml
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
-
 # From http://linuxtoy.org/archives/zsh-prompt.html
 # get the colors{{{
 autoload colors zsh/terminfo
@@ -39,15 +35,18 @@ C_OFF="%{$terminfo[sgr0]%}"
 
 ## set the prompt
 #set_prompt() {
-#   myjobs=()
-#   for a (${(k)jobstates}) {
-#       j=$jobstates[$a];i="${${(@s,:,)j}[2]}"
-#       myjobs+=($a${i//[^+-]/})
-#   }
-#   myjobs=${(j:,:)myjobs}
-#   ((MAXMID=${COLUMNS} / 3)) # truncate to this value
-#   RPS1="$RPSL$C_L_BLUE%(1j.[$myjobs]% $C_OFF .$C_OFF)$RPSR"
+#   #myjobs=()
+#   #for a (${(k)jobstates}) {
+#   #    j=$jobstates[$a];i="${${(@s,:,)j}[2]}"
+#   #    myjobs+=($a${i//[^+-]/})
+#   #}
+#   #myjobs=${(j:,:)myjobs}
+#   #((MAXMID=${COLUMNS} / 3)) # truncate to this value
+#   #RPS1="$RPSL$C_YELLOW%(1j.[$myjobs]% $C_OFF .$C_OFF)"
 #   rehash
+#
+#   # other variable name doesn't work...
+#   RPS1="$C_YELLOW%(1j.(%j jobs). )$C_OFF"
 #}
 #RPSL=$'$C_OFF'
 #RPS2='%^'
@@ -61,21 +60,16 @@ unsetopt transient_rprompt # leave the pwd
 #   #print -Pn "\e]0;%n@$__IP:%l\a"
 #}
 RPSR=$'$C_OFF$C_L_RED%(0?.$C_L_GREEN.exit(%?%) )$C_OFF'
-PS_DATE="$C_RED%D{%F} %T$C_OFF"
-PS_USER="%(!.$C_RED.$C_GREEN)%B%n%b$C_OFF"
-PS_HOST="$C_GREY@%M$C_OFF"
-PS_PWD="$C_L_GREEN%~$C_OFF"
-PS_PROMPT="%(!.$C_RED#.$C_GREEN%%)$C_OFF"
-PS_JOBS="$C_YELLOW%(1j.%j jobs. )$C_OFF"
+PS_DATE=$'$C_RED%D{%F} %T$C_OFF'
+PS_USER=$'%(!.$C_RED.$C_GREEN)%B%n%b$C_OFF'
+PS_HOST=$'$C_GREY@%M$C_OFF'
+PS_PWD=$'$C_L_GREEN%$(echo $COLUMNS / 3 | bc)<..<%~$C_OFF'
+PS_PROMPT=$'%(!.$C_RED#.$C_GREEN%%)$C_OFF'
+PS_JOBS=$'$C_YELLOW%(1j.(%j jobs).)$C_OFF'
 PS1="
-        $RPSR$PS_USER $PS_DATE $PS_HOST $PS_JOBS
+        $PS_USER $PS_DATE $PS_HOST $PS_JOBS  $RPSR
 $PS_PWD$PS_PROMPT "
 #}}}
-
-su()
-{
-ZDOTDIR=~ command su "$@" -c zsh
-}
 
 # alias {{{
 alias ls='\ls $=LS_OPTIONS'
@@ -86,8 +80,9 @@ alias cd_='cd /usr/local/src'
 alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
 alias ll='\ls $=LS_OPTIONS -l'
-#}}}
+# End alais }}}
 
+# Env {{{
 # From http://www.jukie.net/~bart/conf/zsh.d/S20_environment
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -99,4 +94,16 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 export EDITOR=vim
 export VISUAL=vim
+# End Env }}}
 
+# Some tricky {{{
+
+su()
+{
+	ZDOTDIR=~ command su "$@" -c zsh
+}
+
+# From http://www.gentoo.org/doc/en/zsh.xml
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
+# End Some tricky }}}
