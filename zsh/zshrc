@@ -23,9 +23,12 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
 fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE GREY; do
    eval C_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+   eval _C_$color="$terminfo[bold]$fg[${(L)color}]"
    eval C_L_$color='%{$fg[${(L)color}]%}'
+   eval _C_L_$color="$fg[${(L)color}]"
 done
 C_OFF="%{$terminfo[sgr0]%}"
+_C_OFF="$terminfo[sgr0]"
 #}}}
 
 # prompt {{{
@@ -59,7 +62,7 @@ unsetopt transient_rprompt # leave the pwd
 #   set_prompt
 #   #print -Pn "\e]0;%n@$__IP:%l\a"
 #}
-RPSR=$'$C_OFF$C_L_RED%(0?.$C_L_GREEN.exit(%?%) )$C_OFF'
+RPSR=$'$C_OFF$C_L_RED%(0?.$C_L_GREEN.exit(%?%))$C_OFF'
 PS_DATE=$'$C_RED%D{%F} %T$C_OFF'
 PS_USER=$'%(!.$C_RED.$C_GREEN)%B%n%b$C_OFF'
 PS_HOST=$'$C_GREY@%M$C_OFF'
@@ -83,17 +86,18 @@ alias ll='\ls $=LS_OPTIONS -l'
 # End alais }}}
 
 # Env {{{
-# From http://www.jukie.net/~bart/conf/zsh.d/S20_environment
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
 export EDITOR=vim
 export VISUAL=vim
+
+# http://nion.modprobe.de/blog/archives/572-less-colors-for-man-pages.html
+# see man 5 termcap for definitions
+export LESS_TERMCAP_mb="$_C_L_RED"
+export LESS_TERMCAP_md="$_C_L_GREEN"
+export LESS_TERMCAP_me="$_C_OFF"
+export LESS_TERMCAP_so="$_C_L_YELLOW"
+export LESS_TERMCAP_se="$_C_OFF"
+export LESS_TERMCAP_us="$_C_L_CYAN"
+export LESS_TERMCAP_ue="$_C_OFF"
 # End Env }}}
 
 # Some tricky {{{
