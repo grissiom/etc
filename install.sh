@@ -13,10 +13,10 @@ elif [[ ${ans} != 'y' && ${ans} != 'Y' ]]; then
 fi
 
 # Bash staff:
-ln -fsT ${PWD}/bash_config/bash_profile ~/.bash_profile
-ln -fsT ${PWD}/bash_config/profile.d ~/.profile.d
-ln -fsT ${PWD}/bash_config/bashrc ~/.bashrc
-ln -fsT ${PWD}/bash_config/bashrc.d ~/.bashrc.d
+ln -fsT ${PWD}/bash/bash_profile ~/.bash_profile
+ln -fsT ${PWD}/bash/profile.d ~/.profile.d
+ln -fsT ${PWD}/bash/bashrc ~/.bashrc
+ln -fsT ${PWD}/bash/bashrc.d ~/.bashrc.d
 
 # Zsh staff:
 ln -fsT ${PWD}/zsh/zprofile ~/.zprofile
