@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 set -e
 echo "Doing this install will overwrite your exist local settings."
@@ -12,16 +12,11 @@ elif [[ ${ans} != 'y' && ${ans} != 'Y' ]]; then
 	exit 1
 fi
 
-PWD=`pwd`
-
 # Bash staff:
 ln -fsT ${PWD}/bash_config/bash_profile ~/.bash_profile
 ln -fsT ${PWD}/bash_config/profile.d ~/.profile.d
 ln -fsT ${PWD}/bash_config/bashrc ~/.bashrc
 ln -fsT ${PWD}/bash_config/bashrc.d ~/.bashrc.d
-## Konsole seems not be a login shell. So link devtodo to bashrc.d to make use
-## of it. Git only track profile.d/devtodo.sh.
-#ln -fsT ${PWD}/bash_config/profile.d/devtodo.sh ${PWD}/bash_config/bashrc.d/devtodo.sh
 
 # Zsh staff:
 ln -fsT ${PWD}/zsh/zprofile ~/.zprofile
@@ -39,8 +34,8 @@ ln -fsT ${PWD}/xorg/xprofile ~/.xprofile
 ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
 # Other misc things:
-mkdir -p ~/bin
-ln -fsT ${PWD}/misc_sh/installkernel ~/bin/installkernel 
-ln -fsT ${PWD}/misc_sh/pkgls ~/bin/pkgls
-ln -fsT ${PWD}/misc_sh/pkgrep ~/bin/pkgrep
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
+
+# misc shell script
+mkdir -p ~/bin
+ln -fsT ${PWD}/misc_sh ~/bin
