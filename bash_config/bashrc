@@ -36,7 +36,7 @@ alias more='less'
 alias cd_='cd /usr/local/src'
 alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
-alias ll='ls -l'
+alias ll='ls -l '
 
 ### copy from http://www.faqs.org/docs/abs/HTML/sample-bashrc.html
 # Define some colors first:
