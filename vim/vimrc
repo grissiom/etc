@@ -126,5 +126,7 @@ set mouse=r
 set formatoptions+=mM
 
 set smartcase
+
+set backupskip+=',/etc/rc.d/*,'
 "}}}
 
