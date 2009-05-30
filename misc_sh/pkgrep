@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/zsh
 # file name: pkgrep
 
 packages_path='/var/log/packages'
+ls='/bin/ls'
 
-(cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
-grep --color=always $@ *)
+cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
+files=($($ls | grep $@[-1]))
+grep --color=always --with-filename $@[0,-2] ${files}
 
 #echo
 #echo 'in script:'
