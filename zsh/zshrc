@@ -75,14 +75,14 @@ $PS_PWD$PS_PROMPT "
 #}}}
 
 # alias {{{
-alias ls='\ls $=LS_OPTIONS'
+alias ls='\ls $LS_OPTIONS'
 alias grep='grep --color=tty -d skip'
 alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
 alias more='less'
 alias cd_='cd /usr/local/src'
 alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
-alias ll='\ls $=LS_OPTIONS -l'
+alias ll='\ls $LS_OPTIONS -l'
 # End alais }}}
 
 # Env {{{

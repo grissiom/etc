@@ -20,10 +20,10 @@ export LC_ALL=zh_CN.UTF-8
 export PATH=$PATH:/home/grissiom/bin
 
 #LS_OPTIONS=$LS_OPTIONS' -h'
-LS_OPTIONS=' -F -b --color=auto -h '
+LS_OPTIONS=(-F -b --color=auto -h)
 export LS_OPTIONS
 
-LESS=$LESS' -RIM '
+LESS=($LESS '-RIM')
 export LESS
 
 export PYTHONSTARTUP=/home/grissiom/.pythonrc
