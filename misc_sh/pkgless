@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+packages_path='/var/log/packages'
+ls='/bin/ls'
+
+cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
 for i in $*; do
-	less $=LESS /var/log/packages/$i*
+	file_names=($($ls | grep $i))
+	less ${=LESS} ${file_names}
 done
