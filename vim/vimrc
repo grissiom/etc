@@ -41,6 +41,7 @@ set ambiwidth=double
 
 set t_Co=256
 colorscheme dark_light256
+"colorscheme miko
 "set background=dark
 "}}}
 
