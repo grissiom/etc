@@ -40,7 +40,7 @@ hi Identifier   ctermfg=182
 hi Operator	ctermfg=178
 hi Statement    ctermfg=111
 hi Special	ctermfg=5
-hi Function	ctermfg=253               cterm=bold
+hi Function	ctermfg=32              cterm=bold
 hi PreProc      ctermfg=150
 hi Type         ctermfg=34
 hi Special      ctermfg=171
@@ -77,8 +77,8 @@ hi FoldColumn   ctermfg=240  ctermbg=bg   cterm=bold
 hi Pmenu        ctermfg=0    ctermbg=28
 hi PmenuSel     ctermfg=0    ctermbg=34
 
-hi TabLine      ctermfg=253  ctermbg=8    cterm=bold
-hi TabLineFill               ctermbg=8
+hi TabLine      ctermfg=253  ctermbg=236  cterm=bold
+hi TabLineFill  ctermfg=236  ctermbg=236
 hi TabLineSel   ctermfg=254  ctermbg=bg
 
 " Common groups that link to default highlighting.
