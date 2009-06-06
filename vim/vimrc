@@ -129,5 +129,10 @@ set formatoptions+=mM
 set smartcase
 
 set backupskip+=',/etc/rc.d/*,'
+
+" Show trailing whitespace and spaces before tabs
+hi link localWhitespaceError Error
+au Syntax * syn match localWhitespaceError /\(\zs\%#\|\s\)\+$/ display
+au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 "}}}
 
