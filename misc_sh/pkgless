@@ -7,5 +7,5 @@ ls='/bin/ls'
 cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
 for i in $*; do
 	file_names=($($ls | grep $i))
-	less ${file_names}
+	view -p ${file_names}
 done
