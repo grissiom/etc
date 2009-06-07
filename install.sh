@@ -22,6 +22,10 @@ ln -fsT ${PWD}/bash/bashrc.d ~/.bashrc.d
 ln -fsT ${PWD}/zsh/zprofile ~/.zprofile
 ln -fsT ${PWD}/zsh/zshrc ~/.zshrc
 
+# misc shell script
+mkdir -p ~/bin
+ln -fsT ${PWD}/misc_sh ~/bin
+
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
 ln -fsT ${PWD}/vim ~/.vim
@@ -30,12 +34,11 @@ ln -fsT ${PWD}/vim ~/.vim
 ln -fsT ${PWD}/xorg/Xmodmap ~/.Xmodmap
 ln -fsT ${PWD}/xorg/xprofile ~/.xprofile
 
+# font conf
+ln -fsT ${PWD}/fontconf/fonts.conf ~/.fonts.conf
+
 # Python stuff
 ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
-# Other misc things:
+# global git configuration:
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
-
-# misc shell script
-mkdir -p ~/bin
-ln -fsT ${PWD}/misc_sh ~/bin
