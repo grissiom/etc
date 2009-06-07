@@ -3,8 +3,8 @@
 
 packages_path='/var/log/packages'
 
-(cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
+cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
 echo -e '\e[0;32;1mmtime:           package name:\e[0m'
-ls -hcogG1 --time-style=long-iso --sort=time --color=always | \
-sed -e 's/[rwxs-]\{10\} *[0-9]* *[0-9.KMG]* *//'  | \
-grep --color=always $@ )
+ls -hcogG1 --time-style=long-iso --sort=time | \
+sed -e 's/[rwxs-]\{10\} *[0-9]* *[0-9.KMG]* *//' | \
+grep --color=auto $@
