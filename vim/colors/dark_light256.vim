@@ -59,6 +59,7 @@ hi DiffText     ctermfg=254  ctermbg=160
 "" Spell
 hi SpellBad     ctermfg=196  ctermbg=52  cterm=undercurl
 hi SpellCap     ctermfg=196  ctermbg=bg  cterm=undercurl
+hi SpellRare    ctermfg=fg   ctermbg=52  cterm=undercurl
 
 ""UI.
 "Don't let the UI catch your eyes more than your code.
