@@ -1,5 +1,12 @@
-#!/bin/sh
+#!/bin/zsh
 # file name: pkgls
+
+usage="Usage: pkgls [options] <exp>
+grep package name with <exp>
+See man grep for more info about options and expressions.
+pkgls already set --color=auto --no-filename for grep."
+
+[[ $ARGC -eq 0 || $1 == '--help' ]] && {echo $usage; exit 2}
 
 packages_path='/var/log/packages'
 
