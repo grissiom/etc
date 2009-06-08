@@ -27,8 +27,6 @@ export LESS
 
 export PYTHONSTARTUP=/home/grissiom/.pythonrc
 
-export VISUAL=vim
-
 export GDFONTPATH="/usr/share/fonts/TTF/"
 export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
 
