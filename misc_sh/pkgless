@@ -7,5 +7,6 @@ ls='/bin/ls'
 cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
 for i in $*; do
 	file_names=($($ls | grep $i))
+	[[ $file_names == '' ]] && {echo 'no package found'; exit 2}
 	view -p ${file_names}
 done
