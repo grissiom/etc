@@ -35,7 +35,7 @@ hi Normal       ctermfg=7    ctermbg=0    cterm=none
 "" Syntax highlighting
 hi Comment      ctermfg=31
 hi Constant     ctermfg=131
-hi Number       ctermfg=61
+hi Number       ctermfg=68
 hi Identifier   ctermfg=182
 hi Operator	ctermfg=178
 hi Statement    ctermfg=111
