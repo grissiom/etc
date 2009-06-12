@@ -114,4 +114,9 @@ su()
 # From http://www.gentoo.org/doc/en/zsh.xml
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
+
+# bring del key back to work, from:
+# http://www.gnegg.ch/2004/10/delete-key-in-zsh/
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
 # End Some tricky }}}
