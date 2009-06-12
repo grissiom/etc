@@ -47,7 +47,6 @@ colorscheme dark_light256
 
 " Mapping {{{
 " =======
-
 imap <F5> <ESC>:w<CR>a
 nmap <F5> :w<CR>
 
@@ -71,6 +70,8 @@ map <F4> :emenu <C-Z>
 
 map <Up> gk
 map <Down> gj
+
+inoremap , ,<Space>
 "}}}
 
 " Folding {{{
@@ -82,25 +83,6 @@ set foldenable " Turn on folding
 "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen-=search " don't open folds when you search into them
 set foldopen-=undo " don't open folds when you undo stuff
-
-" auto close pairs
-" ----------------
-
-:inoremap , ,<Space>
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-
-function ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endf
 "}}}
 
 " Local Variables {{{
@@ -135,4 +117,3 @@ hi link localWhitespaceError Error
 au Syntax * syn match localWhitespaceError /\(\zs\%#\|\s\)\+$/ display
 au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 "}}}
-
