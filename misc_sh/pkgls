@@ -2,15 +2,16 @@
 # file name: pkgls
 
 usage="Usage: pkgls [options] <exp>
-grep package name with <exp>
-See man grep for more info about options and expressions.
-pkgls already set --color=auto --no-filename for grep."
+ls the package name with pattern <exp>
+
+pkgls use grep to filter the names. See man grep for more info about options
+and expressions. pkgls already set --color=auto --no-filename for grep."
 
 [[ $ARGC -eq 0 || $1 == '--help' ]] && {echo $usage; exit 2}
 
 packages_path='/var/log/packages'
 
-cd ${packages_path} 2>/dev/null || echo ${packages_path}' not accessible' || exit 1
+cd ${packages_path} 2>/dev/null || {echo ${packages_path}' not accessible'; exit 1}
 echo -e '\e[0;32;1mmtime:           package name:\e[0m'
 ls -hcogG1 --time-style=long-iso --sort=time | \
 sed -e '1d' -e 's/ \{1,\}/ /g' | cut -f4- -d' ' | \
