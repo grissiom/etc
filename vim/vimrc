@@ -21,8 +21,12 @@ set fileencodings=utf-8,gb18030,utf-16,big5
 " ========
 set showcmd
 set showmode
+" always show tab line
+set showtabline=2
+
 set listchars=tab:>\ 
 "set list
+
 set nu
 set foldcolumn=2
 
@@ -31,7 +35,7 @@ set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 
 " after add %=%([%{Tlist_Get_Tagname_By_Line()}]%) we don't need taglist be
 " open on startup.
-set statusline=%#Constant#%<%f\ %#Error#%m%r%#Function#\ \ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%#Comment#%-14.(%l,%2v%)\ %P
+set statusline=%#Constant#%<%#Error#%m%r%#Function#\ \ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%#Comment#%-14.(%l,%2v%)\ %P
 hi! User1  ctermfg=red
 set laststatus=2
 
