@@ -33,11 +33,17 @@ set foldcolumn=2
 set ruler
 set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 
+" always show status line
+set laststatus=2
+" right part of the status line.
+set statusline=%#Error#%m%r%#Normal#
+" left part of the status line.
 " after add %=%([%{Tlist_Get_Tagname_By_Line()}]%) we don't need taglist be
 " open on startup.
-set statusline=%#Constant#%<%#Error#%m%r%#Function#\ \ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%#Comment#%-14.(%l,%2v%)\ %P
-hi! User1  ctermfg=red
-set laststatus=2
+set statusline+=%=%#Function#\ %([%{Tlist_Get_Tagname_By_Line()}]%)\ 
+" show the cursor position.
+set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
+"hi! User1  ctermfg=red
 
 " ambiwidth 默认值为 single。在其值为 single 时，若 encoding 为 utf-8，vim显示
 " 全角符号时就会出问题，会当作半角显示。
