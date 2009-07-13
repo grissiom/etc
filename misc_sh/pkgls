@@ -11,8 +11,24 @@ and expressions. pkgls already set --color=auto --no-filename for grep."
 
 packages_path='/var/log/packages'
 
+if [[ -t 1 ]]; then
+	color='always'
+	out_put_terminal=1
+else
+	color='never'
+	out_put_terminal=0
+fi
+
 cd ${packages_path} 2>/dev/null || {echo ${packages_path}' not accessible'; exit 1}
-echo -e '\e[0;32;1mmtime:           package name:\e[0m'
-ls -hcogG1 --time-style=long-iso --sort=time | \
+pkgs=$(ls -hcogG1 --time-style=long-iso --sort=time | \
 sed -e '1d' -e 's/ \{1,\}/ /g' | cut -f4- -d' ' | \
-grep --color=auto --no-filename $@ -
+grep --color=$color --no-filename $@ -)
+
+if [[ x"$pkgs" != x'' ]]; then
+	[[ $out_put_terminal -eq 1 ]] && {echo -e '\e[0;32;1mmtime:           package name:\e[0m'}
+	echo $pkgs
+	exit 0
+else
+	[[ $out_put_terminal -eq 1 ]] && {echo 'no package found'}
+	exit 1
+fi
