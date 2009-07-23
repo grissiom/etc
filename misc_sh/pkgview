@@ -17,4 +17,4 @@ cd ${packages_path} 2>/dev/null || {echo ${packages_path}' not accessible'; exit
 
 file_names=($($ls | grep --color=auto --no-filename $* - ))
 [[ $file_names == '' ]] && {echo 'no package found'; exit 2}
-view -p ${file_names}
+view -c 'set path=/' -p ${file_names}
