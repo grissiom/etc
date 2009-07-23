@@ -2,7 +2,6 @@
 # This gives you a Desktop Environment independent way of starting app.
 # Only work with runlevel 4 (the graphical XDM/KDM login)
 
-
 use_scim=1
 use_ibus=0
 # It seems scim is better then scim-bridge which is used in official settings.
@@ -19,6 +18,8 @@ elif [ $use_ibus -eq 1 ]; then
 	export XIM_PROGRAM="/usr/bin/ibus-daemon -rdxt"
 	export XMODIFIERS="@im=ibus"
 	export GTK_IM_MODULE="ibus"
+	#it's said that the latest version support qt-immodule, but I haven't try it yet.
+	#export QT_IM_MODULE="ibus"
 	export QT_IM_MODULE="xim"
 	ibus-daemon -rdxt
 fi
