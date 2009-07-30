@@ -4,14 +4,15 @@
 usage="Usage: pkg-script <mode> [options] <exp>
 pkg-script has 3 modes: view, ls, grep
 
-view mode is to view the info and content of package matching pattern <exp>
-	view mode use view(part of vim) for viewing the info so you don't have
-	write permittion to the files. You can use gf to go to the file in
-	list. See man grep for more info about options and expressions.
-ls mode is to list the package name with pattern <exp>
-grep mode is used to grep pkg content with pattern <exp>
+* view mode is to view the info and content of package matching pattern <exp>
+    view mode use view(part of vim) for viewing the info so you don't have
+    write permittion to the files. You can use gf to go to the file in list.
+    See man grep for more info about options and expressions.
+* ls mode is to list the package name with pattern <exp>
+* grep mode is used to grep pkg content with pattern <exp>
 
-They all use grep to filter the names"
+They all use grep to filter the names. The [options] and <exp> are directely
+passed to grep. \`man grep\` to see more info."
 
 append_front() {
 	# use ',' to separate the expressions, hope it doesn't be in the path name :)
@@ -20,7 +21,7 @@ append_front() {
 }
 
 grep_name() {
-	$ls $1 | grep --color=auto --no-filename $@[2,-1] -
+	$ls -1 $1 | grep --color=auto --no-filename $@[2,-1] -
 }
 
 check_dir_exit() {
@@ -29,14 +30,15 @@ check_dir_exit() {
 
 view_mode() {
 	# grep package file names
-	check_dir_exit ${pkg_path}
 	pkg_names=$(grep_name $pkg_path $*)
 	# check early, exit early
-	[[ $pkg_names == '' ]] && {echo 'no package found'; exit 1}
+	[[ $pkg_names == '' ]] && {
+		[[ $color == 'always' ]] && {echo '\e[1;31m''no package found''\e[0m'}
+		exit 1
+	}
 	file_names=($(append_front $pkg_names $pkg_path))
 
 	# grep script file names
-	check_dir_exit ${spt_path}
 	spt_names=$(grep_name $spt_path $*)
 	file_names=($file_names $(append_front $spt_names $spt_path))
 
@@ -59,7 +61,7 @@ ls_mode() {
 		echo $pkgs
 		exit 0
 	else
-		[[ $color == 'always' ]] && {echo 'no package found'}
+		[[ $color == 'always' ]] && {echo '\e[1;31m''no package found''\e[0m'}
 		exit 1
 	fi
 }
@@ -71,7 +73,6 @@ pkg_path='/var/log/packages/'
 spt_path='/var/log/scripts/'
 ls='/bin/ls'
 
-# this is useless for view mode
 if [[ -t 1 ]]; then
 	color='always'
 else
