@@ -25,6 +25,8 @@ ln -fsT ${PWD}/zsh/zshrc ~/.zshrc
 # misc shell script
 mkdir -p ~/bin
 ln -fsT ${PWD}/misc_sh ~/bin
+# if you have scripts tracked in other repo, just link them here:
+mkdir -p ~/lbin
 
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc

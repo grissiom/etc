@@ -6,7 +6,7 @@ fi
 
 export LC_ALL=zh_CN.UTF-8
 
-export PATH=$PATH:/home/grissiom/bin
+export PATH=$PATH:/home/grissiom/bin:/home/grissiom/lbin
 
 export LS_OPTIONS=$LS_OPTIONS' -h'
 
