@@ -47,7 +47,9 @@ set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
 
 " ambiwidth 默认值为 single。在其值为 single 时，若 encoding 为 utf-8，vim显示
 " 全角符号时就会出问题，会当作半角显示。
-set ambiwidth=double
+" Grissiom said: 貌似即使是全角的双引号在 vim 里始终是当做一个英文字母宽度显示
+" 的，所以在这里设置成 double 反而会出问题…
+set ambiwidth=single
 
 set t_Co=256
 colorscheme dark_light256
