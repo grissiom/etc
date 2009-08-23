@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 set -e
-echo "Doing this install will overwrite your exist local settings."
+echo "Continuing with this installation will overwrite your exist local settings."
 echo -n "Continue anyway?(y/N)"
 read ans
 if [[ ${ans} = 'n' || ${ans} = 'N' || ${ans} = '' ]]; then
@@ -44,3 +44,6 @@ ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
 # global git configuration:
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
+
+echo "You may refer to use zsh as the login shell"
+chsh
