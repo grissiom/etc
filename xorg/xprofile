@@ -30,6 +30,7 @@ case ${input_method} in
 	export XMODIFIERS="@im=fcitx"
 	export GTK_IM_MODULE=XIM
 	export QT_IM_MODULE=XIM
-	fcitx -d
+	# Launch fcitx after DE has brought up. Otherwise you will lost the system-tray
+	#fcitx -d
 	;;
 esac
