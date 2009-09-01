@@ -112,6 +112,8 @@ export LESS_TERMCAP_ue="$_C_OFF"
 
 su()
 {
+	export ARCH=x86_64
+	export PKGTYPE=txz
 	ZDOTDIR=~ command su "$@" -c zsh
 }
 
