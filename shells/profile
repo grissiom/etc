@@ -1,37 +1,4 @@
-# bash_profile
-
-if [ -f .bashrc ]; then
-	. .bashrc
-fi
-
-export LC_ALL=zh_CN.UTF-8
-
-export PATH=$PATH:/home/grissiom/bin:/home/grissiom/lbin
-
-export LS_OPTIONS=$LS_OPTIONS' -h'
-
-export LESS=$LESS' -RIM '
-
-export PYTHONSTARTUP=/home/grissiom/.pythonrc
-
-export VISUAL=vim
-
-export GDFONTPATH="/usr/share/fonts/TTF/"
-export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
-
-export CDPATH=".:~:/usr/local/src/My_projects"
-
-# bzr launchpad meed this...
-export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
-
-# Append any additional sh scripts found in ~/.profile.d
-for profile_script in ./.profile.d/*.sh ; do
-  if [ -x $profile_script ]; then
-    . $profile_script
-  fi
-done
-unset profile_script
-
+# vim: ft=sh
 case ${input_method} in
 	'scim' )
 	# It seems scim is better then scim-bridge which is used in official

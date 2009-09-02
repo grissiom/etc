@@ -12,15 +12,18 @@ elif [[ ${ans} != 'y' && ${ans} != 'Y' ]]; then
 	exit 1
 fi
 
+# common shell stuff
+ln -fsT ${PWD}/shells/profile ~/.profile
+
 # Bash staff:
-ln -fsT ${PWD}/bash/bash_profile ~/.bash_profile
-ln -fsT ${PWD}/bash/profile.d ~/.profile.d
-ln -fsT ${PWD}/bash/bashrc ~/.bashrc
-ln -fsT ${PWD}/bash/bashrc.d ~/.bashrc.d
+ln -fsT ${PWD}/shells/bash/bash_profile ~/.bash_profile
+ln -fsT ${PWD}/shells/bash/profile.d ~/.profile.d
+ln -fsT ${PWD}/shells/bash/bashrc ~/.bashrc
+ln -fsT ${PWD}/shells/bash/bashrc.d ~/.bashrc.d
 
 # Zsh staff:
-ln -fsT ${PWD}/zsh/zprofile ~/.zprofile
-ln -fsT ${PWD}/zsh/zshrc ~/.zshrc
+ln -fsT ${PWD}/shells/zsh/zprofile ~/.zprofile
+ln -fsT ${PWD}/shells/zsh/zshrc ~/.zshrc
 
 # misc shell script
 mkdir -p ~/bin
