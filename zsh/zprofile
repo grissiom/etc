@@ -28,3 +28,30 @@ export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
 #done
 #unset profile_script
 
+case ${input_method} in
+	'scim' )
+	# It seems scim is better then scim-bridge which is used in official
+	# settings.  Overwrite them.
+	export XIM=scim
+	export XIM_PROGRAM=scim
+	export XMODIFIERS=@im=SCIM    #case matters for this variable!
+	export GTK_IM_MODULE=scim
+	export QT_IM_MODULE=scim
+	;;
+	'ibus' )
+	export XIM=ibus
+	export XIM_PROGRAM="/usr/bin/ibus-daemon"
+	export XMODIFIERS="@im=ibus"
+	export GTK_IM_MODULE="ibus"
+	#it's said that the latest version support qt-immodule, but I haven't try it yet.
+	#export QT_IM_MODULE="ibus"
+	export QT_IM_MODULE="xim"
+	;;
+	'fcitx' )
+	export XIM=fcitx
+	export XIM_PROGRAM=/usr/bin/fcitx
+	export XMODIFIERS="@im=fcitx"
+	export GTK_IM_MODULE=XIM
+	export QT_IM_MODULE=XIM
+	;;
+esac
