@@ -15,8 +15,8 @@ case ${input_method} in
 	export XMODIFIERS="@im=ibus"
 	export GTK_IM_MODULE="ibus"
 	#it's said that the latest version support qt-immodule, but I haven't try it yet.
-	#export QT_IM_MODULE="ibus"
-	export QT_IM_MODULE="xim"
+	export QT_IM_MODULE="ibus"
+	#export QT_IM_MODULE="xim"
 	;;
 	'fcitx' )
 	export XIM=fcitx
