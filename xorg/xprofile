@@ -2,9 +2,9 @@
 # This gives you a Desktop Environment independent way of starting app.
 # Only work with runlevel 4 (the graphical XDM/KDM login)
 
-export input_method='ibus'
+export input_method='fcitx'
 case ${input_method} in
-	'scim' )
+	'scim')
 	# It seems scim is better then scim-bridge which is used in official
 	# settings.  Overwrite them.
 	export XIM=scim
@@ -12,19 +12,19 @@ case ${input_method} in
 	export XMODIFIERS=@im=SCIM    #case matters for this variable!
 	export GTK_IM_MODULE=scim
 	export QT_IM_MODULE=scim
-	scim -d
+	#scim -d
 	;;
-	'ibus' )
+	'ibus')
 	export XIM=ibus
 	export XIM_PROGRAM="/usr/bin/ibus-daemon"
 	export XMODIFIERS="@im=ibus"
 	export GTK_IM_MODULE="ibus"
 	#it's said that the latest version support qt-immodule, but I haven't try it yet.
-	#export QT_IM_MODULE="ibus"
-	export QT_IM_MODULE="xim"
-	ibus-daemon -rdxt
+	export QT_IM_MODULE="ibus"
+	#export QT_IM_MODULE="xim"
+	#ibus-daemon -rdxt
 	;;
-	'fcitx' )
+	'fcitx')
 	export XIM=fcitx
 	export XIM_PROGRAM=/usr/bin/fcitx
 	export XMODIFIERS="@im=fcitx"
