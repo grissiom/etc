@@ -1,4 +1,9 @@
 # vim: ft=sh
+
+if [ -r /etc/profile ]; then
+	. /etc/profile
+fi
+
 case ${input_method} in
 	'scim' )
 	# It seems scim is better then scim-bridge which is used in official

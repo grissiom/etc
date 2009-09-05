@@ -1,7 +1,7 @@
 # vim: ft=zsh
 
-if [ -r .profile ]; then
-	. .profile
+if [ -r ~/.profile ]; then
+	. ~/.profile
 fi
 
 export LC_ALL=zh_CN.UTF-8
