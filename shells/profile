@@ -1,9 +1,41 @@
 # vim: ft=sh
 
-if [ -r /etc/profile ]; then
-	. /etc/profile
+# /etc/profile should be sourced by every shells by default, if you find
+# exceptions, add a if to detect it here.
+#if [ -r /etc/profile ]; then
+	#. /etc/profile
+#fi
+
+export LC_ALL=zh_CN.UTF-8
+
+export PATH=$PATH:/home/grissiom/bin:/home/grissiom/lbin
+
+# /etc/profile detects $SHELL env and set LS_OPTIONS to an array for zsh,
+# follow it.
+if [ "$SHELL" = "/bin/zsh" ]; then
+	LS_OPTIONS+='-h'
+	LESS+='-RIM'
+else
+	LS_OPTIONS="$OPTIONS -h "
+	LESS="$LESS -RIM "
 fi
 
+export LS_OPTIONS
+export LESS
+
+export PYTHONSTARTUP=/home/grissiom/.pythonrc
+
+export VISUAL=vim
+
+export GDFONTPATH="/usr/share/fonts/TTF/"
+export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
+
+export CDPATH=".:~:/usr/local/src/My_projects"
+
+# bzr launchpad meed this...
+export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
+
+# set the input method envs for terminals
 case ${input_method} in
 	'scim' )
 	# It seems scim is better then scim-bridge which is used in official

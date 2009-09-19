@@ -1,28 +1,9 @@
 # vim: ft=zsh
+#
 
 if [ -r ~/.profile ]; then
 	. ~/.profile
 fi
-
-export LC_ALL=zh_CN.UTF-8
-
-export PATH=$PATH:/home/grissiom/bin:/home/grissiom/lbin
-
-# after a talk on #git@freenode.net and #zsh@freenode.net, I reallize less take
-# LESS as options directly. So it _should_ be _string_ rather than other fancy
-# things.
-LESS=$LESS'-RIM'
-export LESS
-
-export PYTHONSTARTUP=/home/grissiom/.pythonrc
-
-export GDFONTPATH="/usr/share/fonts/TTF/"
-export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
-
-export CDPATH=".:~:/usr/local/src/My_projects"
-
-# bzr launchpad meed this...
-export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
 
 ## Append any additional sh scripts found in ~/.profile.d
 #for profile_script in ./.profile.d/*.sh ; do
