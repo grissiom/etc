@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python.vim
-" Last Change:	2008-09-29
+" Last Change:	2009-07-24
 " Filenames:	*.py
-" Version:	2.6.3
+" Version:	2.6.5
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -18,6 +18,8 @@
 "        (strings and comments)
 "    John Eikenberry
 "        for the patch fixing small typo
+"    Caleb Adamantine
+"        for the patch fixing highlighting for decorators
 
 "
 " Options:
@@ -61,6 +63,12 @@
 "    For "print" builtin as function:
 "       python_print_as_function
 
+" local setting:
+let python_highlight_all=1
+let python_slow_sync=1
+let python_highlight_indent_errors=0
+let python_highlight_space_errors=0
+
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 if version < 600
@@ -68,13 +76,6 @@ if version < 600
 elseif exists("b:current_syntax")
   finish
 endif
-
-
-" local setting:
-let python_highlight_all=1
-let python_slow_sync=1
-let python_highlight_indent_errors=0
-let python_highlight_space_errors=0
 
 if exists("python_highlight_all") && python_highlight_all != 0
   " Not override previously set options
@@ -115,7 +116,7 @@ syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
-syn keyword pythonImport	import from as
+syn keyword pythonPreCondit	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 
@@ -124,7 +125,9 @@ if !exists("python_print_as_function") || python_print_as_function == 0
 endif
 
 " Decorators (new in Python 2.4)
-syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
+syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
+syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
+syn match   pythonDot        "\." display containedin=pythonDottedName
 
 " Comments
 syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
@@ -302,7 +305,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   endif
 
   HiLink pythonStatement	Statement
-  HiLink pythonImport		Statement
+  HiLink pythonPreCondit	Statement
   HiLink pythonFunction		Function
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
@@ -310,6 +313,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonOperator		Operator
 
   HiLink pythonDecorator	Define
+  HiLink pythonDottedName	Function
+  HiLink pythonDot          Normal
 
   HiLink pythonComment		Comment
   HiLink pythonCoding		Special
