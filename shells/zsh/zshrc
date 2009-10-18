@@ -87,10 +87,14 @@ alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 
 alias grep='grep --color=tty -d skip'
 alias more='less'
-alias cd_='cd /usr/local/src'
-alias cdm='cd /usr/local/src/My_projects'
 
 alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
+
+alias man='vimman.sh'
+
+# cd ~dir_name
+hash -d losrc='/usr/local/src/'
+hash -d kaoyan='/win_backyard/北京航空航天大学/考研/'
 # End alais }}}
 
 # Env {{{
@@ -109,7 +113,6 @@ export LESS_TERMCAP_ue="$_C_OFF"
 # End Env }}}
 
 # Some tricky {{{
-
 su()
 {
 	export ARCH=x86_64
@@ -126,3 +129,12 @@ zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 # End Some tricky }}}
+
+# Post actions {{{
+fortune
+#echo $_C_RED"Perfection in design is attained not when there is nothing more to add, but when there is nothing more to remove"$_C_OFF
+echo "\n"$_C_RED"\t\t\t\t\t完美之道，不在无可增加，而在无可删减。"$_C_OFF
+echo
+
+[ $UID -ne 0 ] && rcnotify.sh show
+# End Post actions }}}
