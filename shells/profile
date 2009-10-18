@@ -36,6 +36,9 @@ export CDPATH=".:~:/usr/local/src/My_projects"
 export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
 
 # set the input method envs for terminals
+# input_method is set in ~/.xprofile bacause it seems that input methods could
+# only be used in X. But export variables here to make use of them in terminals
+# in X.
 case ${input_method} in
 	'scim' )
 	# It seems scim is better then scim-bridge which is used in official
