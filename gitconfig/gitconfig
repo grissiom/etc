@@ -15,3 +15,5 @@
 	rt = revert
 [color]
 	ui = auto
+[i18n]
+	logoutputencoding = UTF-8
