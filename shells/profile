@@ -69,3 +69,16 @@ case ${input_method} in
 	export QT_IM_MODULE=XIM
 	;;
 esac
+
+# detect machine type. Many SlackBuilds use this value.
+MACHINE=$(uname -m)
+case $MACHINE in
+	'x86_64' )
+	ARCH='x86_64'
+	;;
+	* ) #TODO: add other mach detect
+	ARCH='i386'
+	;;
+esac
+export ARCH
+unset MACHINE
