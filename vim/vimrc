@@ -37,10 +37,11 @@ set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 set laststatus=2
 " right part of the status line.
 set statusline=%#Error#%m%r%#Normal#
-" left part of the status line.
 " after add %=%([%{Tlist_Get_Tagname_By_Line()}]%) we don't need taglist be
 " open on startup.
-set statusline+=%=%#Function#\ %([%{Tlist_Get_Tagname_By_Line()}]%)\ 
+set statusline+=\ %#Function#\ %([%{Tlist_Get_Tagname_By_Line()}]%)
+" left part of the status line.
+set statusline+=%=
 " show the cursor position.
 set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
 "hi! User1  ctermfg=red
