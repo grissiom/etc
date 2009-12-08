@@ -48,5 +48,9 @@ ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 # global git configuration:
 ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
 
+# web
+# don't forget to setup your web browsers ;)
+ln -fsT ${PWD}/web/proxy.pac ~/proxy.pac
+
 echo "You may refer to use zsh as the login shell"
 chsh
