@@ -1,4 +1,3 @@
-// vim:ft=java
 function FindProxyForURL(url, host) {
 	//from http://ftofficer.spaces.live.com/blog/cns!423B72634E2F6B7E!1073.entry
 	if (shExpMatch(host, "*.appspot.com")) {
@@ -8,10 +7,14 @@ function FindProxyForURL(url, host) {
 		return "PROXY www.google.cn:80";
 	}
 
-	if (shExpMatch(host, "*.blogspot.com"))
+	if (shExpMatch(host, "*.blogspot.com") ||
+	    shExpMatch(host, "*.blogger.com")  ||
+	    shExpMatch(url, "*code.google.com/p/gappproxy/*") ||
+	    shExpMatch(url, "*chrome.google.com/extensions*") ||
+	    shExpMatch(host, "clients2.google.com")
+	   )
 		return "PROXY 127.0.0.1:8000"
-	if (shExpMatch(url, "*code.google.com/p/gappproxy/*"))
-		return "PROXY 127.0.0.1:8000"
+
 	//if ( dnsDomainIs(host,  ".edu") )
 		//return "PROXY 127.0.0.1:8000";
 	//else if ( dnsDomainIs(host, "www.baidu.com") || shExpMatch(url, "*.gov.cn/*") )
@@ -19,3 +22,4 @@ function FindProxyForURL(url, host) {
 
 	return "DIRECT";
 }
+// vim:ft=java
