@@ -1,0 +1,63 @@
+#
+# hosts		This file describes a number of hostname-to-address
+#		mappings for the TCP/IP subsystem.  It is mostly
+#		used at boot time, when no name servers are running.
+#		On small systems, this file can be used instead of a
+#		"named" name server.  Just add the names, addresses
+#		and any aliases to this file...
+#
+# By the way, Arnt Gulbrandsen <agulbra@nvg.unit.no> says that 127.0.0.1
+# should NEVER be named with the name of the machine.  It causes problems
+# for some (stupid) programs, irc and reputedly talk. :^)
+#
+
+# For loopbacking.
+127.0.0.1	localhost
+# This next entry is technically wrong, but good enough to get TCP/IP apps
+# to quit complaining that they can't verify the hostname on a loopback-only
+# Linux box.
+127.0.0.1	darkstar.example.net darkstar
+
+
+# IPv6
+#2001:4860:c004::68    www.google.com
+#2001:4860:c004::68    reader.google.com
+2001:4860:c004::68    ipv6.google.com
+
+# how could chromium been blocked?...
+2001:4860:c004::68    chrome.google.com
+2001:4860:c004::68    clients2.google.com
+
+# GAE
+2001:4860:c004::68    netwhole-gri.appspot.com
+2001:4860:c004::68    hloli.appspot.com
+
+# many google service
+2001:4860:c004::68    spreadsheet.google.com
+
+2001:4860:c004::68    picasaweb.google.com
+2001:4860:c004::68    lh0.ggpht.com lh1.ggpht.com lh2.ggpht.com lh3.ggpht.com lh4.ggpht.com lh5.ggpht.com lh6.ggpht.com lh7.ggpht.com
+
+# youtube and google video
+2001:4860:c004::68    www.youtube.com
+2001:4860:c004::68    gdata.youtube.com
+2001:4860:c004::68    help.youtube.com
+2001:4860:c004::68    upload.youtube.com
+2001:4860:c004::68    insight.youtube.com
+2001:4860:c004::68    help.youtube.com
+2001:4860:c004::68    youtube.com
+2001:4860:c004::68    s.ytimg.com i1.ytimg.com i2.ytimg.com i3.ytimg.com i4.ytimg.com
+
+2001:4860:c004::68    video.google.com
+2001:4860:c004::68    0.gvt0.com 1.gvt0.com 2.gvt0.com 3.gvt0.com 4.gvt0.com 5.gvt0.com
+
+# use ipv6 for www.blogger.com, as it need https to login
+2001:4860:c004::68    www.blogger.com
+
+2001:470:83f2::710:1  twitter.com search.twitter.com api.twitter.com www.twitter.com m.twitter.com
+2001:470:83f2::710:1  meme.yahoo.com
+
+#203.208.37.104 hloli.appspot.com
+#203.208.37.104 netwhole-gri.appspot.com
+
+# End of hosts.
