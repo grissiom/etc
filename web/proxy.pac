@@ -10,8 +10,11 @@ function FindProxyForURL(url, host) {
 
 	if (shExpMatch(host, "*.blogspot.com") ||
 	    shExpMatch(url, "*code.google.com/p/gappproxy/*") ||
-	    dnsDomainIs(host, "bit.ly")
-	    )
+	    shExpMatch(url, "*.facebook.com/*") ||
+	    shExpMatch(url, "*.fbcdn.net/*") ||
+	    dnsDomainIs(host, "bit.ly") ||
+	    dnsDomainIs(host, "tools.google.com")
+	   )
 		// Use ipv6 for them. They need https.
 		//shExpMatch(host, "*.blogger.com")  ||
 		//shExpMatch(url, "*chrome.google.com/extensions*") ||
