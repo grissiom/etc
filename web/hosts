@@ -18,19 +18,26 @@
 # Linux box.
 127.0.0.1	darkstar.example.net darkstar
 
+203.208.37.99 hloli.appspot.com
+203.208.37.99 netwhole-gri.appspot.com
 
-# IPv6
+########
+# IPv6 #
+########
+
 #2001:4860:c004::68    www.google.com
-#2001:4860:c004::68    reader.google.com
+2001:4860:c004::68    reader.google.com
 2001:4860:c004::68    ipv6.google.com
+#2001:4860:c004::68    tools.google.com
+#203.208.37.104        tools.google.com
 
 # how could chromium been blocked?...
 2001:4860:c004::68    chrome.google.com
 2001:4860:c004::68    clients2.google.com
 
 # GAE
-2001:4860:c004::68    netwhole-gri.appspot.com
-2001:4860:c004::68    hloli.appspot.com
+#2001:4860:c004::68    netwhole-gri.appspot.com
+#2001:4860:c004::68    hloli.appspot.com
 
 # many google service
 2001:4860:c004::68    spreadsheet.google.com
@@ -56,8 +63,5 @@
 
 2001:470:83f2::710:1  twitter.com search.twitter.com api.twitter.com www.twitter.com m.twitter.com
 2001:470:83f2::710:1  meme.yahoo.com
-
-#203.208.37.104 hloli.appspot.com
-#203.208.37.104 netwhole-gri.appspot.com
 
 # End of hosts.
