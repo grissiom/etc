@@ -1,4 +1,4 @@
-" Fold routines for python code, version 3.2
+" Fold routines for python code, version 3.2.1
 " Source: http://www.vim.org/scripts/script.php?script_id=2527
 " Last Change: 2009 Feb 25
 " Author: Jurjen Bos
@@ -114,6 +114,9 @@ function! PrintIfCount(n,t)
 endfunction
 
 function! GetPythonFold(lnum)
+    " Keep the same ident when this line is continued with the upper line.
+    if getline(a:lnum-1) =~ '\\$' | return '='
+    endif
     " Determine folding level in Python source (see "higher foldlevel theory" below)
     let line = getline(a:lnum)
     let ind = indent(a:lnum)
@@ -198,16 +201,16 @@ endfunction
 
 " Note that a decorator statement (beginning with @) counts as definition,
 " but that of a sequence of @,@,@,def only the first one counts
-" This means that a definiion only counts if not preceded by a decorator
+" This means that a definition only counts if not preceded by a decorator
 
 " There are two kinds of folds: R (regular), G (global statements)
 
-" There are five indent situations with respect to the previous non-emtpy non-comment line:
-" > (indent), < (dedent), = (same); < and = combine with 0 (indent is zero)
+" There are five indent situations with respect to the previous non-empty non-comment line:
+" > (indent), < (decent), = (same); < and = combine with 0 (indent is zero)
 " Note: if the previous line is class/def, its indent is interpreted as one higher
 
 " There are three indent situations with respect to the next (non-E non-C) line:
-" > (dedent), < (indent), = (same)
+" > (decent), < (indent), = (same)
 
 " Situations (in order of the script):
 " stat  fold prev   next
