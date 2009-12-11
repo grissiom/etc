@@ -13,6 +13,7 @@ function FindProxyForURL(url, host) {
 	    shExpMatch(url, "*.facebook.com/*") ||
 	    shExpMatch(url, "*.fbcdn.net/*") ||
 	    dnsDomainIs(host, "bit.ly") ||
+	    dnsDomainIs(host, "www.mail-archive.com") ||
 	    dnsDomainIs(host, "tools.google.com")
 	   )
 		// Use ipv6 for them. They need https.
