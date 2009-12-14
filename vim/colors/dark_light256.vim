@@ -31,7 +31,7 @@ endif
 
 let colors_name = "dark_light256"
 
-hi Normal       ctermfg=7    ctermbg=0    cterm=none
+hi Normal       ctermfg=250    ctermbg=0    cterm=none
 "" Syntax highlighting
 hi Comment      ctermfg=31
 hi Constant     ctermfg=131
@@ -81,6 +81,7 @@ hi PmenuSel     ctermfg=0    ctermbg=34
 hi TabLine      ctermfg=246  ctermbg=236  cterm=bold
 hi TabLineFill  ctermfg=236  ctermbg=236
 hi TabLineSel   ctermfg=254  ctermbg=bg
+hi StatusLine                ctermbg=236
 
 " Common groups that link to default highlighting.
 " You can specify other highlighting easily.
