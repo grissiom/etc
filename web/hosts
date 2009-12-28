@@ -18,8 +18,11 @@
 # Linux box.
 127.0.0.1	darkstar.example.net darkstar
 
-203.208.37.99 hloli.appspot.com
-203.208.37.99 netwhole-gri.appspot.com
+203.208.37.99   hloli.appspot.com
+203.208.37.99   netwhole-gri.appspot.com
+64.233.189.99   docs.google.com
+64.233.189.103  clients2.google.com
+64.233.189.103  chrome.google.com
 
 ########
 # IPv6 #
@@ -61,7 +64,7 @@
 # use ipv6 for www.blogger.com, as it need https to login
 2001:4860:c004::68    www.blogger.com
 
-2001:470:83f2::710:1  twitter.com search.twitter.com api.twitter.com www.twitter.com m.twitter.com
-2001:470:83f2::710:1  meme.yahoo.com
+#2001:470:83f2::710:1  twitter.com search.twitter.com api.twitter.com www.twitter.com m.twitter.com
+#2001:470:83f2::710:1  meme.yahoo.com
 
 # End of hosts.
