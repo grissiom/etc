@@ -15,7 +15,7 @@ setlocal iskeyword+=-
 
 syn keyword zshTodo             contained TODO FIXME XXX NOTE
 
-syn region  zshComment          display oneline start='\%(^\|\s\)#' end='$'
+syn region  zshComment          oneline start='\%(^\|\s\)#' end='$'
                                 \ contains=zshTodo,@Spell
 
 syn match   zshPreProc          '^\%1l#\%(!\|compdef\|autoload\).*$'
