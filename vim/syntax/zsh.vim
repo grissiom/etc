@@ -48,6 +48,29 @@ syn match   zshFunction         '^\s*\k\+\ze\s*()'
 
 syn match   zshOperator         '||\|&&\|;\|&!\='
 
+syn match   zshTestOper1        contained '=\|\(!=\)'
+syn keyword zshTestOper1        contained -n -z
+			        \ -eq -ge -gt -le -lt -ne
+                                \ -ef -nt -ot -b -c -d -e -f -g -G -h -k -L -O -p -r -s -S -t -u -w -x
+syn match   zshTestExp1         contained ' ! '
+syn keyword zshTestExp1         contained -a -o
+syn region  zshTest             matchgroup=zshTestDeli start='\[' skip='\\\\\|\\$\|\\\]' end='\]' 
+			        \ contains=@zshSubst,@zshDerefs,zshTestOper1,zshTestExp1,zshString,zshNumber
+
+syn match   zshTestOper2        contained '\(=\~\)\|\(==\)\|\(!=\)\|<\|>\|='
+syn keyword zshTestOper2        contained
+                                \ -a -b -c -d -e -f -g -h -k -n -o -p -r -s -t -u -w -x -z -L -O -G -S -N
+			        \ -nt -ot -ef
+                                \ -eq -ne -ge -gt -le -lt
+syn match   zshTestExp2         contained '&&\|||\| ! \|(\|)'
+syn region  zshTest2            matchgroup=zshTestDeli start='\[\[' skip='\\\\\|\\$' end='\]\]' 
+			        \ contains=@zshSubst,@zshDerefs,zshString,zshNumber,zshTestOper2,zshTestExp2
+
+hi link zshTestOper1 zshTestOper
+hi link zshTestOper2 zshTestOper
+hi link zshTestExp1 zshTestExp
+hi link zshTestExp2 zshTestExp
+
 syn match   zshRedir            '\d\=\(<\|<>\|<<<\|<&\s*[0-9p-]\=\)'
 syn match   zshRedir            '\d\=\(>\|>>\|>&\s*[0-9p-]\=\|&>\|>>&\|&>>\)[|!]\='
 syn match   zshRedir            '|&\='
@@ -164,6 +187,7 @@ hi def link zshPOSIXString      zshString
 hi def link zshJobSpec          Special
 hi def link zshPrecommand       Special
 hi def link zshDelimiter        Keyword
+hi def link zshTestOper         Keyword
 hi def link zshConditional      Conditional
 hi def link zshException        Exception
 hi def link zshRepeat           Repeat
@@ -171,16 +195,10 @@ hi def link zshKeyword          Keyword
 hi def link zshFunction         Function
 hi def link zshKSHFunction      zshFunction
 hi def link zshHereDoc          String
-if 0
-  hi def link zshOperator         Operator
-else
-  hi def link zshOperator         None
-endif
-if 1
-  hi def link zshRedir            Operator
-else
-  hi def link zshRedir            None
-endif
+hi def link zshOperator         Operator
+hi def link zshTestExp          Operator
+hi def link zshTestDeli         Operator
+hi def link zshRedir            Operator
 hi def link zshVariable         None
 hi def link zshVariableDef      zshVariable
 hi def link zshDereferencing    PreProc
