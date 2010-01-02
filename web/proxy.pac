@@ -22,6 +22,9 @@ function FindProxyForURL(url, host) {
 	    shExpMatch(host, "*.twimg.com") ||
 	    shExpMatch(host, "*golang.org") ||
 	    dnsDomainIs(host, "bit.ly") ||
+	    dnsDomainIs(host, "codereview.chromium.org") ||
+	    dnsDomainIs(host, "dev.chromium.org") ||
+	    dnsDomainIs(host, "userscripts.wikidot.com") ||
 	    dnsDomainIs(host, "twitpic.com") ||
 	    dnsDomainIs(host, "hootsuite.com") ||
 	    dnsDomainIs(host, "www.golang.org") ||
