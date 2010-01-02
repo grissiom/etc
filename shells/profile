@@ -11,7 +11,7 @@ update-mime-database ~/.local/share/mime
 
 export LC_ALL=zh_CN.UTF-8
 
-export PATH=$PATH:/home/grissiom/bin:/home/grissiom/lbin
+export PATH=$PATH:/home/grissiom/bin
 
 # /etc/profile detects $SHELL env and set LS_OPTIONS to an array for zsh,
 # follow it.

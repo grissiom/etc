@@ -25,8 +25,8 @@ ln -fsT ${PWD}/shells/bash/bashrc.d ~/.bashrc.d
 ln -fsT ${PWD}/shells/zsh/zprofile ~/.zprofile
 ln -fsT ${PWD}/shells/zsh/zshrc ~/.zshrc
 
-# if you have scripts tracked in other repo, just link them here:
-mkdir -p ~/lbin
+# Your local executable stuff
+mkdir -p ~/bin
 
 # Vim staff:
 ln -fsT ${PWD}/vim/vimrc ~/.vimrc
