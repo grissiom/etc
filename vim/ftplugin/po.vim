@@ -260,16 +260,15 @@ inoremap <buffer> <unique> <Plug>RemoveUntranStr <ESC>:'{,'}call <SID>RemoveUntr
 nnoremap <buffer> <unique> <Plug>RemoveUntranStr :'{,'}call <SID>RemoveUntranStr()<CR>
 
 fu! <SID>RemoveUntranStr() range
-	let pos_to_del = []
-	while line('.') != a:lastline
+	" skip the first empty line
+	exe "normal! j"
+	while getline('.') !~ '^$' && line('.') != line('$') && line('.') != a:lastline
 		if getline(".") =~ '^#| .*'
-			let pos_to_del += [line('.')]
+			exe "normal! dd"
+		else
+			exe "normal! j"
 		endif
-		exe "normal! j"
 	endw
-	for l in reverse(pos_to_del)
-		exe l . "delete"
-	endfor
 endf
 
 " Show PO translation statistics. (Only available on UNIX computers for now.)
