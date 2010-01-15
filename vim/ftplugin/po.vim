@@ -9,8 +9,15 @@
 " Last Change by Original Creator:	Tue, 12 Apr 2005 13:49:55 -0400
 "
 " *** Latest version of original script: http://www.vim.org/scripts/script.php?script_id=695 ***
-" *** Latest version of modified verion:
-" http://repo.or.cz/w/grissiom.projects.git?a=blob_plain;f=vim/ftplugin/po.vim ***
+" 
+" Latest version of this script:
+" http://gitorious.org/local-etc/local-etc/blobs/master/vim/ftplugin/po.vim
+"
+" Latest version of the help doc: (thanks to Emmanuel Trillaud ;-)
+" http://gitorious.org/local-etc/local-etc/blobs/master/vim/doc/po.txt
+"
+" (Sorry for the inconvenience that separate them, I think it's too small to
+" form a stand-along project)
 "
 " DESCRIPTION
 "     This file is a Vim ftplugin for editing PO files (GNU gettext -- the GNU
@@ -27,6 +34,7 @@
 "     Move to an untransl. string backward                \U
 "     Copy the msgid string to msgstr                     \c
 "     Delete the msgstr string                            \d
+"     Delete the previous untransl. string                \R
 "     Move to the next fuzzy translation                  \f
 "     Move to the previous fuzzy translation              \F
 "     Label the translation fuzzy                         \z
@@ -52,6 +60,7 @@
 "     Move to the previous fuzzy translation              \F
 "     Label the translation fuzzy                         \z
 "     Remove the fuzzy label                              \Z
+"     Delete the previous untransl. string                \R
 "     Split-open the file under cursor                    gf
 "     Show msgfmt statistics for the file(*)              \s
 "     Browse through msgfmt errors for the file(*)        \e
@@ -240,6 +249,27 @@ fu! <SID>RemoveFuzzy()
 	elseif line =~ '^#,\(.*,\)\=\s*fuzzy'
 		exe 's/,\s*fuzzy//'
 	endif
+endf
+
+" Remove previous-untranslated-string (#| xxxx)
+if !hasmapto('<Plug>RemoveUntranStr')
+	imap <buffer> <unique> <LocalLeader>R <Plug>RemoveUntranStr
+	nmap <buffer> <unique> <LocalLeader>R <Plug>RemoveUntranStr
+endif
+inoremap <buffer> <unique> <Plug>RemoveUntranStr <ESC>:'{,'}call <SID>RemoveUntranStr()<CR>i
+nnoremap <buffer> <unique> <Plug>RemoveUntranStr :'{,'}call <SID>RemoveUntranStr()<CR>
+
+fu! <SID>RemoveUntranStr() range
+	let pos_to_del = []
+	while line('.') != a:lastline
+		if getline(".") =~ '^#| .*'
+			let pos_to_del += [line('.')]
+		endif
+		exe "normal! j"
+	endw
+	for l in reverse(pos_to_del)
+		exe l . "delete"
+	endfor
 endf
 
 " Show PO translation statistics. (Only available on UNIX computers for now.)
