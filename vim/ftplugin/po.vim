@@ -35,6 +35,7 @@
 "     Copy the msgid string to msgstr                     \c
 "     Delete the msgstr string                            \d
 "     Delete the previous untransl. string                \R
+"     Clean flags and untransl. string (same as \Z\R)     \N
 "     Move to the next fuzzy translation                  \f
 "     Move to the previous fuzzy translation              \F
 "     Label the translation fuzzy                         \z
@@ -61,6 +62,7 @@
 "     Label the translation fuzzy                         \z
 "     Remove the fuzzy label                              \Z
 "     Delete the previous untransl. string                \R
+"     Clean flags and untransl. string (same as \Z\R)     \N
 "     Split-open the file under cursor                    gf
 "     Show msgfmt statistics for the file(*)              \s
 "     Browse through msgfmt errors for the file(*)        \e
@@ -270,6 +272,9 @@ fu! <SID>RemoveUntranStr() range
 		endif
 	endw
 endf
+
+imap <buffer> <unique> <LocalLeader>N <Plug>RemoveUntranStr<Plug>RemoveFuzzy
+nmap <buffer> <unique> <LocalLeader>N <Plug>RemoveUntranStr<Plug>RemoveFuzzy
 
 " Show PO translation statistics. (Only available on UNIX computers for now.)
 if has("unix")
