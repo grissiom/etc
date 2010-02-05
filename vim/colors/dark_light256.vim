@@ -14,12 +14,12 @@
 " Color numbers (0-255) see:
 " http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
-if &t_Co != 256
-  echomsg ""
-  echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
-  echomsg ""
-  finish
-endif
+"if &t_Co != 256
+  "echomsg ""
+  "echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
+  "echomsg ""
+  "finish
+"endif
 
 set background=dark
 
@@ -70,18 +70,21 @@ hi IncSearch    ctermfg=fg   ctermbg=8
 hi Search       ctermfg=fg   ctermbg=8
 
 " I link in this way because I think the folded text is something that "When
-" you want to ignore them, you won't see them, but when you want out, they can
+" you ws to ignore them, you won't see them, but when you want out, they can
 " easily catch your eyes.". I think and hope the Comment is the same thing.
 hi! link Folded Comment
 hi FoldColumn   ctermfg=240  ctermbg=bg   cterm=bold
 
-hi Pmenu        ctermfg=0    ctermbg=28
-hi PmenuSel     ctermfg=0    ctermbg=34
-
 hi TabLine      ctermfg=246  ctermbg=236  cterm=bold
 hi TabLineFill  ctermfg=236  ctermbg=236
 hi TabLineSel   ctermfg=254  ctermbg=bg
-hi StatusLine                ctermbg=236
+hi StatusLine   ctermfg=248  ctermbg=235
+
+hi Pmenu        ctermfg=253  ctermbg=238 cterm=none
+hi PmenuSel     ctermfg=253  ctermbg=62   cterm=bold
+hi PmenuSbar	ctermfg=253  ctermbg=0
+hi PmenuThumb   ctermfg=253  ctermbg=0
+hi WildMenu     ctermfg=253  ctermbg=62   cterm=bold
 
 " Common groups that link to default highlighting.
 " You can specify other highlighting easily.
