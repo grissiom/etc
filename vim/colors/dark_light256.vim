@@ -46,7 +46,7 @@ let s:hi_conf += [
 \['Comment',    31],
 \['Constant',   131],
 \['Number',     68],
-\['Identifier', 182],
+\['Identifier', 94, 'none', 'bold'],
 \['Operator',   178],
 \['Statement',  111],
 \['Special',    5],
@@ -56,7 +56,7 @@ let s:hi_conf += [
 \['Special',    171],
 \['Ignore',     238],
 \['Error',      196,  52,   'bold'],
-\['Todo',       0,    184],
+\['Todo',       0,    130],
 \]
 
 "" Diff
