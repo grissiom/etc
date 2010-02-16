@@ -33,9 +33,12 @@ let colors_name = "dark_light256"
 """""""""""""""""""""""""""""""
 " Start highlight configrations
 """""""""""""""""""""""""""""""
+" let them could be accessed by functions easily.
+" FIXME: or just set them to 'none'?
 let s:bg=0
 let s:fg=250
-"group, ctermfg, ctermbg, cterm, guifg, guibg, gui
+
+" order: group, ctermfg, ctermbg, cterm, guifg, guibg, gui
 let s:hi_conf=[]
 "" Syntax highlighting
 let s:hi_conf += [
@@ -136,11 +139,11 @@ let s:tg_cm=[
 \'#a8a8a8', '#b2b2b2', '#bcbcbc', '#c6c6c6', '#d0d0d0', '#dadada', '#e4e4e4', '#eeeeee',
 \]
 
-func s:__hi__(li)
+func! s:__hi__(li)
 	exec 'hi! ' . a:li[0]
 	  \. ' ctermfg=' . a:li[1] . ' ctermbg=' . get(a:li, 2, s:bg) . ' cterm=' . get(a:li, 3, 'none')
 	  \. ' guifg='   . get(a:li, 4, s:tg_cm[a:li[1]])
-	  \. ' guibg='   . get(a:li, 5, s:tg_cm[get(a:li,  2,  s:bg)])
+	  \. ' guibg='   . get(a:li, 5, s:tg_cm[get(a:li, 2, s:bg)])
 	  \. ' gui='     . get(a:li, 6, 'none')
 endf
 
