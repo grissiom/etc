@@ -34,7 +34,7 @@ let colors_name = "dark_light256"
 " Start highlight configrations
 """""""""""""""""""""""""""""""
 " let them could be accessed by functions easily.
-" FIXME: or just set them to 'none'?
+" FIXME: or just set them to 'none' in other places?
 let s:bg=0
 let s:fg=250
 
@@ -56,7 +56,7 @@ let s:hi_conf += [
 \['Special',    171],
 \['Ignore',     238],
 \['Error',      196,  52,   'bold'],
-\['Todo',       0,    130],
+\['Todo',       0,    94],
 \]
 
 "" Diff
@@ -82,8 +82,8 @@ let s:hi_conf += [
 \['LineNr',      94],
 \['MatchParen',  s:fg,  238,  'underline'],
 \['Visual',      s:fg,  237],
-\['IncSearch',   s:fg,  8],
-\['Search',      s:fg,  8],
+\['IncSearch',   s:fg,  130],
+\['Search',      s:fg,  130],
 \
 \['FoldColumn',  240,   s:bg, 'bold'],
 \
