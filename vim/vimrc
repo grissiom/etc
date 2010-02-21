@@ -113,9 +113,8 @@ let Tlist_Process_File_Always = 1
 "}}}
 
 " Misc {{{
-" provide middle button drag copy and paste
-" but thus the mouse could not trigger visual mode
-set mouse=r
+" Hold Shift when you want to copy/paste with X.
+set mouse=a
 
 " make Chinese text format available
 set formatoptions+=mM
