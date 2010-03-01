@@ -11,7 +11,11 @@ set smarttab
 set softtabstop=8
 set autoindent
 
-set encoding=utf-8
+if has('win32') || has('win64') || has('win32unix')
+	set encoding=cp936
+else
+	set encoding=utf-8
+endif
 " http://blog.sina.com.cn/s/blog_5562534d0100000j.html
 " text not garbled with this option ;D
 set fileencodings=utf-8,gb18030,utf-16,big5
@@ -50,7 +54,7 @@ set ambiwidth=single
 if &term =~ 'xterm'
 	set t_Co=256
 	colorscheme dark_light256
-elseif &term = 'builgin_gui'
+elseif &term == 'builgin_gui'
 	colorscheme dark_light256
 endif
 if has('win32') || has('win64') || has('win32unix')
