@@ -48,8 +48,13 @@ set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
 set ambiwidth=single
 
 if &term =~ 'xterm'
-  set t_Co=256
-  colorscheme dark_light256
+	set t_Co=256
+	colorscheme dark_light256
+elseif &term = 'builgin_gui'
+	colorscheme dark_light256
+endif
+if has('win32') || has('win64') || has('win32unix')
+	set guifont=Consolas:h15:cDEFAULT
 endif
 
 "colorscheme inkpot
