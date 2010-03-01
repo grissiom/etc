@@ -6,8 +6,8 @@
 	#. /etc/profile
 #fi
 
-# update mine database at login to avoid some problems.
-update-mime-database ~/.local/share/mime
+## update mine database at login to avoid some problems.
+#update-mime-database ~/.local/share/mime
 
 export LC_ALL=zh_CN.UTF-8
 
