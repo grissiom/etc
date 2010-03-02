@@ -51,10 +51,10 @@ set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
 " 设置成 double 反而会出问题…
 set ambiwidth=single
 
-if &term =~ 'xterm'
-	set t_Co=256
+if has('gui_running')
 	colorscheme dark_light256
-elseif &term == 'builgin_gui'
+elseif &term =~ 'xterm'
+	set t_Co=256
 	colorscheme dark_light256
 endif
 if has('win32') || has('win64') || has('win32unix')
