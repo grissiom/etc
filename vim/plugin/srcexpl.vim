@@ -190,6 +190,15 @@ if !exists('g:SrcExpl_updateTagsKey')
     let g:SrcExpl_updateTagsKey = ''
 endif
 
+if exists('g:SrcExpl_HighLight')
+    let highlight = g:SrcExpl_HighLight
+else
+    let highlight = "term=bold guifg=Black guibg=Magenta ctermfg=Black ctermbg=Magenta"
+endif
+if highlight !~ '^$'
+    exe "hi SrcExpl_HighLight " . highlight
+endif
+
 " }}}
 
 " Global variables {{{
@@ -623,6 +632,7 @@ function! <SID>SrcExpl_SelToJump()
     let l:expr = substitute(l:expr,  '\]',  '\\\]', 'g')
     " Use EX Command to Jump to the exact position of the definition
     silent! exe l:expr
+    nohlsearch
 
     " Match the symbol
     call <SID>SrcExpl_MatchExpr()
@@ -647,10 +657,11 @@ endfunction " }}}
 function! <SID>SrcExpl_ColorExpr()
 
     " Set the highlight color
-    hi SrcExpl_HighLight term=bold guifg=Black guibg=Magenta ctermfg=Black ctermbg=Magenta
     " Highlight this
-    exe 'match SrcExpl_HighLight "\%' . line(".") . 'l\%' . 
-        \ col(".") . 'c\k*"'
+    if hlID('SrcExpl_HighLight')
+        exe 'match SrcExpl_HighLight "\%' . line(".") . 'l\%' .
+            \ col(".") . 'c\k*"'
+    endif
 
 endfunction " }}}
 
@@ -834,6 +845,7 @@ function! <SID>SrcExpl_ViewOneDef(fpath, excmd)
         let l:expr = substitute(l:expr,  '\]',  '\\\]', 'g')
         " Execute EX command according to the parameter
         silent! exe l:expr
+        nohlsearch
         " Match the symbol
         call <SID>SrcExpl_MatchExpr()
         " Highlight the symbol
@@ -944,7 +956,11 @@ endfunction " }}}
 function! <SID>SrcExpl_GetSymbol()
 
     " Get the current character under the cursor
-    let l:cchar = getline(".")[col(".") - 1]
+	let l:cline = getline(".")
+	if l:cline =~ "^$"
+			return -4
+	endif
+    let l:cchar = l:cline[col(".") - 1]
     " Get the current word under the cursor
     let l:cword = expand("<cword>")
 
@@ -1048,9 +1064,6 @@ endfunction " }}}
 
 function! <SID>SrcExpl_InitVimEnv()
 
-    " Not highlight the word that had been searched
-    " Because execute EX command will active a search event
-    exe "set nohlsearch"
     " Auto change current work directory
     exe "set autochdir"
     " Let Vim find the possible tags file
