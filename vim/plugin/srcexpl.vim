@@ -237,7 +237,7 @@ function! g:SrcExpl_UpdateTags()
                 echo "SrcExpl: Creating 'tags' file in (". expand('%:p:h') . ")"
             echohl None
             " Call the external 'ctags' utility program
-            exe "!" . g:SrcExpl_updateTagsCmd
+            call system(g:SrcExpl_updateTagsCmd)
             " Rejudge the tags file if existed
             if !filereadable("tags")
                 " Tell them what happened
@@ -262,7 +262,7 @@ function! g:SrcExpl_UpdateTags()
                 echo "SrcExpl: Updating 'tags' file in (". expand('%:p:h') . ")"
             echohl None
             " Call the external 'ctags' utility program
-            exe "!" . g:SrcExpl_updateTagsCmd
+            call system(g:SrcExpl_updateTagsCmd)
         " Up to other directories
         else
             " Prompt the whole path of the tags file
@@ -274,7 +274,7 @@ function! g:SrcExpl_UpdateTags()
             " Go to the directory that contains the old tags file
             silent! exe "cd " . tagfiles()[0][:-5]
             " Call the external 'ctags' utility program
-            exe "!" . g:SrcExpl_updateTagsCmd
+            call system(g:SrcExpl_updateTagsCmd)
            " Go back to the original work directory
            silent! exe "cd " . l:tmp
         endif
