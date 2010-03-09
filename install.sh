@@ -29,8 +29,8 @@ ln -fsT ${PWD}/shells/zsh/zshrc ~/.zshrc
 mkdir -p ~/bin
 
 # Vim staff:
-ln -fsT ${PWD}/vim/vimrc ~/.vimrc
-ln -fsT ${PWD}/vim ~/.vim
+ln -fsT ${PWD}/vimfiles/vimrc ~/.vimrc
+ln -fsT ${PWD}/vimfiles ~/.vim
 
 # X related
 ln -fsT ${PWD}/xorg/Xmodmap ~/.Xmodmap
