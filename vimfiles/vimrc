@@ -177,7 +177,7 @@ let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 " // Set "<F12>" key for updating the tags file artificially
 let g:SrcExpl_updateTagsKey = "<F12>"
 
-let g:SrcExpl_HighLight = 'ctermbg=148 guibg=afdf00'
+let g:SrcExpl_HighLight = 'ctermbg=148 guibg=#afdf00'
 
 " Open and close all the three plugins on the same time 
 nmap <F8>   :TrinityToggleAll<CR>
