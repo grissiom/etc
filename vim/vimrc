@@ -19,6 +19,7 @@ endif
 " http://blog.sina.com.cn/s/blog_5562534d0100000j.html
 " text not garbled with this option ;D
 set fileencodings=utf-8,gb18030,utf-16,big5
+set incsearch
 "}}}
 
 " UI setup {{{
@@ -60,10 +61,10 @@ endif
 if has('win32') || has('win64') || has('win32unix')
 	set guifont=Consolas:h15:cDEFAULT
 endif
-
 "colorscheme inkpot
 "colorscheme miko
 "set background=dark
+set hlsearch
 "}}}
 
 " Mapping {{{
@@ -145,7 +146,7 @@ nmap <F8> :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8
 
 " // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 100
+let g:SrcExpl_refreshTime = 300
 
 " // Set "Enter" key to jump into the exact definition context
 let g:SrcExpl_jumpKey = "<ENTER>"
@@ -175,6 +176,8 @@ let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 
 " // Set "<F12>" key for updating the tags file artificially
 let g:SrcExpl_updateTagsKey = "<F12>"
+
+let g:SrcExpl_HighLight = 'ctermbg=148 guibg=afdf00'
 
 " Open and close all the three plugins on the same time 
 nmap <F8>   :TrinityToggleAll<CR>
