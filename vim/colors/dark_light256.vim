@@ -46,7 +46,7 @@ let s:hi_conf += [
 \['Comment',    31],
 \['Constant',   131],
 \['Number',     68],
-\['Identifier', 94, 'none', 'bold'],
+\['Identifier', 130, 'none', 'bold'],
 \['Operator',   178],
 \['Statement',  111],
 \['Special',    5],
@@ -83,7 +83,7 @@ let s:hi_conf += [
 \['MatchParen',  s:fg,  238,  'underline'],
 \['Visual',      s:fg,  237],
 \['IncSearch',   s:fg,  130],
-\['Search',      s:fg,  130],
+\['Search',      s:fg,  58],
 \
 \['FoldColumn',  240,   s:bg, 'bold'],
 \
