@@ -10,6 +10,7 @@ function FindProxyForURL(url, host) {
 	//if (dnsDomainIs(host, "docs.google.com")) {
 		//return "PROXY www.google.cn:443";
 	//}
+	//return "SOCKS 127.0.0.1:2012";
 
 	if (shExpMatch(host, "*.blogspot.com") ||
 	    shExpMatch(url, "*code.google.com/p/gappproxy/*") ||
@@ -21,7 +22,13 @@ function FindProxyForURL(url, host) {
 	    shExpMatch(host, "twitter.com") ||
 	    shExpMatch(host, "*.twimg.com") ||
 	    shExpMatch(host, "*golang.org") ||
+	    dnsDomainIs(host, "marguerite.su") ||
+	    dnsDomainIs(host, "www.sysresccd.org") ||
 	    dnsDomainIs(host, "bit.ly") ||
+	    dnsDomainIs(host, "is.gd") ||
+	    dnsDomainIs(host, "www.newyorker.com") ||
+	    dnsDomainIs(host, "upload.wikimedia.org") ||
+	    dnsDomainIs(host, "freemorenews.com") ||
 	    dnsDomainIs(host, "codereview.chromium.org") ||
 	    dnsDomainIs(host, "dev.chromium.org") ||
 	    dnsDomainIs(host, "userscripts.wikidot.com") ||
@@ -31,10 +38,11 @@ function FindProxyForURL(url, host) {
 	    dnsDomainIs(url, "http://creativecommons.org/licenses/by-nc/2.5/cn/deed.en_US") ||
 	    dnsDomainIs(host, "www.mail-archive.com") ||
 	    dnsDomainIs(host, "tools.google.com")
-	   )
-		// Use ipv6 for them. They need https.
-		//shExpMatch(host, "*.blogger.com")  ||
-		return "PROXY 127.0.0.1:8000"
+	   ) {
+		   return "PROXY 127.0.0.1:8000";
+	}
+	if (dnsDomainIs(host, "www.youtube.com")
+			return "SOCKS 127.0.0.1:2012";
 
 	//if ( dnsDomainIs(host,  ".edu") )
 		//return "PROXY 127.0.0.1:8000";
