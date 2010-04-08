@@ -20,6 +20,9 @@ endif
 " text not garbled with this option ;D
 set fileencodings=utf-8,gb18030,utf-16,big5
 set fileencoding=utf-8
+" allow backspacing over everything in insert mode
+" gvim need this...
+set backspace=indent,eol,start
 set incsearch
 "}}}
 
