@@ -79,6 +79,12 @@ elseif exists("b:current_syntax")
   finish
 endif
 
+" local setting:
+let python_highlight_all=1
+let python_slow_sync=1
+let python_highlight_indent_errors=0
+let python_highlight_space_errors=0
+
 if exists("python_highlight_all") && python_highlight_all != 0
   " Not override previously set options
   if !exists("python_highlight_builtins")
