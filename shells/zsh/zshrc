@@ -39,14 +39,14 @@ setopt promptsubst
 unsetopt transient_rprompt # leave the pwd
 
 get_git_branch() {
-	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null)
-	if [ -n "$BRANCH_REFS" ]; then
+	git_br=$(git symbolic-ref HEAD 2>/dev/null)
+	if [ -n "$git_br" ]; then
 		if git diff --quiet; then
 			git_st=$'${C_GREEN}clean$C_OFF'
 		else
 			git_st=$'${C_RED}dirty$C_OFF'
 		fi
-		echo $'${C_GREEN}'"git branch:${BRANCH_REFS#refs/heads/}, $git_st"$'$C_OFF'
+		echo $'${C_GREEN}'"git branch:${git_br#refs/heads/}, $git_st"$'$C_OFF'
 	fi
 }
 
