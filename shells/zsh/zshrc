@@ -33,35 +33,23 @@ _C_OFF="$terminfo[sgr0]"
 
 # prompt {{{
 #autoload -U promptinit
-#promptinit
-#prompt adam2
-
-## set the prompt
-#set_prompt() {
-#   #myjobs=()
-#   #for a (${(k)jobstates}) {
-#   #    j=$jobstates[$a];i="${${(@s,:,)j}[2]}"
-#   #    myjobs+=($a${i//[^+-]/})
-#   #}
-#   #myjobs=${(j:,:)myjobs}
-#   #((MAXMID=${COLUMNS} / 3)) # truncate to this value
-#   #RPS1="$RPSL$C_YELLOW%(1j.[$myjobs]% $C_OFF .$C_OFF)"
-#   rehash
-#
-#   # other variable name doesn't work...
-#   RPS1="$C_YELLOW%(1j.(%j jobs). )$C_OFF"
-#}
-#RPSL=$'$C_OFF'
-#RPS2='%^'
 
 # load prompt functions
 setopt promptsubst
 unsetopt transient_rprompt # leave the pwd
 
-#precmd()  {
-#   set_prompt
-#   #print -Pn "\e]0;%n@$__IP:%l\a"
-#}
+get_git_branch() {
+	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null)
+	if [ -n "$BRANCH_REFS" ]; then
+		if git diff --quiet; then
+			git_st=$'${C_GREEN}clean$C_OFF'
+		else
+			git_st=$'${C_RED}dirty$C_OFF'
+		fi
+		echo $'${C_GREEN}'"git branch:${BRANCH_REFS#refs/heads/}, $git_st"$'$C_OFF'
+	fi
+}
+
 RPSR=$'$C_OFF$C_L_RED%(0?.$C_L_GREEN.exit(%?%))$C_OFF'
 PS_DATE=$'$C_RED%D{%F} %T$C_OFF'
 PS_USER=$'%(!.$C_RED.$C_GREEN)%B%n%b$C_OFF'
@@ -69,9 +57,12 @@ PS_HOST=$'$C_GREY@%M$C_OFF'
 PS_PWD=$'$C_L_GREEN%$(echo $COLUMNS / 3 | bc)<..<%~$C_OFF'
 PS_PROMPT=$'%(!.$C_RED#.$C_GREEN%%)$C_OFF'
 PS_JOBS=$'$C_YELLOW%(1j.(%j jobs).)$C_OFF'
-PS1="
-        $PS_USER $PS_DATE $PS_HOST $PS_JOBS  $RPSR
+precmd()  {
+	PS1="
+	$PS_USER $PS_DATE $PS_HOST $PS_JOBS  $RPSR $(get_git_branch)
 $PS_PWD$PS_PROMPT "
+}
+
 #}}}
 
 # alias {{{
@@ -94,7 +85,7 @@ alias man='vimman.sh'
 
 # cd ~dir_name
 hash -d losrc='/usr/local/src/'
-hash -d kaoyan='/win_backyard/北京航空航天大学/考研/'
+hash -d lshj='/win_backyard/projects/拉伸机/2010 开发/'
 # End alais }}}
 
 # Env {{{
