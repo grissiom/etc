@@ -17,6 +17,7 @@
 %初号 42.16pt/42bp
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{BUAApaper}[2006/03/19 V0.1 by WangNan]
+% Add some XeLateX options by Grissiom<chaos.proton@gmail.com>, 2010/05/01
 
 \newif\ifBUA@dvipdfm
 \newif\ifBUA@xelatex
