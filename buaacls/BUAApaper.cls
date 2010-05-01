@@ -1,20 +1,20 @@
 %\tracingmacros=1
-%°ËºÅ 5.02pt/5bp 
-%ÆßºÅ 5.52pt/5.5bp
-%Ğ¡Áù 6.52pt/6.5bp
-%ÁùºÅ 7.53pt/7.5bp
-%Ğ¡Îå 9.03pt/9bp
-%ÎåºÅ 10.54pt/10.5bp
-%Ğ¡ËÄ 12.05pt/12bp
-%ËÄºÅ 14.05pt/14bp
-%Ğ¡Èı 15.06pt/15bp
-%ÈıºÅ 16.06pt/16bp
-%Ğ¡¶ş 18.07pt/18bp
-%¶şºÅ 22.08pt/22bp
-%Ğ¡Ò» 24.09pt/24bp
-%Ò»ºÅ 26.10pt/26bp
-%Ğ¡³õ(?)36.14pt/36bp
-%³õºÅ 42.16pt/42bp
+%å…«å· 5.02pt/5bp 
+%ä¸ƒå· 5.52pt/5.5bp
+%å°å…­ 6.52pt/6.5bp
+%å…­å· 7.53pt/7.5bp
+%å°äº” 9.03pt/9bp
+%äº”å· 10.54pt/10.5bp
+%å°å›› 12.05pt/12bp
+%å››å· 14.05pt/14bp
+%å°ä¸‰ 15.06pt/15bp
+%ä¸‰å· 16.06pt/16bp
+%å°äºŒ 18.07pt/18bp
+%äºŒå· 22.08pt/22bp
+%å°ä¸€ 24.09pt/24bp
+%ä¸€å· 26.10pt/26bp
+%å°åˆ(?)36.14pt/36bp
+%åˆå· 42.16pt/42bp
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{BUAApaper}[2006/03/19 V0.1 by WangNan]
 
@@ -22,7 +22,7 @@
 \newif\ifBUA@xelatex
 \newif\ifBUA@nobookmark
 \newif\ifBUA@NoBUAATitle
-%% ÕâÒ»Ò³ÊÇ·ñÊÇ·âÃæºÍ·âµ×
+%% è¿™ä¸€é¡µæ˜¯å¦æ˜¯å°é¢å’Œå°åº•
 \newif\ifBUA@TITLE
 \BUA@dvipdfmfalse
 \BUA@xelatexfalse
@@ -35,7 +35,7 @@
 \DeclareOption{bigtitle}{\BUA@TITLEtrue}
 
 
-%% Ã»ÓĞ±±º½ÂÛÎÄÊ½µÄ±êÌâ£¬ÓÃÓÚÒëÎÄ
+%% æ²¡æœ‰åŒ—èˆªè®ºæ–‡å¼çš„æ ‡é¢˜ï¼Œç”¨äºè¯‘æ–‡
 \DeclareOption{NoBUAAtitle}{\BUA@NoBUAATitletrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
@@ -54,18 +54,18 @@
 		hoffset=0pt, voffset=0pt, tmargin=0pt, lmargin=0pt, rmargin=0pt]{geometry}
 	\fi
 \fi
-%Ê¹ÓÃÁËcs4sizeÑ¡Ïî»áÒıÆğ¶îÍâµÄÉÏ±ß¾à¡£
-%%¶ÁÈ¡ºê°ü
+%ä½¿ç”¨äº†cs4sizeé€‰é¡¹ä¼šå¼•èµ·é¢å¤–çš„ä¸Šè¾¹è·ã€‚
+%%è¯»å–å®åŒ…
 %%\RequirePackage[a4paper]{anysize}
 \RequirePackage{times}
-%%±í¸ñÒªÓĞ´ÖÏß
+%%è¡¨æ ¼è¦æœ‰ç²—çº¿
 \RequirePackage{booktabs}
 
 \RequirePackage[sort&compress]{natbib}
 \bibpunct{[}{]}{,}{n}{}{}
 \RequirePackage{hypernat}
 
-%±¾À´ÓÃ natbib µÄ super Ñ¡Ïî¾Í¿ÉÒÔÊµÏÖÉÏ±ê, µ«²»ÖªÎªºÎÃ»ÓĞÖĞÀ¨ºÅÁË
+%æœ¬æ¥ç”¨ natbib çš„ super é€‰é¡¹å°±å¯ä»¥å®ç°ä¸Šæ ‡, ä½†ä¸çŸ¥ä¸ºä½•æ²¡æœ‰ä¸­æ‹¬å·äº†
 \let\cite@save=\cite
 \newcommand{\upcite}[1]{\textsuperscript{\cite@save{#1}}}
 %\newcommand{\upcite}[1]{\relax}
@@ -74,7 +74,7 @@
  \RequirePackage[dvipdfm]{graphicx}
  \RequirePackage[dvipdfm,
    hyperindex,
-    %hypertex,%%Ñ¡ÁËhypertex¾ÍÃ»ÓĞBookmark£¬ÕâÊÇÊ²Ã´µÀÀí£¡
+    %hypertex,%%é€‰äº†hypertexå°±æ²¡æœ‰Bookmarkï¼Œè¿™æ˜¯ä»€ä¹ˆé“ç†ï¼
    colorlinks,linkcolor=blue,
    citecolor=blue,
    CJKbookmarks, pdfstartview=FitH,
@@ -117,16 +117,14 @@ bookmarks=false,
 \RequirePackage{ifthen}
 \RequirePackage{CJKfntef}
 
-
-
-%%°æÃæ²¼¾Ö
+%%ç‰ˆé¢å¸ƒå±€
 \newlength\lengthA
 \newlength\lengthB
 \newlength\lengthC
-\setlength{\hoffset}{-1in} %È¡Ïû×ó±ß¾à
-\setlength{\voffset}{-1in} %È¡ÏûÉÏ±ß¾à
+\setlength{\hoffset}{-1in} %å–æ¶ˆå·¦è¾¹è·
+\setlength{\voffset}{-1in} %å–æ¶ˆä¸Šè¾¹è·
 \ifBUA@TITLE
-	\setlength{\topmargin}{0mm} %Ò³Ã¼¾àÉÏ±ß½ç0mm
+	\setlength{\topmargin}{0mm} %é¡µçœ‰è·ä¸Šè¾¹ç•Œ0mm
 	\setlength{\oddsidemargin}{0mm}
 	\setlength{\evensidemargin}{0mm}
 	\setlength{\headheight}{0mm}
@@ -134,15 +132,15 @@ bookmarks=false,
 	\setlength{\headsep}{0pt}
 	\setlength{\marginparpush}{0pt}
 	%\setlength{\textwidth}{420mm}
-	%\setlength{\textheight}{670.8bp} %%Á¿µÄ
+	%\setlength{\textheight}{670.8bp} %%é‡çš„
 	\ifBUA@NoBUAATitle
 		\setlength{\textheight}{670.8bp}
 	\else
-		\setlength{\textheight}{750bp} %%±êÌâÒ³Õâ¸öÖµÓ¦Îª694.2, maketitleºó¸Ä»ØÀ´
+		\setlength{\textheight}{750bp} %%æ ‡é¢˜é¡µè¿™ä¸ªå€¼åº”ä¸º694.2, maketitleåæ”¹å›æ¥
 	\fi	
-	\renewcommand{\baselinestretch}{1.5} %%1.5±¶ĞĞ¾à
+	\renewcommand{\baselinestretch}{1.5} %%1.5å€è¡Œè·
 \else
-	\setlength{\topmargin}{10mm} %Ò³Ã¼¾àÉÏ±ß½ç10mm
+	\setlength{\topmargin}{10mm} %é¡µçœ‰è·ä¸Šè¾¹ç•Œ10mm
 	\setlength{\oddsidemargin}{30mm}
 	\setlength{\evensidemargin}{30mm}
 	\setlength{\headheight}{25mm}
@@ -150,38 +148,38 @@ bookmarks=false,
 	\setlength{\headsep}{0pt}
 	\setlength{\marginparpush}{0pt}
 	\setlength{\textwidth}{456bp}
-	%\setlength{\textheight}{670.8bp} %%Á¿µÄ
+	%\setlength{\textheight}{670.8bp} %%é‡çš„
 	\ifBUA@NoBUAATitle
 		\setlength{\textheight}{670.8bp}
 	\else
-		\setlength{\textheight}{750bp} %%±êÌâÒ³Õâ¸öÖµÓ¦Îª694.2, maketitleºó¸Ä»ØÀ´
+		\setlength{\textheight}{750bp} %%æ ‡é¢˜é¡µè¿™ä¸ªå€¼åº”ä¸º694.2, maketitleåæ”¹å›æ¥
 	\fi	
-\renewcommand{\baselinestretch}{1.5} %%1.5±¶ĞĞ¾à
+\renewcommand{\baselinestretch}{1.5} %%1.5å€è¡Œè·
 \fi
 
 
-%¶¨ÒåÒ³Ã¼Ò³½Å
+%å®šä¹‰é¡µçœ‰é¡µè„š
 \pagestyle{fancy}
 
 \newbox\buaamark
-\setbox\buaamark=\hbox{\includegraphics[width=45bp]{graphics/buaamark.eps}}
+\setbox\buaamark=\hbox{\includegraphics[width=45bp]{graphics/buaamark}}
 
 
-\newcommand{\titletext}{\rmfamily \bfseries ±±¾©º½¿Õº½Ìì´óÑ§±ÏÒµÉè¼Æ£¨ÂÛÎÄ£©}
+\newcommand{\titletext}{\rmfamily \bfseries åŒ—äº¬èˆªç©ºèˆªå¤©å¤§å­¦æ¯•ä¸šè®¾è®¡ï¼ˆè®ºæ–‡ï¼‰}
 \newcommand{\titlesize}{250bp}
 %\newcommand{\title}
-\lhead{\strut{\lower5pt\copy\buaamark}\strut} %ÏÂ³ÁÒ»Ğ©£¬ÒÔ±ãÈÃmarkºÍÒ³Ã¼Ïß¾àÀëÎª1bp,Îª¼ò±ãÆğ¼û£¬¸ÄÎª1pt
+\lhead{\strut{\lower5pt\copy\buaamark}\strut} %ä¸‹æ²‰ä¸€äº›ï¼Œä»¥ä¾¿è®©markå’Œé¡µçœ‰çº¿è·ç¦»ä¸º1bp,ä¸ºç®€ä¾¿èµ·è§ï¼Œæ”¹ä¸º1pt
 \chead{\flushleft\hbox{\hskip 79bp\hbox to \titlesize{\zihao{-3}\titletext}%
-\hskip 72bp \zihao{5}\hbox to 54bp{\rmfamily\upshape µÚ \hfil \thepage \hfil Ò³}}} %¶¼ÊÇÁ¿³öÀ´µÄ£¬²»×¼È·
+\hskip 72bp \zihao{5}\hbox to 54bp{\rmfamily\upshape ç¬¬ \hfil \thepage \hfil é¡µ}}} %éƒ½æ˜¯é‡å‡ºæ¥çš„ï¼Œä¸å‡†ç¡®
 \rhead{}
 \lfoot{}\cfoot{}\rfoot{}
-%\renewcommand{\headrulewidth}{0.5bp} %Ò³Ã¼Ïß¿í¶È
+%\renewcommand{\headrulewidth}{0.5bp} %é¡µçœ‰çº¿å®½åº¦
 
-%% ½â¾öÒ³ÂëÎÊÌâ¡£Ö®ËùÒÔ¸ãµÄÕâÃ´¸´ÔÓÊÇÒıÎª: latex ²»Ïó plaintex ÓÃ¸ºÊı±íÊ¾
-%% frontmatterµÄÒ³Âë, Èç¹ûmainlatterÖØĞÂÉèÖÃÒ³Âë¾Í»áÒı·¢dvipdfmxµÄWarning¡£ÁíÍâ(¿É
-%% ÄÜÊÇ)CTeXµÄBugµ¼ÖÂ²»ÄÜÔÚthepageÖĞsetcounter.(ctex Õâ¸ö BUG ÒÑ¾­ÔÚÎÒµÄĞ­ÖúÏÂ½â¾öÁË)
+%% è§£å†³é¡µç é—®é¢˜ã€‚ä¹‹æ‰€ä»¥æçš„è¿™ä¹ˆå¤æ‚æ˜¯å¼•ä¸º: latex ä¸è±¡ plaintex ç”¨è´Ÿæ•°è¡¨ç¤º
+%% frontmatterçš„é¡µç , å¦‚æœmainlatteré‡æ–°è®¾ç½®é¡µç å°±ä¼šå¼•å‘dvipdfmxçš„Warningã€‚å¦å¤–(å¯
+%% èƒ½æ˜¯)CTeXçš„Bugå¯¼è‡´ä¸èƒ½åœ¨thepageä¸­setcounter.(ctex è¿™ä¸ª BUG å·²ç»åœ¨æˆ‘çš„ååŠ©ä¸‹è§£å†³äº†)
 
-%% ÏÖÔÚµÄÎÊÌâÊÇÓÃÁË calc ºó²»ÄÜÔÚ thepage ÖĞ setcounter
+%% ç°åœ¨çš„é—®é¢˜æ˜¯ç”¨äº† calc åä¸èƒ½åœ¨ thepage ä¸­ setcounter
 \newcounter{tmp} \newcounter{fend} \newcounter{displaypage}
 \makeatletter
 \let\BUA@save@outputpage=\@outputpage
@@ -191,10 +189,10 @@ bookmarks=false,
 \newcommand{\frontmatter}{\relax\setcounter{page}{1}%
 	\gdef\thepage{\Roman{page}}}
 
-%%Ò³Ã¼ºÍÏÂÃæµÄÎÄ±¾Ïà¾à16pt.
+%%é¡µçœ‰å’Œä¸‹é¢çš„æ–‡æœ¬ç›¸è·16pt.
 \setlength{\headsep}{16pt}
 
-%%Ê¹ÓÃÊúÖ±µÄ»ı·ÖºÅ
+%%ä½¿ç”¨ç«–ç›´çš„ç§¯åˆ†å·
 \let\oldintop\intop
 \def\oldint{\oldintop\nolimits}
 
@@ -208,50 +206,50 @@ bookmarks=false,
 
 \DeclareSymbolFont{euexsymbols}     {U}{euex}{m}{n}
 \DeclareMathSymbol{\smallint}{\mathop}{euexsymbols}{"52}
-\CJKtilde
+%\CJKtilde
 
-%¶¨ÒåÖĞÓ¢ÎÄµÄ×÷Õß±êÌâµ¼Ê¦ÒÔ¼°µ¥Î»´úÂë¡¢Ñ§ºÅ¡¢·ÖÀàºÅ¡¢ÃÜ¼¶
+%å®šä¹‰ä¸­è‹±æ–‡çš„ä½œè€…æ ‡é¢˜å¯¼å¸ˆä»¥åŠå•ä½ä»£ç ã€å­¦å·ã€åˆ†ç±»å·ã€å¯†çº§
 \gdef\@etitle{English Title}
 \newcommand{\etitle}[1]{\gdef\@etitle{#1}}
 
 \gdef\@eauthor{Zhang San}
 \newcommand{\eauthor}[1]{\gdef\@eauthor{#1}}
 
-%·ÖÀàºÅ
+%åˆ†ç±»å·
 \gdef\@classification{TP000}
 \newcommand{\classification}[1]{\gdef\@classification{#1}}
 
-%Ñ§ºÅ
+%å­¦å·
 \gdef\@studentnumber{3X000000}
 \newcommand{\studentnumber}[1]{\gdef\@studentnumber{#1}}
 
-%µ¥Î»´úÂë
+%å•ä½ä»£ç 
 \gdef\@unitcode{TP10000}
 \newcommand{\unitcode}[1]{\gdef\@unitcode{#1}}
 
-\gdef\@confidential{²»ÉæÃÜ}
+\gdef\@confidential{ä¸æ¶‰å¯†}
 \newcommand{\confidential}[1]{\gdef\@confidential{#1}}
 
-%ÔºÏµÃû³Æ
-\gdef\@schoolname{¼ÆËã»úÑ§Ôº}
+%é™¢ç³»åç§°
+\gdef\@schoolname{è®¡ç®—æœºå­¦é™¢}
 \newcommand{\schoolname}[1]{\gdef\@schoolname{#1}}
 
-%×¨ÒµÃû³Æ
-\gdef\@specialty{¼ÆËã»ú¿ÆÑ§Óë¼¼Êõ}
+%ä¸“ä¸šåç§°
+\gdef\@specialty{è®¡ç®—æœºç§‘å­¦ä¸æŠ€æœ¯}
 \newcommand{\specialty}[1]{\gdef\@specialty{#1}}
 
-\gdef\@advisor{ÍõĞ¡Îå}
+\gdef\@advisor{ç‹å°äº”}
 \gdef\@eadvisor{Wang Xiaowu}
 \newcommand{\advisor}[2]{\gdef\@advisor{#1}\gdef\@eadvisor{#2}}
 
-\gdef\@cabsname{ÕªÒª}
-\gdef\@ckeyword{ÖĞÎÄ¹Ø¼ü´Ê}
+\gdef\@cabsname{æ‘˜è¦}
+\gdef\@ckeyword{ä¸­æ–‡å…³é”®è¯}
 \gdef\@ekeyword{English Keyword}
 \newcommand{\buaakeyword}[2]{\gdef\@ckeyword{#1}%
 	\gdef\@ekeyword{#2}}
 
 
-%ÖĞÎÄÕªÒª
+%ä¸­æ–‡æ‘˜è¦
 \newenvironment{cabstract}{%
 	\newpage
 	\vskip10.5bp
@@ -260,16 +258,16 @@ bookmarks=false,
 	\end{center}
 %\vskip15bp
 \hfill	{\begin{tabular}{cl}
-		\ziju{2}Ñ§Éú£º&\@author\\
-		Ö¸µ¼½ÌÊ¦£º&\@advisor\\
+		\ziju{2}å­¦ç”Ÿï¼š&\@author\\
+		æŒ‡å¯¼æ•™å¸ˆï¼š&\@advisor\\
 	\end{tabular}}
 	\begin{center}
-		\bf\zihao{3} \ziju{2}ÕªÒª
+		\bf\zihao{3} \ziju{2}æ‘˜è¦
 	\end{center}
 	\vskip15bp
 }{%
 	\vskip21bp
-	\noindent {\bf\zihao{4} ¹Ø¼ü´Ê£º}\@ckeyword
+	\noindent {\bf\zihao{4} å…³é”®è¯ï¼š}\@ckeyword
 }
 
 \newenvironment{eabstract}{%
@@ -280,8 +278,8 @@ bookmarks=false,
 	\end{center}
 %\vskip15bp
 \hfill	{\begin{tabular}{rl}
-		Author£º&\@eauthor\\
-		Tutor£º&\@eadvisor\\
+		Authorï¼š&\@eauthor\\
+		Tutorï¼š&\@eadvisor\\
 	\end{tabular}}
 	\vskip24bp
 	\centerline{\bf\zihao{3} Abstract}
@@ -293,10 +291,10 @@ bookmarks=false,
 	\noindent {\bf\zihao{4} Key words: }\@ekeyword
 }
 
-%ÔÚÏÂ»®ÏßÉÏĞ´×Ö, box0ÒªÔ¤ÏÈ¶¨Òå³ÉÏÂ»®Ïß
+%åœ¨ä¸‹åˆ’çº¿ä¸Šå†™å­—, box0è¦é¢„å…ˆå®šä¹‰æˆä¸‹åˆ’çº¿
 \newcommand{\@draw@right}[1]{\rlap{\copy0}{\raise 2pt\hbox to%
 	\wd0{\hfil\bf\zihao{5}#1\hfil}}}
-%·âÃæ
+%å°é¢
 \ifBUA@NoBUAATitle
 	%\relax
 	\let\maketitle@save=\maketitle
@@ -304,8 +302,8 @@ bookmarks=false,
 \else
 \renewcommand\maketitle{\begin{titlepage}%
 %%
-\setlength{\hoffset}{-1in} %È¡Ïû×ó±ß¾à
-\setlength{\voffset}{-1in} %È¡ÏûÒò¸÷ÖÖÔ­ÒòÒıÆğµÄÉÏ±ß¾à3pt, ÉÏ±ß¾à65bp
+\setlength{\hoffset}{-1in} %å–æ¶ˆå·¦è¾¹è·
+\setlength{\voffset}{-1in} %å–æ¶ˆå› å„ç§åŸå› å¼•èµ·çš„ä¸Šè¾¹è·3pt, ä¸Šè¾¹è·65bp
 \setlength{\oddsidemargin}{25mm}
 \setlength{\evensidemargin}{25mm}
 \setlength{\topmargin}{0mm}
@@ -315,9 +313,9 @@ bookmarks=false,
 \setlength{\headsep}{0pt}
 \setlength{\parindent}{0pt}
 \setlength{\parsep}{0pt}
-%¹¹ÔìÓÒÉÏ½ÇµÄÄÇÒ»×é¶«Î÷
+%æ„é€ å³ä¸Šè§’çš„é‚£ä¸€ç»„ä¸œè¥¿
 \newbox\test@width
-\setbox\test@width=\hbox{\bf\zihao{5}µ¥Î»´úÂë}%
+\setbox\test@width=\hbox{\bf\zihao{5}å•ä½ä»£ç }%
 \newlength\width@rt%
 \setlength{\width@rt}{\wd\test@width}%
 \newbox\table@rt
@@ -325,13 +323,13 @@ bookmarks=false,
 	\def\@the@line{\vrule width100bp height 0.75bp depth 0pt}%
 	\setbox0=\hbox{\@the@line}
 	\begin{tabular}{c}
-		\hbox to \width@rt{\bf\zihao{5}µ¥Î»´úÂë}\@draw@right{\@unitcode}\\
-		\hbox to \width@rt{\bf\zihao{5}Ñ§ \hfil ºÅ}\@draw@right{\@studentnumber}\\
-		\hbox to \width@rt{\bf\zihao{5}·Ö \hfil Àà\hfil ºÅ}\@draw@right{\@classification}\\
-		\hbox to \width@rt{\bf\zihao{5}ÃÜ \hfil ¼¶}\@draw@right{\@confidential}\\
+		\hbox to \width@rt{\bf\zihao{5}å•ä½ä»£ç }\@draw@right{\@unitcode}\\
+		\hbox to \width@rt{\bf\zihao{5}å­¦ \hfil å·}\@draw@right{\@studentnumber}\\
+		\hbox to \width@rt{\bf\zihao{5}åˆ† \hfil ç±»\hfil å·}\@draw@right{\@classification}\\
+		\hbox to \width@rt{\bf\zihao{5}å¯† \hfil çº§}\@draw@right{\@confidential}\\
 	\end{tabular}}
-%ÌâÄ¿ÔÚÕıÖĞ¼ä
-\newlength{\@title@pos}%ÌâÄ¿µÄÎ»ÖÃ
+%é¢˜ç›®åœ¨æ­£ä¸­é—´
+\newlength{\@title@pos}%é¢˜ç›®çš„ä½ç½®
 \setlength{\@title@pos}{413bp}
 %
 \newbox\@center@title@box
@@ -344,13 +342,13 @@ bookmarks=false,
 \setlength{\@tmp}{\@title@pos+\ht\@center@title@box+\dp\@center@title@box}
 \hrule height-\@tmp width0pt depth0pt
 \hrule height22mm depth0pt width0pt
-\vrule width9bp height0bp\includegraphics[width=90.05pt]{graphics/buaamark.eps}\hfill%
+\vrule width9bp height0bp\includegraphics[width=90.05pt]{graphics/buaamark}\hfill%
 	\raise\dp\table@rt\box\table@rt
 \hrule height0pt
 \vrule width 0bp height105.4bp
-\centerline{\includegraphics[width=362.25bp]{graphics/buaaname.eps}}
+\centerline{\includegraphics[width=362.25bp]{graphics/buaaname}}
 \vskip 47bp
-\centerline{\def~{\hskip1bp}\bf\zihao{-0}±Ï~Òµ~Éè~¼Æ~£¨~ÂÛ~ÎÄ~£©}
+\centerline{\def~{\hskip1bp}\bf\zihao{-0}æ¯•~ä¸š~è®¾~è®¡~ï¼ˆ~è®º~æ–‡~ï¼‰}
 \vskip200bp
 %
 \newbox\@tmp@strutbox
@@ -360,13 +358,13 @@ bookmarks=false,
 \def\@set@font{\bf\zihao{-3}}
 \def\baselinestretch{1.5}
 \begin{tabular}{c@{}c}
-{\copy\@tmp@strutbox\hbox to 122bp{\@set@font Ôº~£¨~Ïµ~£©~Ãû~³Æ}}&%
+{\copy\@tmp@strutbox\hbox to 122bp{\@set@font é™¢~ï¼ˆ~ç³»~ï¼‰~å~ç§°}}&%
 	\hbox to 218.55bp{\@set@font\ziju{0.1}\hfill\@schoolname\hfill}\\ \cline{2-2}
-{\copy\@tmp@strutbox\hbox to 122bp{\@set@font ×¨~Òµ~Ãû~³Æ}}&%
+{\copy\@tmp@strutbox\hbox to 122bp{\@set@font ä¸“~ä¸š~å~ç§°}}&%
 	\hbox to 218.55bp{\@set@font\ziju{0.1}\hfill\@specialty\hfill}\\ \cline{2-2}
-{\copy\@tmp@strutbox\hbox to 122bp{\@set@font Ñ§~Éú~ĞÕ~Ãû}}&%
+{\copy\@tmp@strutbox\hbox to 122bp{\@set@font å­¦~ç”Ÿ~å§“~å}}&%
 	\hbox to 218.55bp{\@set@font\ziju{0.1}\hfill\@author\hfill}\\ \cline{2-2}
-{\box\@tmp@strutbox\hbox to 122bp{\@set@font Ö¸~µ¼~½Ì~Ê¦}}&%
+{\box\@tmp@strutbox\hbox to 122bp{\@set@font æŒ‡~å¯¼~æ•™~å¸ˆ}}&%
 	\hbox to 218.55bp{\@set@font\ziju{0.1}\hfill\@advisor\hfill}\\ \cline{2-2}
 \end{tabular}
 \end{center}
@@ -382,10 +380,10 @@ bookmarks=false,
      {\ifnum \c@section>\z@ \thesection.\fi \@arabic\c@figure}
 \@addtoreset{figure}{section}
 
-\def\CTEX@appendixname{¸½Â¼}
+\def\CTEX@appendixname{é™„å½•}
 %\let\appendix@save=\appendix
-%\renewcommand{\appendix}{\appendix@save\renewcommand{\sectionname}{¸½Â¼}}
+%\renewcommand{\appendix}{\appendix@save\renewcommand{\sectionname}{é™„å½•}}
 
-%% Éú³ÉÊé¼¹
+%% ç”Ÿæˆä¹¦è„Š
 
 \endinput
