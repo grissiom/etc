@@ -1,31 +1,16 @@
 %!TEX TS-program = xelatex
 % XeLateX
-\input{ctex4xetex.cfg}
-
-
-\documentclass[xelatex]{BUAApaper}
-
-
-% XeLateX
-\XeTeXdefaultencoding "utf-8"
-\usepackage[BoldFont, SlantFont, CJKtextspaces]{xeCJK}
-\punctstyle{kaiming}
-%\setmainfont{DejaVu Sans}
-\setCJKmainfont{宋体}
-\setCJKmonofont{文泉驿正黑}
-
+\documentclass[xelatex, adobefonts]{BUAApaper}
 
 \bibliographystyle{BUAAbibsty}
 %\bibliographystyle{unsrt}
-%\input paper_preamble.tex
-
+\input paper_preamble.tex
 
 % XeLateX
 \usepackage{fontspec}%No options for fontspec
 \usepackage{xunicode}% provides unicode character macros
 \usepackage{xltxtra} % provides some fixes/extras
 \defaultfontfeatures{Mapping=tex-text}
-
 
 \begin{document}
 \author{张三}
@@ -44,7 +29,6 @@
 \maketitle
 \buaakeyword{第一, 第二}{First, Second}
 \setcounter{page}{0}
-
 
 \frontmatter
 \newpage
@@ -99,9 +83,8 @@
 \newpage
 \bibliography{bibs.bib}\addcontentsline{toc}{section}{参考文献}
 \appendix
-%\include{paper_appendixA}
-%\include{paper_appendixB}
-%\include{paper_appendixC}
+\include{paper_appendixA}
+\include{paper_appendixB}
+\include{paper_appendixC}
 \clearpage
 \end{document}
-
