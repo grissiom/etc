@@ -1,5 +1,6 @@
 [core]
 	pager = "less -+$LESS -RIM"
+	quotepath = false
 [user]
 	name = Grissiom
 	email = chaos.proton@gmail.com
@@ -16,4 +17,4 @@
 [color]
 	ui = auto
 [i18n]
-	logoutputencoding = UTF-8
+	logOutputEncoding = UTF-8
