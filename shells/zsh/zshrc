@@ -41,12 +41,12 @@ unsetopt transient_rprompt # leave the pwd
 get_git_branch() {
 	git_br=$(git symbolic-ref HEAD 2>/dev/null)
 	if [ -n "$git_br" ]; then
-		if git diff --quiet; then
-			git_st=$'${C_GREEN}clean$C_OFF'
-		else
-			git_st=$'${C_RED}dirty$C_OFF'
-		fi
-		echo $'${C_GREEN}'"git branch:${git_br#refs/heads/}, $git_st"$'$C_OFF'
+		#if git diff-files --quiet; then
+			#git_st=$', ${C_GREEN}clean$C_OFF'
+		#else
+			#git_st=$', ${C_RED}dirty$C_OFF'
+		#fi
+		echo $'${C_GREEN}'"git branch:${git_br#refs/heads/}$git_st"$'$C_OFF'
 	fi
 }
 
@@ -86,6 +86,7 @@ alias man='vimman.sh'
 # cd ~dir_name
 hash -d losrc='/usr/local/src/'
 hash -d lshj='/win_backyard/projects/拉伸机/2010 开发/'
+hash -d fy='/win_backyard/projects/负压控制系统/'
 # End alais }}}
 
 # Env {{{
