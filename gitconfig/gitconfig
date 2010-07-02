@@ -1,8 +1,5 @@
 [core]
 	pager = "less -+$LESS -RIM"
-[user]
-	name = Grissiom
-	email = chaos.proton@gmail.com
 [alias]
 	pl = pull
 	co = checkout
@@ -17,3 +14,20 @@
 	ui = auto
 [i18n]
 	logoutputencoding = UTF-8
+
+; Wind River
+[user]
+	name = Gu Rui
+	email = rui.gu@windriver.com
+[diff]
+	renamelimit = 0
+[color]
+	ui = auto
+
+[sendemail]
+	suppresscc = all 
+	smtpserver = smtp-na.wrs.com 
+	from = rui.gu@windriver.com 
+[sendmail]
+	chainreplyto = false 
+	nochainreplyto = true 

@@ -20,6 +20,7 @@ for rc_script in ~/.bashrc.d/*.sh ; do
 done
 unset rc_script
 
+LS_OPTIONS='-F -b --color=auto -h'
 ### copied from system
 alias d='dir'
 alias dir='/bin/ls $LS_OPTIONS --format=vertical'
@@ -36,7 +37,7 @@ alias more='less'
 alias cd_='cd /usr/local/src'
 alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
-alias ll='ls -l '
+alias ll='ls ${LS_OPTIONS} -l '
 
 ### copy from http://www.faqs.org/docs/abs/HTML/sample-bashrc.html
 # Define some colors first:
@@ -76,3 +77,15 @@ ${ps1_yellow}\w${ps1_nc}\$ "
 
 # let cd can correct mistype
 shopt -s cdspell
+
+# Wind River
+export PATH=/home/grissiom/wrlinux/bin/:$PATH
+
+# China git
+alias pek-git-init='if [ ! -d bin ] ; then git clone git://pek-git.wrs.com/git/bin ; fi ; (cd bin ; ./wrgit pull) ; export PATH=`pwd`/bin:$PATH;'
+alias pek-git-clone='wrgit clone git://pek-git.wrs.com/git/wrlinux-x'
+
+# quilt
+export QUILT_PATCHES=wrlinux_quilt_patches
+export QUILT_PC=.pc
+export WRLINUX_USE_QUILT=yes
