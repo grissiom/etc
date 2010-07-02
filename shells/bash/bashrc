@@ -75,8 +75,6 @@ DATE_PS1='$(date +"%-b%-d日 %A %R")'
 export PS1="\n        ${ps1_user}\u${ps1_nc} @gri: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
 ${ps1_yellow}\w${ps1_nc}\$ "
 
-# let cd can correct mistype
-shopt -s cdspell
 
 # Wind River
 export PATH=/home/grissiom/wrlinux/bin/:$PATH
@@ -89,3 +87,6 @@ alias pek-git-clone='wrgit clone git://pek-git.wrs.com/git/wrlinux-x'
 export QUILT_PATCHES=wrlinux_quilt_patches
 export QUILT_PC=.pc
 export WRLINUX_USE_QUILT=yes
+
+## let cd can correct mistype
+#shopt -s cdspell

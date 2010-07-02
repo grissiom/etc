@@ -69,6 +69,12 @@ case ${input_method} in
 	export GTK_IM_MODULE=XIM
 	export QT_IM_MODULE=XIM
 	;;
+	'sunpinyin')
+	export XIM=xsunpinyin
+	export XMODIFIERS="@im=xsunpinyin"
+	export GTK_IM_MODULE=XIM
+	export QT_IM_MODULE=XIM
+	;;
 esac
 
 # detect machine type. Many SlackBuilds use this value.
@@ -83,3 +89,7 @@ case $MACHINE in
 esac
 export ARCH
 unset MACHINE
+
+export GOROOT=$HOME/go
+export GOARCH=amd64
+export GOOS=linux

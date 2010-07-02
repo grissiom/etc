@@ -33,4 +33,11 @@ case ${input_method} in
 	# Launch fcitx after DE has brought up. Otherwise you will lost the system-tray
 	#fcitx -d
 	;;
+	'sunpinyin')
+	export XIM=xsunpinyin
+	export XMODIFIERS="@im=xsunpinyin"
+	export GTK_IM_MODULE=XIM
+	export QT_IM_MODULE=XIM
+	xsunpinyin -d
+	;;
 esac

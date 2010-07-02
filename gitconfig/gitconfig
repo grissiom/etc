@@ -1,5 +1,6 @@
 [core]
 	pager = "less -+$LESS -RIM"
+	quotepath = false
 [alias]
 	pl = pull
 	co = checkout
@@ -13,7 +14,7 @@
 [color]
 	ui = auto
 [i18n]
-	logoutputencoding = UTF-8
+	logOutputEncoding = UTF-8
 
 ; Wind River
 [user]
@@ -31,3 +32,4 @@
 [sendmail]
 	chainreplyto = false 
 	nochainreplyto = true 
+
