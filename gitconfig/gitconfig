@@ -30,4 +30,3 @@
 [sendmail]
 	chainreplyto = false 
 	nochainreplyto = true 
-
