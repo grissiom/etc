@@ -22,8 +22,6 @@
 	email = rui.gu@windriver.com
 [diff]
 	renamelimit = 0
-[color]
-	ui = auto
 
 [sendemail]
 	suppresscc = all 
