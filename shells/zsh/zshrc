@@ -9,7 +9,7 @@ unsetopt notify
 bindkey -e
 #}}} End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall{{{
-zstyle :compinstall filename '/home/grissiom/.zshrc'
+zstyle :compinstall filename $HOME'/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -81,12 +81,6 @@ alias more='less'
 
 alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
 
-alias man='vimman.sh'
-
-# cd ~dir_name
-hash -d losrc='/usr/local/src/'
-hash -d lshj='/win_backyard/projects/拉伸机/2010 开发/'
-hash -d fy='/win_backyard/projects/负压控制系统/'
 # End alais }}}
 
 # Env {{{
@@ -121,6 +115,10 @@ zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 # End Some tricky }}}
+
+if [ -r ~/.zshrc.local ]; then
+	. ~/.zshrc.local
+fi
 
 # Post actions {{{
 fortune

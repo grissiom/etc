@@ -24,7 +24,6 @@ LS_OPTIONS='-F -b --color=auto -h'
 ### copied from system
 alias d='dir'
 alias dir='/bin/ls $LS_OPTIONS --format=vertical'
-alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 alias v='vdir'
 alias vdir='/bin/ls $LS_OPTIONS --format=long'
 ### End of copy
@@ -34,12 +33,9 @@ alias grep='grep --color=tty -d skip'
 alias check_po='msgfmt -cvv --check-accelerators=\& -o /dev/null'
 alias ls='/bin/ls $LS_OPTIONS'
 alias more='less'
-alias cd_='cd /usr/local/src'
-alias cdm='cd /usr/local/src/My_projects'
 alias ..='cd ../'
 alias ll='ls ${LS_OPTIONS} -l '
 
-### copy from http://www.faqs.org/docs/abs/HTML/sample-bashrc.html
 # Define some colors first:
 red='\e[0;31m'
 RED='\e[1;31m'
@@ -48,18 +44,6 @@ BLUE='\e[1;34m'
 cyan='\e[0;36m'
 CYAN='\e[1;36m'
 NC='\e[0m'              # No Color
-# --> Nice. Has the same effect as using "ansi.sys" in DOS.
-
-# Looks best on a black background.....
-echo -e "${BLUE}This is BASH ${RED}${BASH_VERSION%.*}${BLUE} - DISPLAY on ${RED}$DISPLAY${NC}\n"
-
-date
-echo -e "\n"
-if [ -x /usr/games/fortune ]; then
-    /usr/games/fortune -s     # makes our day a bit more fun.... :-)
-    echo -e "\n"
-fi
-### End of copy
 
 # don't know why varibles doesn't work in PS1...
 green='\e[0;32;1m'
@@ -70,23 +54,22 @@ ps1_user='\[\e[43;30m\]'
 ps1_nc='\[\e[0m\]'
 
 GIT_PS1='$(__git_ps1 "(git:%s)")'
-DATE_PS1='$(date +"%-b%-d日 %A %R")'
+DATE_PS1='$(date +"%-b.%-d %A %R")'
 
-export PS1="\n        ${ps1_user}\u${ps1_nc} @gri: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
+export PS1="\n        ${ps1_user}\u${ps1_nc} @\h: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
 ${ps1_yellow}\w${ps1_nc}\$ "
 
+if [ -r ~/.bashrc.local ]; then
+	. ~/.bashrc.local
+fi
 
-# Wind River
-export PATH=/home/grissiom/wrlinux/bin/:$PATH
+# Post actions
+# Looks best on a black background.....
+echo -e "${BLUE}This is BASH ${RED}${BASH_VERSION%.*}${BLUE} - DISPLAY on ${RED}$DISPLAY${NC}\n"
 
-# China git
-alias pek-git-init='if [ ! -d bin ] ; then git clone git://pek-git.wrs.com/git/bin ; fi ; (cd bin ; ./wrgit pull) ; export PATH=`pwd`/bin:$PATH;'
-alias pek-git-clone='wrgit clone git://pek-git.wrs.com/git/wrlinux-x'
-
-# quilt
-export QUILT_PATCHES=wrlinux_quilt_patches
-export QUILT_PC=.pc
-export WRLINUX_USE_QUILT=yes
-
-## let cd can correct mistype
-#shopt -s cdspell
+date
+echo -e "\n"
+if [ -x /usr/games/fortune ]; then
+    /usr/games/fortune -s     # makes our day a bit more fun.... :-)
+    echo -e "\n"
+fi

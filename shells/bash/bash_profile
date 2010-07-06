@@ -4,6 +4,10 @@ if [ -r ~/.profile ]; then
 	. ~/.profile
 fi
 
+if [ -r ~/.bash_profile.local ]; then
+	. ~/.bash_profile.local
+fi
+
 # Append any additional sh scripts found in ~/.profile.d
 for profile_script in ./.profile.d/*.sh ; do
   if [ -x $profile_script ]; then

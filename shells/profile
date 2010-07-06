@@ -6,12 +6,7 @@
 	#. /etc/profile
 #fi
 
-## update mine database at login to avoid some problems.
-#update-mime-database ~/.local/share/mime
-
-export LC_ALL=zh_CN.UTF-8
-
-export PATH=$PATH:/home/grissiom/bin
+export PATH=$PATH:$HOME/bin
 
 # /etc/profile detects $SHELL env and set LS_OPTIONS to an array for zsh,
 # follow it.
@@ -27,17 +22,11 @@ export LESS
 export PAGER=less
 
 
-export PYTHONSTARTUP=/home/grissiom/.pythonrc
+export PYTHONSTARTUP=$HOME/.pythonrc
 
 export VISUAL=vim
 
-export GDFONTPATH="/usr/share/fonts/TTF/"
-export GNUPLOT_DEFAULT_FONT="wqy-zenhei.ttf"
-
-export CDPATH=".:~:/usr/local/src/My_projects"
-
-# bzr launchpad meed this...
-export CURL_CA_BUNDLE=/usr/share/apps/kssl/ca-bundle.crt
+export CDPATH=".:~:"
 
 # set the input method envs for terminals
 # input_method is set in ~/.xprofile bacause it seems that input methods could
@@ -84,12 +73,12 @@ case $MACHINE in
 	ARCH='x86_64'
 	;;
 	* ) #TODO: add other mach detect
-	ARCH='i386'
+	ARCH=$MACHINE
 	;;
 esac
 export ARCH
 unset MACHINE
 
-export GOROOT=$HOME/go
-export GOARCH=amd64
-export GOOS=linux
+if [ -r $HOME/.profile.local ]; then
+	. $HOME/.profile.local
+fi
