@@ -2,7 +2,7 @@
 # This gives you a Desktop Environment independent way of starting app.
 # Only work with runlevel 4 (the graphical XDM/KDM login)
 
-export input_method='scim'
+export input_method='ibus'
 case ${input_method} in
 	'scim')
 	# It seems scim is better then scim-bridge which is used in official
