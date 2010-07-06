@@ -43,7 +43,9 @@ ln -fsT ${PWD}/fontconf/fonts.conf ~/.fonts.conf
 ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
 # global git configuration:
-ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
+# if merge on .gitconfig failed, git will refuse to work.
+# so just provide the scheme but not install it.
+#ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
 
 # web
 # don't forget to setup your web browsers ;)
