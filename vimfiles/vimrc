@@ -143,6 +143,10 @@ au Syntax * syn match localWhitespaceError /\(\zs\%#\|\s\)\+$/ display
 au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 "}}}
 
+" Ftplugin loading {{{
+au BufNewFile,BufRead *.tdl set ft=tdl
+" }}}
+
 " // The switch of the Source Explorer
 nmap <F8> :SrcExplToggle<CR>
 
