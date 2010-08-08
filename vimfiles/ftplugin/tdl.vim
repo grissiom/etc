@@ -24,7 +24,6 @@ else
 	let s:donep = "== "
 endif
 
-" open a new entry on current line.
 fu <SID>new_entry()
 	if line('.') == line('$')
 		exe "norm! o\<ESC>"
@@ -36,7 +35,6 @@ fu <SID>new_entry()
 	exe "norm! " . strlen(s:tstr) . "h"
 endfu
 
-" mark the entry at current line as done and move it down
 fu <SID>done_entry()
 	if <SID>cnt_entry_type(line('.')) == 'done'
 		return
