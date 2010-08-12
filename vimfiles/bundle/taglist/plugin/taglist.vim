@@ -2273,10 +2273,11 @@ function! s:Tlist_Process_File(filename, ftype)
         " command inside a batch file and call the batch file.
         " Do this only on Win2K, WinXP and above.
         " Contributed by: David Fishburn.
-        " Thanks to http://www.newsmth.net/frames.html?mainurl=/bbscon.php%3Fbid%3D731%26id%3D54466
         let s:taglist_tempfile = fnamemodify(tempname(), ':h') .
                     \ '\taglist.cmd'
-        call writefile([ctags_cmd], s:taglist_tempfile, "b")
+        exe 'redir! > ' . s:taglist_tempfile
+        silent echo ctags_cmd
+        redir END
 
         call s:Tlist_Log_Msg('Cmd inside batch file: ' . ctags_cmd)
         let ctags_cmd = '"' . s:taglist_tempfile . '"'
