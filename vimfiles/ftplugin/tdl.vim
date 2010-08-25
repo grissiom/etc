@@ -24,6 +24,12 @@ else
 	let s:donep = "== "
 endif
 
+if exists("g:tdl_rej_prefix")
+	let s:rejp = g:tdl_rej_prefix
+else
+	let s:rejp = "xx "
+endif
+
 fu <SID>new_entry()
 	if line('.') == line('$')
 		exe "norm! o\<ESC>"
@@ -44,7 +50,7 @@ fu <SID>done_entry()
 
 	let edln = <SID>get_next_entry_ln(bgln+1) - 1
 
-	let done_top = <SID>get_done_top(edln)
+	let done_top = <SID>get_top(edln, s:donep)
 
 	call <SID>ins_done_m(bgln)
 	call <SID>cut_to(bgln, edln, done_top-1)
@@ -63,6 +69,21 @@ fu <SID>undone_entry()
 	call <SID>cut_to(bgln, edln, 0)
 endfu
 
+fu <SID>rej_entry()
+	if <SID>cnt_entry_type(line('.')) == 'rej'
+		return
+	endif
+
+	let bgln = <SID>get_entry_top_ln(line('.'))
+
+	let edln = <SID>get_next_entry_ln(bgln+1) - 1
+
+	let rej_top = <SID>get_top(edln, s:rejp)
+
+	call <SID>ins_rej_m(bgln)
+	call <SID>cut_to(bgln, edln, rej_top-1)
+endfu
+
 fu <SID>ins_todo_m()
 	let s:tstr = strftime(s:tfmt)
 	exe "norm! \<ESC>0i" . s:todop . "\<ESC>A" . s:tstr
@@ -71,14 +92,21 @@ endfu
 fu <SID>ins_done_m(ln)
 	let ppos = getpos('.')
 	call cursor(a:ln, 1)
-	exe "s/^" . s:todop . "/" . s:donep . "/"
+	exe 's/^\(' . s:todop . '\|' . s:rejp . '\)/' . s:donep . "/"
 	call cursor(ppos)
 endfu
 
 fu <SID>rev_done_m(ln)
 	let ppos = getpos('.')
 	call cursor(a:ln, 1)
-	exe "s/^" . s:donep . "/" . s:todop . "/"
+	exe 's/^' . s:donep . '/' . s:todop . "/"
+	call cursor(ppos)
+endfu
+
+fu <SID>ins_rej_m(ln)
+	let ppos = getpos('.')
+	call cursor(a:ln, 1)
+	exe 's/^\(' . s:todop . '\|' . s:donep . '\)/' . s:rejp . "/"
 	call cursor(ppos)
 endfu
 
@@ -102,20 +130,23 @@ fu <SID>cnt_entry_type(ln)
 		if getline(i) =~ '^' . s:donep
 			return 'done'
 		endif
+		if getline(i) =~ '^' . s:rejp
+			return 'rej'
+		endif
 	endfo
 	return 'none'
 endfu
 
 fu <SID>get_entry_top_ln(ln)
-	return <SID>loc_uw_in(a:ln, 1, '^\(' . s:todop . '\|' . s:donep . '\)')
+	return <SID>loc_uw_in(a:ln, 1, '^\(' . s:todop . '\|' . s:donep . '\|' . s:rejp . '\)')
 endfu
 
 fu <SID>get_next_entry_ln(ln)
-	return <SID>loc_dw_in(a:ln, line('$')+1, '^\(' . s:todop . '\|' . s:donep . '\)')
+	return <SID>loc_dw_in(a:ln, line('$')+1, '^\(' . s:todop . '\|' . s:donep . '\|' . s:rejp . '\)')
 endfu
 
-fu <SID>get_done_top(ln)
-	return <SID>loc_dw_in(a:ln, line('$')+1, '^' . s:donep)
+fu <SID>get_top(ln, ep)
+	return <SID>loc_dw_in(a:ln, line('$')+1, '^' . a:ep)
 endfu
 
 fu <SID>loc_dw_in(bg, ed, pat)
@@ -138,4 +169,5 @@ endfu
 
 nmap <buffer> <silent> ,n :call <SID>new_entry()<CR>a
 nmap <buffer> <silent> ,d :call <SID>done_entry()<CR>
+nmap <buffer> <silent> ,r :call <SID>rej_entry()<CR>
 nmap <buffer> <silent> ,u :call <SID>undone_entry()<CR>
