@@ -4,7 +4,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory beep extendedglob nomatch #autocd
+setopt appendhistory beep extendedglob nomatch autocd
 unsetopt notify
 bindkey -e
 #}}} End of lines configured by zsh-newuser-install
@@ -70,8 +70,6 @@ LS_OPTIONS='-F -b --color=auto -h'
 export LS_OPTIONS
 alias ls='\ls $=LS_OPTIONS'
 alias ll='\ls $=LS_OPTIONS -l'
-alias info='pinfo'
-
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
@@ -101,7 +99,6 @@ export LESS_TERMCAP_ue="$_C_OFF"
 # Some tricky {{{
 su()
 {
-	export ARCH=x86_64
 	export PKGTYPE=txz
 	ZDOTDIR=~ command su "$@" -c zsh
 }
@@ -121,10 +118,12 @@ if [ -r ~/.zshrc.local ]; then
 fi
 
 # Post actions {{{
-fortune
-#echo $_C_RED"Perfection in design is attained not when there is nothing more to add, but when there is nothing more to remove"$_C_OFF
-echo "\n"$_C_RED"\t\t\t\t\t完美之道，不在无可增加，而在无可删减。"$_C_OFF
+if which fortune &>/dev/null; then
+	fortune
+fi
+echo $_C_RED"Perfection in design is attained not when there is nothing more to add, but when there is nothing more to remove"$_C_OFF
+#echo "\n"$_C_RED"\t\t\t\t\t完美之道，不在无可增加，而在无可删减。"$_C_OFF
 echo
 
-[ $UID -ne 0 ] && rcnotify.sh show
+[ $UID -ne 0 ] && which rcnotify.sh &>/dev/null && rcnotify.sh show
 # End Post actions }}}
