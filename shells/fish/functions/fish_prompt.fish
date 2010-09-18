@@ -29,6 +29,6 @@ function fish_prompt --description "Write out the prompt"
 	# return code
 	set __promt {$__promt}"  $__pmt_status_str"
 	# pwd
-	set __promt {$__promt}"\n$__pmt_pwd_cl$__pmt_pwd_str>$__pmt_normal"
+	set __promt {$__promt}"\n$__pmt_pwd_cl$__pmt_pwd_str>$__pmt_normal "
 	printf $__promt
 end
