@@ -7,11 +7,10 @@ function -v PWD __update_promt_pwd
 	__update_promt_git
 end
 
-function __git
+function git
 	command git $argv
 	__update_promt_git
 end
-alias git __git
 
 switch $USER
 case root
