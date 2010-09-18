@@ -111,6 +111,9 @@ zstyle ':completion:*:warnings' format '%BSorry,  no matches for: %d%b'
 # http://www.gnegg.ch/2004/10/delete-key-in-zsh/
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
+
+# http://www.zsh.org/mla/users/2005/msg00298.html
+setopt NONOMATCH
 # End Some tricky }}}
 
 if [ -r ~/.zshrc.local ]; then
@@ -127,3 +130,8 @@ echo
 
 [ $UID -ne 0 ] && which rcnotify.sh &>/dev/null && rcnotify.sh show
 # End Post actions }}}
+
+if [ -r ~/.zshrc.local ]; then
+	. ~/.zshrc.local
+fi
+
