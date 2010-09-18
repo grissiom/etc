@@ -23,8 +23,10 @@ case '*'
 	set -g __pmt_pwd_cl (set_color $fish_color_cwd)
 end
 
-set -g __pmt_pwd_str (prompt_pwd)
 set -g __pmt_hostname (hostname|cut -d . -f 1)
+set -g __pmt_pwd_str (prompt_pwd)
+set -g __pmt_git_str (prompt_git)
+
 set -g __pmt_user_cl (set_color cyan)
 set -g __pmt_git_cl (set_color green)
 set -g __pmt_jobs_cl (set_color yellow)
