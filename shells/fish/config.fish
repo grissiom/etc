@@ -12,13 +12,39 @@ function git
 end
 
 function cd
-	if [ $argv = '-' ]
-		builtin cd $OLDPWD
-	else
+	set cd_status 0
+	## copied and modified from share/fish/functions/cd.fish
+	## we don't have function chaining features yet...
+	# Skip history in subshells
+	if status --is-command-substitution
 		builtin cd $argv
+		set cd_status $status
+	else; if [ $argv[1] = - ] ^/dev/null
+		if [ "$__fish_cd_direction" = next ] ^/dev/null
+			nextd
+		else
+			prevd
+		end
+		set cd_status $status
+	else
+		# Avoid set completions
+		set -l previous $PWD
+
+		builtin cd $argv[1]
+		set cd_status $status
+
+		if [ $cd_status = 0 -a "$PWD" != "$previous" ]
+			set -g dirprev $dirprev $previous
+			set -e dirnext
+			set -g __fish_cd_direction prev
+		end
+	end; end
+
+	if [ $cd_status = 0 ]
+		__update_promt_pwd
+		__update_promt_git
 	end
-	__update_promt_pwd
-	__update_promt_git
+	return $cd_status
 end
 
 switch $USER
