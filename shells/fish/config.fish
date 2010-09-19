@@ -2,13 +2,18 @@ function __update_promt_git
 	set -g __pmt_git_str (prompt_git)
 end
 
-function -v PWD __update_promt_pwd
+function __update_promt_pwd
 	set -g __pmt_pwd_str (prompt_pwd)
-	__update_promt_git
 end
 
 function git
 	command git $argv
+	__update_promt_git
+end
+
+function cd
+	cd $argv
+	__update_promt_pwd
 	__update_promt_git
 end
 
