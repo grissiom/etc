@@ -12,7 +12,11 @@ function git
 end
 
 function cd
-	cd $argv
+	if [ $argv = '-' ]
+		builtin cd $OLDPWD
+	else
+		builtin cd $argv
+	end
 	__update_promt_pwd
 	__update_promt_git
 end
