@@ -16,7 +16,7 @@ functions -c cd __cd
 function cd
 	__cd $argv
 	set cd_status $status
-	if [ $cd_status = 0 ]
+	if test $cd_status = 0
 		__update_promt_pwd
 		__update_promt_git
 	end
@@ -46,4 +46,5 @@ set -g __pmt_git_str (prompt_git)
 set -g __pmt_user_cl (set_color cyan)
 set -g __pmt_git_cl (set_color green)
 set -g __pmt_jobs_cl (set_color yellow)
+set -g __pmt_status_cl (set_color red)
 set -g __pmt_normal (set_color normal)
