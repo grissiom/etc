@@ -46,11 +46,11 @@ set rulerformat=%m\ %2c,%2v\ \ \ \ %p%%
 " always show status line
 set laststatus=2
 " right part of the status line.
-set statusline=%#Error#%m%r%#Normal#
+set statusline=%m%r
 " left part of the status line.
 set statusline+=%=
 " show the cursor position.
-set statusline+=%#Comment#%-14.(%l,%2v%)\ %P
+set statusline+=%-14.(%l,%2v%)\ %P
 "hi! User1  ctermfg=red
 
 " 貌似即使是全角的双引号在 vim 里始终是当做一个英文字母宽度显示的，所以在这里
@@ -146,6 +146,7 @@ au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 
 " Ftplugin loading {{{
 au BufNewFile,BufRead *.tdl set ft=tdl
+au BufNewFile,BufRead *.fish set ft=fish
 " }}}
 
 " // The switch of the Source Explorer
