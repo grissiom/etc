@@ -36,7 +36,7 @@ let colors_name = "dark_light256"
 " let them could be accessed by functions easily.
 " FIXME: or just set them to 'none' in other places?
 let s:bg=0
-let s:fg=250
+let s:fg=251
 
 " order: group, ctermfg, ctermbg, cterm, guifg, guibg, gui
 let s:hi_conf=[]
@@ -90,7 +90,8 @@ let s:hi_conf += [
 \['TabLine',     246,   236,  'bold'],
 \['TabLineFill', 236,   236],
 \['TabLineSel',  254,   s:bg],
-\['StatusLine',  248,   235],
+\['StatusLine',  246,   235],
+\['StatusLineNC',238,   234],
 \
 \['Pmenu',       253,   238],
 \['PmenuSel',    253,   62,   'bold'],
