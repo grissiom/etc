@@ -51,5 +51,8 @@ ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 # don't forget to setup your web browsers ;)
 ln -fsT ${PWD}/web/proxy.pac ~/proxy.pac
 
+# misc
+ln -fsT ${PWD}/misc/toprc ~/.toprc
+
 echo "You may refer to use zsh as the login shell"
 chsh
