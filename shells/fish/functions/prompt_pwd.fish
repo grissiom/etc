@@ -3,11 +3,12 @@ function prompt_pwd --description "Print the current working directory, shortend
 	case "$HOME"
 		echo '~'
 	case '*'
-		set pwd_l (expr length $PWD)
+		set -l LPWD (echo $PWD | sed -e "s|$HOME|~|")
+		set pwd_l (expr length $LPWD)
 		if test $pwd_l -gt 35
-			echo $PWD | sed -e 's/.\{'(math $pwd_l - 32)'\}/\.\.\./'
+			echo $LPWD | sed -e 's/.\{'(math $pwd_l - 32)'\}/\.\.\./'
 		else
-			echo $PWD
+			echo $LPWD
 		end
 	end
 end
