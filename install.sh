@@ -44,8 +44,11 @@ ln -fsT ${PWD}/python/pythonrc ~/.pythonrc
 
 # global git configuration:
 # if merge on .gitconfig failed, git will refuse to work.
-# so just provide the scheme but not install it.
-#ln -fsT ${PWD}/gitconfig/gitconfig ~/.gitconfig
+# so just provide the copy them if absent.
+if [ ! -r ~/.gitconfig -a ! -r ~/.gitignore ]; then
+	cp ${PWD}/gitconfig/gitconfig ~/.gitconfig
+	cp ${PWD}/gitconfig/gitignore ~/.gitignore
+fi
 
 # web
 # don't forget to setup your web browsers ;)
