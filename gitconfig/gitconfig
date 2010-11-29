@@ -16,17 +16,8 @@
 [i18n]
 	logOutputEncoding = UTF-8
 
-; Wind River
 [user]
-	name = Gu Rui
-	email = rui.gu@windriver.com
+	name = Grissiom
+	email = chaos.proton@gmail.com
 [diff]
 	renamelimit = 0
-
-[sendemail]
-	suppresscc = all 
-	smtpserver = smtp-na.wrs.com 
-	from = rui.gu@windriver.com 
-[sendmail]
-	chainreplyto = false 
-	nochainreplyto = true 
