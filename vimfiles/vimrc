@@ -25,6 +25,9 @@ set fileencoding=utf-8
 " gvim need this...
 set backspace=indent,eol,start
 set incsearch
+
+" case in C should be indented as the same level as switch
+set cinoptions+=:0,l1
 "}}}
 
 " UI setup {{{
