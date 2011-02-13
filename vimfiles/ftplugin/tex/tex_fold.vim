@@ -13,6 +13,7 @@ setlocal foldtext=Get_tex_ft()
 
 " sections and their folding levels
 let s:fdl = [['\\section', 1],
+            \['\\bibliography{', 1],
             \['\\subsection', 2],
 	    \['\\subsubsection', 3]
 	    \]
