@@ -80,6 +80,10 @@ if $TERM =~ 'xterm'
 	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+let g:tagbar_left = 1
+let g:tagbar_compact = 1
+let g:tagbar_width = 25
 "}}}
 
 " Mapping {{{
