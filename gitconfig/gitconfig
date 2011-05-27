@@ -2,6 +2,7 @@
 	pager = "less -+$LESS -RIM"
 	quotepath = false
 	excludesfile = ~/.gitignore
+	autocrlf = input
 [alias]
 	pl = pull
 	co = checkout
