@@ -162,3 +162,8 @@ au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 au BufNewFile,BufRead *.tdl set ft=tdl
 au BufNewFile,BufRead *.fish set ft=fish
 " }}}
+
+" clang options {{{
+let g:clang_auto_select=2
+let g:clang_use_library=1
+" }}}
