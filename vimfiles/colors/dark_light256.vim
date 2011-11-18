@@ -36,7 +36,7 @@ let colors_name = "dark_light256"
 " let them could be accessed by functions easily.
 " FIXME: or just set them to 'none' in other places?
 let s:bg=0
-let s:fg=251
+let s:fg=249
 
 " order: group, ctermfg, ctermbg, cterm, guifg, guibg, gui
 let s:hi_conf=[]
