@@ -2,7 +2,7 @@
 # This gives you a Desktop Environment independent way of starting app.
 # Only work with runlevel 4 (the graphical XDM/KDM login)
 
-export input_method='ibus'
+export input_method='fcitx'
 case ${input_method} in
 	'scim')
 	# It seems scim is better then scim-bridge which is used in official
@@ -28,16 +28,14 @@ case ${input_method} in
 	export XIM=fcitx
 	export XIM_PROGRAM=/usr/bin/fcitx
 	export XMODIFIERS="@im=fcitx"
-	export GTK_IM_MODULE=XIM
-	export QT_IM_MODULE=XIM
-	# Launch fcitx after DE has brought up. Otherwise you will lost the system-tray
-	#fcitx -d
+	export GTK_IM_MODULE=fcitx
+	export QT_IM_MODULE=fcitx
 	;;
 	'sunpinyin')
 	export XIM=xsunpinyin
 	export XMODIFIERS="@im=xsunpinyin"
 	export GTK_IM_MODULE=XIM
 	export QT_IM_MODULE=XIM
-	xsunpinyin -d
+	#xsunpinyin -d
 	;;
 esac
