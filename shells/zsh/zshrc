@@ -116,10 +116,6 @@ bindkey    "^[3;5~"         delete-char
 setopt NONOMATCH
 # End Some tricky }}}
 
-if [ -r ~/.zshrc.local ]; then
-	. ~/.zshrc.local
-fi
-
 # Post actions {{{
 if which fortune &>/dev/null; then
 	fortune
