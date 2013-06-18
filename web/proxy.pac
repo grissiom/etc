@@ -16,11 +16,11 @@ function FindProxyForURL(url, host) {
 	    shExpMatch(url, "*code.google.com/p/gappproxy/*") ||
 	    shExpMatch(url, "*.facebook.com/*") ||
 	    shExpMatch(url, "*.fbcdn.net/*") ||
-	    shExpMatch(url, "*.amd.com/*") ||
 	    shExpMatch(host, "*.blogger.com") ||
 	    shExpMatch(host, "*.twitter.com") ||
 	    shExpMatch(host, "twitter.com") ||
 	    shExpMatch(host, "*.twimg.com") ||
+	    shExpMatch(host, "*.ffmpeg.org") ||
 	    shExpMatch(host, "*golang.org") ||
 	    dnsDomainIs(host, "marguerite.su") ||
 	    dnsDomainIs(host, "www.sysresccd.org") ||
@@ -34,15 +34,15 @@ function FindProxyForURL(url, host) {
 	    dnsDomainIs(host, "userscripts.wikidot.com") ||
 	    dnsDomainIs(host, "twitpic.com") ||
 	    dnsDomainIs(host, "hootsuite.com") ||
-	    dnsDomainIs(host, "www.golang.org") ||
-	    dnsDomainIs(url, "http://creativecommons.org/licenses/by-nc/2.5/cn/deed.en_US") ||
 	    dnsDomainIs(host, "www.mail-archive.com") ||
-	    dnsDomainIs(host, "tools.google.com")
+	    dnsDomainIs(host, "feeds.feedburner.com") ||
+	    dnsDomainIs(host, "docs.google.com") ||
+	    dnsDomainIs(host, "www.­tumblr.­com") ||
+	    dnsDomainIs(host, "www.20thingsilearned.com") ||
+	    dnsDomainIs(host, "www.youtube.com")
 	   ) {
-		   return "PROXY 127.0.0.1:8000";
+		   return "SOCKS 127.0.0.1:2012";
 	}
-	if (dnsDomainIs(host, "www.youtube.com")
-			return "SOCKS 127.0.0.1:2012";
 
 	//if ( dnsDomainIs(host,  ".edu") )
 		//return "PROXY 127.0.0.1:8000";
