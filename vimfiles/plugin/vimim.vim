@@ -68,12 +68,12 @@ function! s:vimim_initialize_backdoor()
     let s:english.filename = s:vimim_filereadable("vimim.txt")
     let s:mandarin = len(s:english.filename) ? 0 : 1 " s/t chinese style
     let s:hit_and_run = len(s:cjk.filename) ? 0 : 1 " onekey continuity
-    if len(s:cjk.filename)
-        highlight! PmenuSbar  NONE
-        highlight! PmenuThumb NONE
-        highlight! Pmenu      NONE
-        highlight! link PmenuSel NonText
-    endif
+    "if len(s:cjk.filename)
+        "highlight! PmenuSbar  NONE
+        "highlight! PmenuThumb NONE
+        "highlight! Pmenu      NONE
+        "highlight! link PmenuSel NonText
+    "endif
 endfunction
 
 function! s:vimim_debug(...)
