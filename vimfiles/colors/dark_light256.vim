@@ -14,12 +14,12 @@
 " Color numbers (0-255) see:
 " http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
-"if &t_Co != 256
-  "echomsg ""
-  "echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
-  "echomsg ""
-  "finish
-"endif
+if &t_Co != 256
+  echomsg ""
+  echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
+  echomsg ""
+  finish
+endif
 
 set background=dark
 hi clear
@@ -93,8 +93,8 @@ let s:hi_conf += [
 \['StatusLine',  246,   235],
 \['StatusLineNC',238,   234],
 \
-\['Pmenu',       253,   238],
-\['PmenuSel',    253,   62,   'bold'],
+\['Pmenu',       s:fg,  233],
+\['PmenuSel',    s:fg,  238,   'bold'],
 \['PmenuSbar',   253,   0],
 \['PmenuThumb',  253,   0],
 \['WildMenu',    253,   62,   'bold'],
