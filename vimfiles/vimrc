@@ -62,7 +62,7 @@ set ambiwidth=single
 
 if has('gui_running')
 	colorscheme dark_light256
-elseif &term =~ 'xterm'
+elseif &term =~ 'xterm' || &term =~ 'screen'
 	set t_Co=256
 	colorscheme dark_light256
 endif
@@ -161,9 +161,15 @@ au Syntax * syn match localWhitespaceError / \+\ze\t/ display
 " Ftplugin loading {{{
 au BufNewFile,BufRead *.tdl set ft=tdl
 au BufNewFile,BufRead *.fish set ft=fish
+au BufNewFile,BufRead *.dox set ft=doxygen
+au BufNewFile,BufRead *.md set ft=markdown
 " }}}
 
 " clang options {{{
-let g:clang_auto_select=2
+let g:clang_auto_select=1
 let g:clang_use_library=1
 " }}}
+
+"let g:vimim_cloud = 'sougou'
+"let g:vimim_toggle = 'pinyin'
+imap <C-k>  <C-_>
