@@ -40,7 +40,7 @@ let s:fg=249
 
 " order: group, ctermfg, ctermbg, cterm, guifg, guibg, gui
 let s:hi_conf=[]
-"" Syntax highlighting
+"" Syntax highlighting {{{
 let s:hi_conf += [
 \['Normal',     s:fg, s:bg, 'none'],
 \['Comment',    31],
@@ -58,8 +58,9 @@ let s:hi_conf += [
 \['Error',      196,  52,   'bold'],
 \['Todo',       0,    94],
 \]
+" }}}
 
-"" Diff
+"" Diff {{{
 " TODO
 let s:hi_conf += [
 \['DiffAdded',   34],
@@ -68,15 +69,17 @@ let s:hi_conf += [
 \['DiffDelete',  s:fg, 240],
 \['DiffText',    254,  160],
 \]
+"}}}
 
-"" Spell
+"" Spell {{{
 let s:hi_conf += [
 \['SpellBad',    196,  52,   'undercurl'],
 \['SpellCap',    196,  s:bg, 'undercurl'],
 \['SpellRare',   s:fg, 52,   'undercurl'],
 \]
+"}}}
 
-""UI.
+""UI. {{{
 "Don't let the UI catch your eyes more than your code.
 let s:hi_conf += [
 \['LineNr',      94],
@@ -99,12 +102,13 @@ let s:hi_conf += [
 \['PmenuThumb',  253,   0],
 \['WildMenu',    253,   62,   'bold'],
 \]
+"}}}
 
 """"""""""""""""""""""
 " End of configrations
 """"""""""""""""""""""
 
-" map term color to gui rgb value
+" map term color to gui rgb value {{{
 let s:tg_cm=[
 \'#000000', '#800000', '#008000', '#808000', '#000080', '#800080', '#008080', '#c0c0c0',
 \'#808080', '#ff0000', '#00ff00', '#ffff00', '#0000ff', '#ff00ff', '#00ffff', '#ffffff',
@@ -139,7 +143,9 @@ let s:tg_cm=[
 \'#585858', '#626262', '#626262', '#767676', '#808080', '#8a8a8a', '#949494', '#9e9e9e',
 \'#a8a8a8', '#b2b2b2', '#bcbcbc', '#c6c6c6', '#d0d0d0', '#dadada', '#e4e4e4', '#eeeeee',
 \]
+"}}}
 
+" functions {{{
 func! s:__hi__(li)
 	exec 'hi! ' . a:li[0]
 	  \. ' ctermfg=' . a:li[1] . ' ctermbg=' . get(a:li, 2, s:bg) . ' cterm=' . get(a:li, 3, 'none')
@@ -152,7 +158,9 @@ for s:i in s:hi_conf
 	call s:__hi__(s:i)
 endfor
 unlet s:i
+"}}}
 
+" hi links {{{
 " I link in this way because I think the folded text is something that "When
 " you ws to ignore them, you won't see them, but when you want out, they can
 " easily catch your eyes.". I think and hope the Comment is the same thing.
@@ -180,3 +188,5 @@ hi link SpecialChar    Special
 hi link Delimiter      Special
 hi link SpecialComment Special
 hi link Debug	       Special
+" }}}
+" vim: fdm=marker:
