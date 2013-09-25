@@ -76,7 +76,7 @@ set hlsearch
 
 " konsole in KDE4
 " http://ikde.org/%E5%BA%94%E7%94%A8/konsole-vim-%E5%85%89%E6%A0%87%E5%BD%A2%E7%8A%B6%E9%9A%8F%E6%A8%A1%E5%BC%8F%E5%8F%98%E6%8D%A2/
-if $TERM =~ 'xterm'
+if $KONSOLE_PROFILE_NAME != ''
 	let &t_SI = "\<Esc>]50;CursorShape=1;BlinkingCursorEnabled=true\x7"
 	let &t_EI = "\<Esc>]50;CursorShape=0;BlinkingCursorEnabled=false\x7"
 endif
@@ -111,8 +111,8 @@ map <F4> :emenu <C-Z>
 
 map <Up> gk
 map <Down> gj
-
-inoremap , ,<Space>
+inoremap ,  ,<Space>
+"inoremap ,, ,
 "}}}
 
 " Folding {{{
@@ -124,6 +124,9 @@ set foldenable " Turn on folding
 "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen-=search " don't open folds when you search into them
 set foldopen-=undo " don't open folds when you undo stuff
+set foldopen-=block " don't open folds when you undo stuff
+set foldopen-=insert " don't open folds when you undo stuff
+set foldlevelstart=99 " don't open folds when you undo stuff
 "}}}
 
 " Local Variables {{{
@@ -150,6 +153,8 @@ set formatoptions+=mM
 
 set smartcase
 
+set completeopt-=preview
+
 set backupskip+=',/etc/rc.d/*,'
 
 " Show trailing whitespace and spaces before tabs
@@ -163,15 +168,22 @@ au BufNewFile,BufRead *.tdl set ft=tdl
 au BufNewFile,BufRead *.fish set ft=fish
 au BufNewFile,BufRead *.dox set ft=doxygen
 au BufNewFile,BufRead *.md set ft=markdown
-" }}}
-
-" clang options {{{
-let g:clang_complete_auto=0
-let g:clang_auto_select=1
-let g:clang_jumpto_declaration_key = '<C-k>'
-let g:clang_jumpto_back_key = '<C-j>'
+au BufNewFile,BufRead *.md set textwidth=80
+au BufNewFile,BufRead *.S set ft=armasm
 " }}}
 
 "let g:vimim_cloud = 'sougou'
 "let g:vimim_toggle = 'pinyin'
 imap <C-k>  <C-_>
+
+" vundle {{{
+" http://github.com/gmarik/vundle.git
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+" }}}
