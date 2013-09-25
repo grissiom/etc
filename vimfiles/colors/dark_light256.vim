@@ -97,10 +97,11 @@ let s:hi_conf += [
 \['StatusLineNC',238,   234],
 \
 \['Pmenu',       s:fg,  233],
-\['PmenuSel',    s:fg,  238,   'bold'],
+\['PmenuSel',    s:fg,  238,  'bold'],
 \['PmenuSbar',   253,   0],
 \['PmenuThumb',  253,   0],
 \['WildMenu',    253,   62,   'bold'],
+\['SignColumn',  s:fg,  s:bg, 'none'],
 \]
 "}}}
 
