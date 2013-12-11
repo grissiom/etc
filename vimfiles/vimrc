@@ -1,6 +1,23 @@
 " vim: fdm=marker:
-call pathogen#runtime_append_all_bundles()
 set nocompatible
+
+" vundle {{{
+" vundle should be on top of vimrc
+filetype off " required by vundle
+" http://github.com/gmarik/vundle.git
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+Bundle 'mattn/emmet-vim'
+Bundle 'sukima/xmledit'
+Bundle 'othree/html5.vim'
+Bundle 'SirVer/ultisnips'
+" }}}
 
 filetype on
 filetype indent on
@@ -176,14 +193,36 @@ au BufNewFile,BufRead *.S set ft=armasm
 "let g:vimim_toggle = 'pinyin'
 imap <C-k>  <C-_>
 
-" vundle {{{
-" http://github.com/gmarik/vundle.git
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
+" syntastic {{{
+autocmd BufEnter * sign define dummy
+autocmd BufEnter * execute 'sign place 99999 line=1 name=dummy buffer=' . bufnr('')
+let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
+let g:ycm_key_list_select_completion = ['<C-j>', '<C-k>']
+"let g:ycm_min_num_of_chars_for_completion = 5
+"let g:ycm_filetype_whitelist = { 'c': 1, 'cpp': 1, 'py': 1}
 " }}}
+
+""" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-i>"
+let g:UltiSnipsJumpForwardTrigger="<c-i>"
+let g:UltiSnipsJumpBackwardTrigger="<c-o>"
+
+"" UltiSnips completion function that tries to expand a snippet. If there's no
+"" snippet for expanding, it checks for completion window and if it's
+"" shown, selects first element. If there's no completion window it tries to
+"" jump to next placeholder. If there's no placeholder it just returns TAB key 
+"function! g:UltiSnips_Complete()
+    "call UltiSnips_ExpandSnippet()
+    "if g:ulti_expand_res == 0
+	"if pumvisible()
+	    "return "\<C-n>"
+	"else
+	    "call UltiSnips_JumpForwards()
+	    "if g:ulti_jump_forwards_res == 0
+	       "return "\<TAB>"
+	    "endif
+	"endif
+    "endif
+    "return ""
+"endfunction
+"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
