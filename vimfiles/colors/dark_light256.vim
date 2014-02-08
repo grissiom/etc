@@ -14,7 +14,7 @@
 " Color numbers (0-255) see:
 " http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
-if &t_Co != 256
+if (!has('gui_running')) && &t_Co != 256
   echomsg ""
   echomsg "err: please use a 256-color terminal (or set t_Co=256 in vimrc)"
   echomsg ""
