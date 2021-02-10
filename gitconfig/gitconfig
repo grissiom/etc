@@ -20,6 +20,7 @@
 
 [user]
 	name = Grissiom
-	email = chaos.proton@gmail.com
+	# email = chaos.proton@gmail.com
+	email = grissiom@163.com
 [diff]
 	renamelimit = 0
