@@ -46,7 +46,7 @@ let s:hi_conf += [
 \['Comment',    31],
 \['Constant',   131],
 \['Number',     68],
-\['Identifier', 130, 'none', 'bold'],
+\['Identifier', 130, 'none'],
 \['Operator',   178],
 \['Statement',  111],
 \['Special',    5],
