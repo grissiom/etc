@@ -20,6 +20,7 @@ else
 fi
 export LS_OPTIONS
 export LESS
+export LESSCHARSET=UTF-8
 export PAGER=less
 
 
