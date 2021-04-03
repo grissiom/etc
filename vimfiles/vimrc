@@ -5,7 +5,7 @@ set nocompatible
 " vundle should be on top of vimrc
 filetype off " required by vundle
 " http://github.com/gmarik/vundle.git
-set rtp+=~/.vim/vundle.git/
+set rtp+=~/.vim/vundle
 call vundle#rc()
 
 Bundle 'Valloric/YouCompleteMe'

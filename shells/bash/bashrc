@@ -1,5 +1,10 @@
 # .bashrc
 
+# If not running interactively, don't do anything
+# It will break scp. 
+# ( http://unix.stackexchange.com/questions/88602/scp-from-remote-host-fails-due-to-login-greeting-set-in-bashrc )
+if [[ $- != *i* ]]; then return; fi
+
 # User specific aliases and functions
 
 # Source global definitions
