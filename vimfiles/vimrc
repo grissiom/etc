@@ -5,18 +5,22 @@ set nocompatible
 " vundle should be on top of vimrc
 filetype off " required by vundle
 " http://github.com/gmarik/vundle.git
-set rtp+=~/.vim/vundle
-call vundle#rc()
+" you need to `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim` first
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-Bundle 'mattn/emmet-vim'
-Bundle 'sukima/xmledit'
-Bundle 'othree/html5.vim'
-Bundle 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'mattn/emmet-vim'
+Plugin 'sukima/xmledit'
+Plugin 'othree/html5.vim'
+Plugin 'SirVer/ultisnips'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 " }}}
 
 filetype on
