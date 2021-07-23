@@ -9,5 +9,5 @@ ps1_nc='\[\e[0m\]'
 GIT_PS1='$(__git_ps1 "(git:%s)")'
 DATE_PS1='$(date +"%-x %A %R")'
 
-export PS1="\n        ${ps1_user}\u${ps1_nc} @\h: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
+export PS1="\n        ${ps1_user}\u${ps1_nc}@\h: ${ps1_red}${DATE_PS1} ${ps1_green}${GIT_PS1}${ps1_nc}\n
 ${ps1_yellow}\w${ps1_nc}\$ "
